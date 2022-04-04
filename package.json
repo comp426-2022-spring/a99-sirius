@@ -1,0 +1,23 @@
+{
+  "name": "a99-sirius",
+  "version": "1.0.0",
+  "description": "Task Managment web application",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-spring/a99-sirius.git"
+  },
+  "author": "Team Sirius",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-spring/a99-sirius/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-spring/a99-sirius#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "minimist": "^1.2.6"
+  }
+}
