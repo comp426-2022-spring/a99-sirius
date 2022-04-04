@@ -6,11 +6,7 @@ You don't need to accept this assignment since you are already assigned to teams
 
 ## Summary 
 
-COMP426 final project template repository.
-All your code and documentation goes here.
-Change this text to be a brief description of your final project.
-Put the name of your project in the header above.
-You will change everything below to be the main technical documentation, as outlined below.
+Open source task management webb app, and possibily a phone version as well. Users will be able to login in through a username/email and passowrd, or through google authentication. The task managment app will consist of creating tasks, deleting tasks, pinning important tasks, adding other users to a task, allow the user to set up recurring "reminders", add other users as a friend to allow task colloberations. 
 
 ## First steps
 
