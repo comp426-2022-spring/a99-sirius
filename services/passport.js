@@ -24,21 +24,22 @@ passport.use(new GoogleStrategy({
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback',
     proxy: true
-}, (accessToken, refreshToken, profile, done) => {
-    User.findOne({userId: profile.id})
-    .then((existingUser) => {
-        if(existingUser){
+    }, (accessToken, refreshToken, profile, done) => {
+        User.findOne({userId: profile.id})
+            .then((existingUser) => {
+            if(existingUser){
             // we already have a record with the given profile ID
-            done(null, existingUser)
-        } else {
+                done(null, existingUser)
+            } else{
             // make a new record of the user id in the UserDatabase
-            new User({userId: profile.id})
-            .then(user => {
-                done(null,user)
-            });
-        }
-    });
-}))
+                new User( {userId: profile.id}).save()
+                .then(user => {
+                    done(null, user)
+                });
+            }
+        });
+    })
+);
 
 
 // Need To Implement GitHub Authentication
