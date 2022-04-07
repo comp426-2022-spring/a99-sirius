@@ -1,15 +1,21 @@
 {
-  "name": "a99-sirius",
+  "name": "to-do-app-group",
   "version": "1.0.0",
-  "description": "Task Managment web application",
-  "main": "server.js",
+  "description": "Task Management Web Application",
+  "main": "index.js",
   "scripts": {
-    "test": "node server.js"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/comp426-2022-spring/a99-sirius.git"
   },
+  "keywords": [
+    "management"
+  ],
   "author": "Team Sirius",
   "license": "MIT",
   "bugs": {
@@ -17,7 +23,14 @@
   },
   "homepage": "https://github.com/comp426-2022-spring/a99-sirius#readme",
   "dependencies": {
+    "concurrently": "^7.1.0",
+    "cookie-session": "^2.0.0",
     "express": "^4.17.3",
-    "minimist": "^1.2.6"
+    "mongoose": "^6.2.10",
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "save": "^2.4.0"
   }
 }
