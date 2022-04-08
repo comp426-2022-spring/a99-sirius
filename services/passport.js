@@ -13,13 +13,9 @@ passport.serializeUser((user, done) => {
     done(null, user.id)
 });
 
-passport.deserializeUser((id, done) => {
-    User.findById(id)
-    .then(
-        user => {
-            done(null, user);
-        }
-    )
+passport.deserializeUser(async (id, done) => {
+    user = await User.findById(id)
+    done(null, user);
 });
 
 // Google Authentication
@@ -34,16 +30,15 @@ passport.use(new GoogleStrategy({
         if(existingUser){
         // we already have a record with the given profile ID
             done(null, existingUser)
-        } else{
-        // make a new record of the user id in the UserDatabase
-            const user = await new User( {
-                userId: profile.id,
-                email: profile.id._json.email,
-                name: profile.id._json.name,
-                firstName: profile._json.given_name,
-                lastName: profile._json.family_name
-            }).save()
-            done(null, user) 
         }
+        // make a new record of the user id in the UserDatabase
+        const user = await new User( {
+            userId: profile.id,
+            email: profile.id._json.email,
+            name: profile.id._json.name,
+            firstName: profile._json.given_name,
+            lastName: profile._json.family_name
+        }).save()
+        done(null, user) 
     })
 );
