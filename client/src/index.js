@@ -8,7 +8,6 @@ import App from './components/App'
 
 const store = createStore( () => [], {}, applyMiddleware())
 
-
 ReactDOM.render( // ROOT COMPONENT (APP Component as argument
     <Provider store={ store }><App /></Provider>, 
     document.querySelector('#root')
