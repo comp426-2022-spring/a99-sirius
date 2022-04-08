@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "Task Management Web Application",
   "main": "index.js",
-  "engines": {
-    "node": "16.13.2",
-    "npm": "8.1.2"
-  },
+
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",

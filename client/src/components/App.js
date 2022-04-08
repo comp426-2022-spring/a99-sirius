@@ -4,7 +4,7 @@ import {} from 'react-router-dom'
 const App = () => {
     return(
         <div>
-            Hi There!
+            Whatever I want!
         </div>
     );
 };

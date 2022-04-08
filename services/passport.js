@@ -30,15 +30,16 @@ passport.use(new GoogleStrategy({
         if(existingUser){
         // we already have a record with the given profile ID
             done(null, existingUser)
-        }
+        } else {
         // make a new record of the user id in the UserDatabase
-        const user = await new User( {
+            const user = await new User( {
             userId: profile.id,
             email: profile._json.email,
             name: profile._json.name,
             firstName: profile._json.given_name,
             lastName: profile._json.family_name
         }).save()
-        done(null, user) 
+        done(null, user)
+        }
     })
 );
