@@ -34,8 +34,8 @@ passport.use(new GoogleStrategy({
         // make a new record of the user id in the UserDatabase
         const user = await new User( {
             userId: profile.id,
-            email: profile.id._json.email,
-            name: profile.id._json.name,
+            email: profile._json.email,
+            name: profile._json.name,
             firstName: profile._json.given_name,
             lastName: profile._json.family_name
         }).save()
