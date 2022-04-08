@@ -10,6 +10,14 @@ module.exports = (app) => {
     // Google Callback
     app.get('/auth/google/callback', passport.authenticate('google'));
 
+    // GitHub Auth
+    app.get('/auth/github', passport.authenticate('github', {
+        scope: ['profile', 'email']
+    }));
+
+    // GitHub callback
+    app.get('/auth/github/callback', passport.authenticate('github'))
+
     // Local Authentication --> Review
     app.get('/login/password', passport.authenticate('local',{ failureRedirect: '/login', failureMessage: true}));
 

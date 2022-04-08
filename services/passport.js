@@ -25,7 +25,7 @@ passport.use(new GoogleStrategy({
     callbackURL: '/auth/google/callback',
     proxy: true
     }, async (accessToken, refreshToken, profile, done) => {
-        console.log(profile._json)
+        console.log(profile)
         const existingUser = await User.findOne({userId: profile.id})
         if(existingUser){
         // we already have a record with the given profile ID
@@ -43,3 +43,24 @@ passport.use(new GoogleStrategy({
         }
     })
 );
+
+// GitHub Authetication
+passport.use(new GitHubStrategy ({
+    clientID: keys.gitHubClientID,
+    clientSecret: keys.gitHibClientSecret,
+    callbackURL: '/auth/github/callback',
+    proxy: true
+    }, async (accessToken, refreshToken, profile, done) => {
+        console.log(profile)
+        const existingUser = await User.findOne({userId: profile.id})
+        if(existingUser){
+            done(null, existingUser)
+        }
+        else{
+            const user = await new User({
+                userId: profile.id
+            }).save()
+            done(null, user)
+        }
+    }
+))
