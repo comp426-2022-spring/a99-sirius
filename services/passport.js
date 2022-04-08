@@ -43,7 +43,6 @@ passport.use(new GoogleStrategy({
         }
     })
 );
-
 // GitHub Authetication
 passport.use(new GitHubStrategy ({
     clientID: keys.gitHubClientID,
@@ -64,3 +63,4 @@ passport.use(new GitHubStrategy ({
         }
     }
 ))
+//changes
