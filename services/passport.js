@@ -35,6 +35,7 @@ passport.use(new GoogleStrategy({
         const user = await new User({
             userId: profile.id,
             email: profile._json.email,
+            login: profile._json.email,
             name: profile._json.name,
             firstName: profile._json.given_name,
             lastName: profile._json.family_name
@@ -44,23 +45,28 @@ passport.use(new GoogleStrategy({
 })
 );
 
-// GitHub Authetication
-passport.use(new GitHubStrategy({
+// GitHub Authentication
+passport.use(new GitHubStrategy ({
     clientID: keys.gitHubClientID,
     clientSecret: keys.gitHibClientSecret,
     callbackURL: '/auth/github/callback',
     proxy: true
-}, async (accessToken, refreshToken, profile, done) => {
-    console.log(profile)
-    const existingUser = await User.findOne({ userId: profile.id })
-    if (existingUser) {
-        done(null, existingUser)
+    }, async (accessToken, refreshToken, profile, done) => {
+        console.log(profile)
+        const existingUser = await User.findOne({userId: profile.id})
+        if(existingUser){
+            done(null, existingUser)
+        }
+        else{
+            const user = await new User({
+                userId: profile.id,
+                email: profile._json.email,
+                login: profile.login,
+                name: profile.name,
+                firstName: profile._json.given_name,
+                lastName: profile._json.family_name
+            }).save()
+            done(null, user)
+        }
     }
-    else {
-        const user = await new User({
-            userId: profile.id
-        }).save()
-        done(null, user)
-    }
-}
 ))
