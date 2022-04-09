@@ -35,6 +35,7 @@ passport.use(new GoogleStrategy({
         const user = await new User( {
             userId: profile.id,
             email: profile._json.email,
+            login: profile._json.email,
             name: profile._json.name,
             firstName: profile._json.given_name,
             lastName: profile._json.family_name
@@ -44,7 +45,7 @@ passport.use(new GoogleStrategy({
     })
 );
 
-// GitHub Authetication
+// GitHub Authentication
 passport.use(new GitHubStrategy ({
     clientID: keys.gitHubClientID,
     clientSecret: keys.gitHibClientSecret,
@@ -58,7 +59,12 @@ passport.use(new GitHubStrategy ({
         }
         else{
             const user = await new User({
-                userId: profile.id
+                userId: profile.id,
+                email: profile._json.email,
+                login: profile.login,
+                name: profile.name,
+                firstName: profile._json.given_name,
+                lastName: profile._json.family_name
             }).save()
             done(null, user)
         }
