@@ -4,6 +4,7 @@ const Schema = mongoose.Schema // this is equivalent to const {Schema} = mongoos
 const userSchema = new Schema({
     userId: String,
     email: String,
+    login: String,
     name: String,
     firstName: String,
     lastName: String,

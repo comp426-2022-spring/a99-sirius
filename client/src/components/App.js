@@ -14,7 +14,12 @@ const Landing = () => {
 const App = () => {
     return(
         <div>
-            Whatever I want!
+            <BrowserRouter>
+                <div>
+                    <Route exact path='/' component={Landing}></Route>
+                    <Route exact path='/login' component={Dashboard}></Route>
+                </div>
+            </BrowserRouter>
         </div>
         
     );
