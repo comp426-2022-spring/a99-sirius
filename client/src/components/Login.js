@@ -2,7 +2,9 @@ import React , {Component} from 'react'
 import { Button } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
-import GoogleButtonIcon from '../icons/google_signin_buttons/web/1x/btn_google_signin_light_normal_web.png'
+// Import Buttons
+import GoogleButton from 'react-google-button'
+import GitHubButton from 'react-github-login-button'
 
 class LogIn extends Component{
     render() {
@@ -15,7 +17,8 @@ class LogIn extends Component{
                 <Link to = '/auth/login'>
                     <Button className="btn">Login</Button>
                 </Link>
-                <a href="/auth/google"><img alt="Google Login Logo" src={GoogleButtonIcon}/></a>
+                <a href='/auth/google'><GoogleButton label='Login with Google'/></a>
+                <a href='/auth/github'><GitHubButton label='Login with GitHub'/></a>
             </div>
         )
     }

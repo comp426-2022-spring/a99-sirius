@@ -31,10 +31,11 @@ passport.use(new GoogleStrategy({
         done(null, existingUser)
     }
     else {// make a new record of the user id in the UserDatabase
+        const login = profile._json.email.split("@")
         const user = await new User({
             userId: profile.id,
             email: profile._json.email,
-            login: profile._json.email,
+            login: login[0],
             name: profile._json.name,
             firstName: profile._json.given_name,
             lastName: profile._json.family_name
@@ -56,13 +57,14 @@ passport.use(new GitHubStrategy ({
             done(null, existingUser)
         }
         else{
+            const name = profile._json.name.split(" ")
             const user = await new User({
                 userId: profile.id,
                 email: profile._json.email,
-                login: profile.login,
-                name: profile.name,
-                firstName: profile._json.given_name,
-                lastName: profile._json.family_name
+                login: profile._json.login,
+                name: profile._json.name,
+                firstName: name[0],
+                lastName: name[1] + " " + name[2],
             }).save()
             done(null, user)
         }

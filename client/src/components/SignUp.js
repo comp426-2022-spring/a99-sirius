@@ -2,6 +2,10 @@ import React, {Component} from 'react'
 import { Button } from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
 
+// Import Buttons
+import GoogleButton from 'react-google-button'
+import GitHubButton from 'react-github-login-button'
+
 class SignUp extends Component{
     render(){
         return(
@@ -19,6 +23,8 @@ class SignUp extends Component{
                 <Link to = '/auth/signup'>
                     <Button className="btn">Sign up</Button>
                 </Link>
+                <a href='/auth/google'><GoogleButton label='Login with Google'/></a>
+                <a href='/auth/github'><GitHubButton label='Login with GitHub'/></a>
             </div>
         )
     }
