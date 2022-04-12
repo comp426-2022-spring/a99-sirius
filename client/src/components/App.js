@@ -5,6 +5,7 @@ import * as actions from'../actions'
 
 // Import Components Here!!
 import Header from './Header'
+import Home from './Home'
 
 class App extends Component {
     componentDidMount(){
@@ -16,6 +17,8 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Header />
+                        <Route exact path='/' component={Home}/>
+                        <Route exact path='/login' component={Home}/>
                     </div>
                 </BrowserRouter>
             </div>

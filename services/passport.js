@@ -25,7 +25,6 @@ passport.use(new GoogleStrategy({
     callbackURL: '/auth/google/callback',
     proxy: true
 }, async (accessToken, refreshToken, profile, done) => {
-    console.log(profile)
     const existingUser = await User.findOne({ userId: profile.id })
     if (existingUser) {
         // we already have a record with the given profile ID
