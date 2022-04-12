@@ -6,29 +6,21 @@ import * as actions from'../actions'
 // Import Components Here!!
 import Header from './Header'
 
-
-const Dashboard = () => {
-    return <h1>Dashboard</h1>
-}
-
-const Landing = () => {
-    return <h1> Landing</h1>
-}
-
 class App extends Component {
+    componentDidMount(){
+        this.props.fetchUser();
+    }
     render(){
         return(
             <div>
                 <BrowserRouter>
                     <div>
                         <Header />
-                        <Route exact path='/' component={Landing}></Route>
                     </div>
                 </BrowserRouter>
             </div>
-            
         );
     }  
 };
 
-export default App
+export default connect(null, actions)(App)

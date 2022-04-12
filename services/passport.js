@@ -52,7 +52,6 @@ passport.use(new GitHubStrategy ({
     callbackURL: '/auth/github/callback',
     proxy: true
     }, async (accessToken, refreshToken, profile, done) => {
-        console.log(profile)
         const existingUser = await User.findOne({userId: profile.id})
         if(existingUser){
             done(null, existingUser)

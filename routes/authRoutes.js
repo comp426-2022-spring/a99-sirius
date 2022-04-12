@@ -8,7 +8,12 @@ module.exports = (app) => {
     ))
 
     // Google Callback
-    app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}));
+    app.get('/auth/google/callback', 
+        passport.authenticate('google', {failureRedirect: '/login'}),
+        (req, res) => {
+        res.redirect('/')
+        }
+    );
 
     // GitHub Auth
     app.get('/auth/github', passport.authenticate('github',
@@ -16,17 +21,22 @@ module.exports = (app) => {
     ));
 
     // GitHub callback
-    app.get('/auth/github/callback', passport.authenticate('github', {failureRedirect: '/login'}))
+    app.get('/auth/github/callback',
+        passport.authenticate('github', {failureRedirect: '/login'}),
+        (req, res) => {
+            res.redirect('/')
+        }
+    )
 
     // Logout
     app.get('/logout', (req, res) => {
         req.logout();
-        res.send(req.user);
+        res.redirect('/')
     })
 
     // Current User
-    app.get('/current_user', (req, res) => {
-        res.send(req.user.name);
+    app.get('/user', (req, res) => {
+        res.send(req.user)
     })
 
 }
