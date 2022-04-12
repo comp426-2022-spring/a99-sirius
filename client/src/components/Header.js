@@ -15,7 +15,10 @@ class Header extends Component {
                 </ul>
                 )
             default:
-                return <ul className="right"><li>{this.props.auth.firstName}</li></ul>
+                return <ul className="right">
+                        <li>{this.props.auth.firstName}</li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
         }
     }
     render() {
@@ -23,7 +26,7 @@ class Header extends Component {
         return(
           <nav>
             <div className = "nav-wrapper">
-                <Link to={this.props.auth ? '/user' : '/'}
+                <Link to={this.props.auth ? '/' : '/'}
                     className='left brand-logo'>
                         TO-DO
                 </Link>
