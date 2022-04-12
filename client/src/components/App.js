@@ -1,5 +1,9 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
+import { connect } from 'react-redux'
+import * as actions from'../actions'
+
+// Import Components Here!!
 import Header from './Header'
 
 
@@ -11,18 +15,20 @@ const Landing = () => {
     return <h1> Landing</h1>
 }
 
-const App = () => {
-    return(
-        <div>
-            <BrowserRouter>
-                <div>
-                    <Route exact path='/' component={Landing}></Route>
-                    <Route exact path='/login' component={Dashboard}></Route>
-                </div>
-            </BrowserRouter>
-        </div>
-        
-    );
+class App extends Component {
+    render(){
+        return(
+            <div>
+                <BrowserRouter>
+                    <div>
+                        <Header />
+                        <Route exact path='/' component={Landing}></Route>
+                    </div>
+                </BrowserRouter>
+            </div>
+            
+        );
+    }  
 };
 
 export default App

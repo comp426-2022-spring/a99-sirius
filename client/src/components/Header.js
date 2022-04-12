@@ -1,8 +1,13 @@
-import React from 'react'
-import {} from 'react-router-dom'
+import React, {Component} from 'react';
 
-const Header = () => {
-    return <h1> Hello this is a Header!</h1>
+class Header extends Component {
+    render() {
+        return (
+            <div>
+                Header
+            </div>
+        )
+    }
 }
 
 export default Header
