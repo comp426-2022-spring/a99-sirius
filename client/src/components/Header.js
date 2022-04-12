@@ -16,7 +16,7 @@ class Header extends Component {
                 )
             default:
                 return <ul className="right">
-                        <li>{this.props.auth.firstName}</li>
+                        <li><a href="/">{this.props.auth.login}</a></li>
                         <li><a href="/logout">Logout</a></li>
                     </ul>
         }
