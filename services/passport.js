@@ -1,9 +1,9 @@
 const passport = require('passport')
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const passwordHash = require('password-hash')
 const GoogleStrategy = require('passport-google-oauth20')
 const GitHubStrategy = require('passport-github2')
-const LocalStrategy = require('passport-local')
+// const LocalStrategy = require('passport-local')
 
 const keys = require('../config/keys')
 
@@ -22,41 +22,39 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback',
+    callbackURL: '/auth/google-token',
     proxy: true
-}, async (accessToken, refreshToken, profile, done) => {
-    const existingUser = await User.findOne({ userId: profile.id })
-    if (existingUser) {
-        // we already have a record with the given profile ID
-        done(null, existingUser)
-    }
-    else {// make a new record of the user id in the UserDatabase
-        const login = profile._json.email.split("@")
-        const user = await new User({
-            userId: profile.id,
-            email: profile._json.email,
-            login: login[0],
-            name: profile._json.name,
-            firstName: profile._json.given_name,
-            lastName: profile._json.family_name
-        }).save()
-        done(null, user)
-    }
-})
+    }, async (accessToken, refreshToken, profile, done) => {
+        const existingUser = await User.findOne({userId: profile.id})
+        if(!existingUser){
+            const login = profile._json.email.split("@")
+            const user = await new User({
+                userId: profile.id,
+                email: profile._json.email,
+                login: login[0],
+                name: profile._json.name,
+                firstName: profile._json.given_name,
+                lastName: profile._json.family_name,
+                password: passwordHash.generate("password")
+                }).save()
+            done(null, user)
+        }else{
+            done(null, existingUser)
+        }
+    })    
 );
 
 // GitHub Authentication
 passport.use(new GitHubStrategy ({
     clientID: keys.gitHubClientID,
     clientSecret: keys.gitHibClientSecret,
-    callbackURL: '/auth/github/callback',
+    callbackURL: '/auth/github-token',
     proxy: true
     }, async (accessToken, refreshToken, profile, done) => {
         const existingUser = await User.findOne({userId: profile.id})
         if(existingUser){
             done(null, existingUser)
-        }
-        else{
+        }else{
             const name = profile._json.name.split(" ")
             const user = await new User({
                 userId: profile.id,
@@ -65,6 +63,7 @@ passport.use(new GitHubStrategy ({
                 name: profile._json.name,
                 firstName: name[0],
                 lastName: name[1] + " " + name[2],
+                password: passwordHash.generate("password")
             }).save()
             done(null, user)
         }
