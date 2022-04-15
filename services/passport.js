@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const passwordHash = require('password-hash')
 const GoogleStrategy = require('passport-google-oauth20')
 const GitHubStrategy = require('passport-github2')
-// const LocalStrategy = require('passport-local')
+const LocalStrategy = require('passport-local')
 
 const keys = require('../config/keys')
 
@@ -68,4 +68,21 @@ passport.use(new GitHubStrategy ({
             done(null, user)
         }
     }
+))
+
+// Local Authentication
+passport.use(new LocalStrategy( async (username, password, cb) => {
+    try{
+        const user = await User.findOne(username.split("@")[0])
+        if(!user){
+            return cb(null, false, {message : 'Incorrect username or password.'})
+        }
+        const verified = passwordHash.verify(password)
+        if(!verified){
+            return cb(null, false, {message: 'Incorrect username or password'})
+        }
+        return cb(null, user)
+    } catch(err){
+        return(cb(err))
+    }}
 ))

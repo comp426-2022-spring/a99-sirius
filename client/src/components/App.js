@@ -26,7 +26,7 @@ class App extends Component {
 };
 
 function mapStateToProps( {session }){
-    return {session}
+    return { session }
 }
 
 export default connect(mapStateToProps, actions)(App)

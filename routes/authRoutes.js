@@ -1,3 +1,4 @@
+const { reset } = require('nodemon');
 const passport = require('passport')
 
 module.exports = (app) => {
@@ -29,6 +30,20 @@ module.exports = (app) => {
             res.redirect(redirectPath)
         }
     )
+
+    // Local Authentication
+    app.post('/login/auth', (req, res) => {
+        passport.authenticate('local', (err, user, info) => {
+            if(err) throw err;
+            if(!user) res.send("No User Exist")
+            else{
+                req.login()(user, err => {
+                    if(err) throw err
+                res.send("Successfully authenticated")   
+                console.log(req.user)             
+            }
+        )}})
+    })
 
     // Logout
     app.get('/logout', (req, res) => {
