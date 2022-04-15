@@ -1,6 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 import Header from './Header'
+<<<<<<< Updated upstream
 
 
 const Dashboard = () => {
@@ -23,6 +24,28 @@ const App = () => {
         </div>
         
     );
+=======
+import Home from './Home'
+import SignUp from './SignUp'
+
+class App extends Component {
+    componentDidMount(){
+        this.props.fetchUser();
+    }
+    render(){
+        return(
+            <div>
+                <BrowserRouter>
+                    <div>
+                        <Header />
+                        <Route exact path='/signup' component={Home}/>
+                        <Route exact path='/login' component={Home}/>
+                    </div>
+                </BrowserRouter>
+            </div>
+        );
+    }  
+>>>>>>> Stashed changes
 };
 
 export default App
