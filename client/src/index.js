@@ -2,19 +2,21 @@ import 'materialize-css/dist/css/materialize.min.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import reduxThunk from 'redux-thunk'
+import { BrowserRouter } from 'react-router-dom'
+
 
 // Components
 import App from './components/App'
 
-// Reducers
-import reducers from './reducers'
+// Redux 
+import { Provider } from 'react-redux'
+import { store } from './store'
 
-// Action Creators
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
-
+// Render
 ReactDOM.createRoot(document.querySelector('#root')).render(
-    <Provider store={ store }><App /></Provider>
+    <BrowserRouter>
+        <Provider store= {store}>
+            <App />
+        </Provider>
+    </BrowserRouter>
 );

@@ -11,7 +11,7 @@ module.exports = (app) => {
     app.get('/auth/google-token', 
         passport.authenticate('google', {failureRedirect: '/login'}),
         (req, res) => {
-            redirectPath = "/~" + req.user.login
+            redirectPath = "/" + req.user.login
             res.redirect(redirectPath)
         }
     );
@@ -25,7 +25,7 @@ module.exports = (app) => {
     app.get('/auth/github-token',
         passport.authenticate('github', {failureRedirect: '/login'}),
         (req, res) => {
-            redirectPath = "/~" + req.user.login
+            redirectPath = "/" + req.user.login
             res.redirect(redirectPath)
         }
     )

@@ -1,29 +1,32 @@
 import React, {Component} from 'react'
-import {BrowserRouter, Route} from 'react-router-dom'
+import { Route, Redirect, Switch} from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as actions from'../actions'
+import * as actions from'../store/actions/actions'
 
-// Import Components Here!!
-import Header from './Header'
-import Home from './Home'
 
 class App extends Component {
     componentDidMount(){
         this.props.fetchUser();
+        
     }
     render(){
         return(
             <div>
-                <BrowserRouter>
-                    <div>
-                        <Header />
-                        <Route exact path='/' component={Home}/>
-                        <Route exact path='/login' component={Home}/>
-                    </div>
-                </BrowserRouter>
+                <Switch>
+                    <Route exact path="/">
+                        {this.props.session.loggedIn ? <Redirect to={"/" + this.props.session.user.login}/> : <h1>Landing Page Component</h1>}
+                    </Route>
+                    <Route exact path={ "/" + this.props.session.user.login}>
+                        <h1>DashBoard Component</h1>
+                    </Route>
+                </Switch>
             </div>
         );
     }  
 };
 
-export default connect(null, actions)(App)
+function mapStateToProps( {session }){
+    return {session}
+}
+
+export default connect(mapStateToProps, actions)(App)
