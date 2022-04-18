@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded(extended = true))
 
 var corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: keys.URL,
     credentials: true,
     methods: ['POST', 'GET', 'UPDATE', 'PUT']
 }
