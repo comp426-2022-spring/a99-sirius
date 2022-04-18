@@ -13,6 +13,11 @@ mongoose.connect(keys.mongoURI)
 
 const app = express();
 
+if (process.env.NODE_ENV === 'production') {
+    // Exprees will serve up production assets
+    app.use(express.static('client'));
+}
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded(extended = true))
 
