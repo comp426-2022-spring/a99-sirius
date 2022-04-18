@@ -37,9 +37,9 @@ passport.use(new GoogleStrategy({
                 lastName: profile._json.family_name,
                 password: passwordHash.generate("password")
                 }).save()
-            done(null, user)
+            return done(null, user)
         }else{
-            done(null, existingUser)
+            return done(null, existingUser)
         }
     })    
 );
@@ -53,7 +53,7 @@ passport.use(new GitHubStrategy ({
     }, async (accessToken, refreshToken, profile, done) => {
         const existingUser = await User.findOne({userId: profile.id})
         if(existingUser){
-            done(null, existingUser)
+            return done(null, existingUser)
         }else{
             const name = profile._json.name.split(" ")
             const user = await new User({
@@ -65,24 +65,21 @@ passport.use(new GitHubStrategy ({
                 lastName: name[1] + " " + name[2],
                 password: passwordHash.generate("password")
             }).save()
-            done(null, user)
+            return done(null, user)
         }
     }
 ))
 
 // Local Authentication
-passport.use(new LocalStrategy( async (username, password, cb) => {
-    try{
-        const user = await User.findOne(username.split("@")[0])
-        if(!user){
-            return cb(null, false, {message : 'Incorrect username or password.'})
-        }
-        const verified = passwordHash.verify(password)
-        if(!verified){
-            return cb(null, false, {message: 'Incorrect username or password'})
-        }
-        return cb(null, user)
-    } catch(err){
-        return(cb(err))
-    }}
+passport.use(new LocalStrategy( async (username, password, done) => {
+    const user = await User.findOne(username.split("@")[0])
+    if(!user){
+        return done(null, false, {message : `Username ${user} not found!`})
+    }
+    const verified = passwordHash.verify(password)
+    if(!verified){
+        return done(null, false, {message: 'Incorrect username or password!'})
+    }
+    return done(null, user)
+    }
 ))
