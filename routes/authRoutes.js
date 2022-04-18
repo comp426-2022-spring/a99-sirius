@@ -2,15 +2,15 @@ const { reset } = require('nodemon');
 const passport = require('passport')
 
 module.exports = (app) => {
-    
+
     // Redirection to Google Authentication 
-    app.get('/auth/google', passport.authenticate('google', 
+    app.get('/auth/google', passport.authenticate('google',
         { scope: ['profile', 'email'] }
     ))
 
     // Google Callback
-    app.get('/auth/google-token', 
-        passport.authenticate('google', {failureRedirect: '/login'}),
+    app.get('/auth/google-token',
+        passport.authenticate('google', { failureRedirect: '/login' }),
         (req, res) => {
             redirectPath = "/" + req.user.login
             res.redirect(redirectPath)
@@ -19,12 +19,12 @@ module.exports = (app) => {
 
     // GitHub Auth
     app.get('/auth/github', passport.authenticate('github',
-        {scope: ['profile', 'user:email']}
+        { scope: ['profile', 'user:email'] }
     ));
 
     // GitHub callback
     app.get('/auth/github-token',
-        passport.authenticate('github', {failureRedirect: '/login'}),
+        passport.authenticate('github', { failureRedirect: '/login' }),
         (req, res) => {
             redirectPath = "/" + req.user.login
             res.redirect(redirectPath)
@@ -34,15 +34,23 @@ module.exports = (app) => {
     // Local Authentication
     app.post('/login/auth', (req, res) => {
         passport.authenticate('local', (err, user, info) => {
-            if(err) throw err;
-            if(!user) res.send("No User Exist")
-            else{
-                req.login()(user, err => {
-                    if(err) throw err
-                res.send("Successfully authenticated")   
-                console.log(req.user)             
+            if (err) {
+                throw err;
             }
-        )}})
+
+            if (!user) {
+                res.send("No User Exist")
+            } else {
+                req.login()(user, err => {
+                    if (err) {
+                        throw err
+                    }
+                    res.send("Successfully authenticated")
+                    console.log(req.user)
+                }
+                )
+            }
+        })
     })
 
     // Logout
