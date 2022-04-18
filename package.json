@@ -31,7 +31,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "http-proxy-middleware": "^2.0.4",
-    "mongoose": "^6.2.10",
+    "materialize-css": "^1.0.0",
+    "mongoose": "^6.3.0",
     "nodemon": "^2.0.15",
     "passport": "^0.5.2",
     "passport-github2": "^0.1.12",
@@ -39,6 +40,12 @@
     "passport-local": "^1.0.0",
     "password-hash": "^1.2.2",
     "path": "^0.12.7",
+    "react-redux": "^8.0.0",
+    "react-router-dom": "^5.3.1",
+    "react-scripts": "^5.0.1",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.1",
     "save": "^2.4.0",
     "semantic-ui-react": "^2.1.2"
   }
