@@ -33,6 +33,7 @@ const Login = (props) => {
 
     return( 
         <div>
+            <h3> If you logged in with google before just type your email username and "password" as the password</h3>
             <h2>Log In Form</h2>
             <form onSubmit={onLoginSubmit}>
                 <input required type="username" placeholder="Username" onChange={e => {setUserName(e.target.value)}}/>
