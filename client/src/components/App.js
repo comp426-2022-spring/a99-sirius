@@ -7,7 +7,6 @@ import LoginContainer from './containers/LoginContainer'
 
 class App extends Component {
     componentDidMount(){
-        console.log("Fetched")
         this.props.fetchUser();
     }
     render(){
