@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import { Route, Redirect, Switch} from 'react-router-dom'
+import { Route, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as actions from'../store/actions/actions'
+import * as actions from'../../store/actions/actions'
 
-import LoginContainer from './containers/LoginContainer'
+import LoginContainer from './LoginContainer'
 
 class App extends Component {
     componentDidMount(){

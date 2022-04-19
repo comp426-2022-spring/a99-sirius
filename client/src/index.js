@@ -7,7 +7,7 @@ import {createBrowserHistory} from 'history'
 
 
 // Components
-import App from './components/App'
+import App from './components/containers/App'
 
 // Redux 
 import { Provider } from 'react-redux'
