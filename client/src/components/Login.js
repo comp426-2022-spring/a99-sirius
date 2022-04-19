@@ -27,6 +27,7 @@ const Login = (props) => {
                 //report to the user that there was a problem during login
                 setLoginMessage(loginMessage)
             }
+            
         })
     }
 

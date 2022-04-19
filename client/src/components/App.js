@@ -15,7 +15,7 @@ class App extends Component {
                 <Route exact path="/">
                     {this.props.auth.authenticated ? <Redirect to={"/" + this.props.auth.user.login}/> : <LoginContainer/>}
                 </Route>
-                <Route exact path={ "/" + this.props.auth.user.login}>
+                <Route path={ "/" + this.props.auth.user.login}>
                     <div>
                         <h1>DashBaord Component</h1>
                         <h2> Hello {this.props.auth.user.firstName}</h2>
