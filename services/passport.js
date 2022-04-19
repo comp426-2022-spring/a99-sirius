@@ -72,11 +72,9 @@ passport.use(new GitHubStrategy ({
 
 // Local Authentication
 passport.use(new LocalStrategy( async (username, password, done) => {
-    const user = await User.findOne(username.split("@")[0])
-    if(!user){
-        return done(null, false, {message : `Username ${user} not found!`})
-    }
-    const verified = passwordHash.verify(password)
+    const user = await User.findOne({ login : username})
+    if(!user) return done(null, false, {message: "Username " + username + " not found" })
+    const verified = passwordHash.verify(password, user.password)
     if(!verified){
         return done(null, false, {message: 'Incorrect username or password!'})
     }

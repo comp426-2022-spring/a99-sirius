@@ -32,26 +32,24 @@ module.exports = (app) => {
     )
 
     // Local Authentication
-    app.post('/login/auth', (req, res) => {
-        passport.authenticate('local', (err, user, info) => {
-            if (err) {
-                throw err;
+    app.post('/login/auth', (req, res, next) => {
+        passport.authenticate('local', function(err, user, info) {
+            if(err) return next(err)
+            if(!user) {
+                return res.json({ success : false, message: info.message })
             }
-
-            if (!user) {
-                res.send("No User Exist")
-            } else {
-                req.login()(user, err => {
-                    if (err) {
-                        throw err
-                    }
-                    res.send("Successfully authenticated")
-                    console.log(req.user)
+            req.logIn(user, loginErr => {
+                if(loginErr) {
+                    
+                    return res.json({ success: false,  message: loginErr})
                 }
-                )
-            }
-        })
-    })
+                return res.json( {success: true, user: user, message: "authenticate succeeded"})
+            })
+        })(req, res, next)
+    }
+        
+    )
+
 
     // Logout
     app.get('/logout', (req, res) => {

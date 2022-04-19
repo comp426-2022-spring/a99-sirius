@@ -5,5 +5,5 @@ module.exports = {
     gitHubClientSecret: process.env.GITHUB_CLIENT_SECRET,
     mongoURI: process.env.MONGO_URI,
     cookieKey: process.env.COOKIE_KEY,
-    URL: process.env.URL,
+    URL: process.env.URL
 }
