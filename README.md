@@ -1,8 +1,10 @@
 # a99 Final Project
 
-## UPDATE
 
-You don't need to accept this assignment since you are already assigned to teams. So, there is not assignment invite link for a99.
+## Stages 
+* Backend
+* Frontend for the frontend framework. 
+* CSS for styling
 
 ## Summary 
 
@@ -12,6 +14,24 @@ Rough template of the app can be found below:
 
 <img width="461" alt="Screen Shot 2022-04-04 at 5 07 33 PM" src="https://user-images.githubusercontent.com/89430088/161632522-db10d3a1-c21e-4213-8a86-b40541c50af2.png">
 
+## Project Goal
+Create a task managent application.
+
+This will include:
+* Signing in through Google/Github
+* Creating an account locally
+* Connecting a database in order to store/authenticate logging information
+* Allow users to create/remove tasks
+* Implement a Calendar API
+Advanced implementations to improve this:
+* Allow users to collaborate on tasks
+* Give the users the ability to add other users
+* Add time's to complete certain tasks
+
+## Deliverables
+This github repository contains the code for a simple task management web application. The package will take the form of a node/react package, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
+
+     npm run dev 
 
 ## First steps
 
