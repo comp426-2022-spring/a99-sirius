@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import * as UserActions from '../../store/actions/actions'
-import Signup from '../SignUp'
+import SignUp from '../SignUp'
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -18,4 +18,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, UserActions)(Signup)
+export default connect(mapStateToProps, UserActions)(SignUp)
