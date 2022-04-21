@@ -2,7 +2,6 @@
 
 
 ## Stages 
-***
 * Backend
 * Frontend for the frontend framework. 
 * CSS for styling
@@ -19,14 +18,12 @@ Rough template of the app can be found below:
 Create a task managent application.
 
 This will include:
-***
 * Signing in through Google/Github
 * Creating an account locally
 * Connecting a database in order to store/authenticate logging information
 * Allow users to create/remove tasks
 * Implement a Calendar API
-Advanced implementations to improve this
-***
+Advanced implementations to improve this:
 * Allow users to collaborate on tasks
 * Give the users the ability to add other users
 * Add time's to complete certain tasks
