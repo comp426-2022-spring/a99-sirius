@@ -19,12 +19,17 @@ Rough template of the app can be found below:
 Create a task managent application.
 
 This will include:
-*Signing in through Google/Github
-*Creating an account locally
-*Connecting a database in order to store/authenticate logging information
-*Allow users to create/remove tasks
-*Allow users to collaborate on tasks
-*Implement a Calendar API
+***
+* Signing in through Google/Github
+* Creating an account locally
+* Connecting a database in order to store/authenticate logging information
+* Allow users to create/remove tasks
+* Implement a Calendar API
+Advanced implementations to improve this
+***
+* Allow users to collaborate on tasks
+* Give the users the ability to add other users
+* Add time's to complete certain tasks
 
 ## Deliverables
 This github repository contains the code for a simple task management web application. The package will take the form of a node/react package, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
