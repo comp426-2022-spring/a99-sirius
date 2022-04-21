@@ -40,8 +40,8 @@ const Login = (props) => {
                 <Link className="btn" type="submit" to="/" onClick={onLoginSubmit}>Login</Link>
                 <span className="span"style = {loginMessageStyle}>{loginMessage}</span>
             </form>
-            <Link to="/auth/google"><GoogleButton/></Link>
-            <Link to="/auth/github"><GitHubButton /></Link>
+            <a href="/auth/google"><GoogleButton/></a>
+            <a href="/auth/github"><GitHubButton/></a>
         </div>
     )
 }

@@ -6,13 +6,15 @@ module.exports = (app) => {
     // Redirection to Google Authentication 
     app.get('/auth/google', passport.authenticate('google',
         { scope: ['profile', 'email'] }
-    ))
+    ), (req, res) => {
+        res.json({ success: true })
+    })
 
     // Google Callback
     app.get('/auth/google-token',
         passport.authenticate('google', { failureRedirect: '/login' }),
         (req, res) => {
-            res.json({success: true})
+            res.redirect("/")
         }
     );
 
@@ -27,7 +29,7 @@ module.exports = (app) => {
     app.get('/auth/github-token',
         passport.authenticate('github', { failureRedirect: '/login' }),
         (req, res) => {
-            res.json({success: true})
+            res.redirect("/")
         }
     )
 

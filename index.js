@@ -17,9 +17,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 var corsOptions = {
-    origin: keys.URL,
+    origin: [keys.URL, "http://localhost:5555"],
     credentials: true,
-    methods: ['POST', 'GET', 'UPDATE', 'PUT']
+    methods: ['POST', 'GET', 'UPDATE', 'PUT'],
+    
 }
 app.use(cors(corsOptions))
 
@@ -47,6 +48,19 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 }
+
+if (process.env.NODE_ENV === 'production') {
+    // Express will serve up production assets
+    // like our main.js file, or main.css file!
+    app.use(express.static('client/build'));
+  
+    // Express will serve up the index.html file
+    // if it doesn't recognize the route
+    const path = require('path');
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+  }
 
 const PORT = process.env.PORT || 5555
 console.log(`Server is Up and Running on port: ${PORT}.`)

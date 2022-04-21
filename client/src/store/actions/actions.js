@@ -81,7 +81,6 @@ function makeUserRequest(method, data, endpoint){
         method: method,
         url: endpoint,
         data: data,
-        withCredentials: true
     })
 }
 
@@ -90,13 +89,23 @@ function makeUserRequest(method, data, endpoint){
 export const fetchUser = () => async dispatch => {
     await dispatch(fetchUserRequest())
 
-    const response = await axios.get('/user')
-    if(response.data){
-        dispatch(fetchUserSuccess(response.data))
-    }
-    else{
-        dispatch(fetchUserFailure())
-    }
+    var endpoint = ""
+        if( process.env.NODE_ENV === "production"){
+            endpoint = "/user"
+        }else{
+            endpoint = "http://localhost:5555/user"
+        }
+
+    makeUserRequest("GET", {}, "/user")
+    .then(response => {
+        if(response.data){
+            dispatch(fetchUserSuccess(response.data))
+        }
+        else{
+            dispatch(fetchUserFailure())
+        }
+    })
+    
     
 }
 

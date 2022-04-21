@@ -15,9 +15,7 @@ class App extends Component {
     render(){
         return(
             <div>
-                <Route path="/auth/">
-                    <Redirect to="/"/>
-                </Route>
+                <Redirect from="/auth/" to="/"></Redirect>
                 {this.props.auth.authenticated ? <Redirect from="/" to={"/" + this.props.auth.user.login}/> : <></> }
                 <Header />
                 <Switch>
