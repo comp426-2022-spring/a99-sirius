@@ -1,6 +1,5 @@
 import axios from 'axios'
 import * as types from '../types'
-import {history} from '../../index'
 
 const fetchUserRequest = () => {
     return { type : types.FETCH_USER_FAILURE}
@@ -26,7 +25,7 @@ const loginRequest = () => {
 const loginSuccess = (user) => {
     return { 
         type: types.LOGIN_USER_SUCCESS,
-        data : user
+        data: user
     }
 }
 
@@ -34,6 +33,24 @@ const loginError = () => {
     return { type: types.LOGIN_USER_ERROR}
 }
 
+const signUpRequest = () => {
+    return {
+        type: types.REGISTER_USER_REQUEST
+    }
+}
+
+const signUpSuccess = (user) => {
+    return {
+        type: types.REGISTER_USER_SUCCESS,
+        data: user
+    }
+}
+
+const signUpError = () => {
+    return {
+        type: types.REGISTER_USER_ERROR
+    }
+}
 
 function makeUserRequest(method, data, endpoint){
     return axios({
@@ -44,8 +61,9 @@ function makeUserRequest(method, data, endpoint){
     })
 }
 
-// Async Action Creators 
 
+
+// Async Action Creators 
 export const fetchUser = () => async dispatch => {
     dispatch(fetchUserRequest)
 
@@ -59,8 +77,8 @@ export const fetchUser = () => async dispatch => {
     
 }
 
-export const login = (data, successPath) => {
-    return dispatch => {
+export const login = (data) => {
+    return async dispatch => {
         dispatch(loginRequest)
         
         var endpoint = ""
@@ -74,7 +92,6 @@ export const login = (data, successPath) => {
                 .then(response => {
                     if(response.data.success) {
                         dispatch(loginSuccess(response.data.user))
-                        history.push(successPath)
                     } else{
                         dispatch(loginError())
                         let loginMessage = response.data.message
@@ -86,5 +103,35 @@ export const login = (data, successPath) => {
                         console.log("Error", response.message)
                     }
                 })
+    }
+}
+
+export const signUp = (data) => {
+    return async dispatch => {
+        dispatch(signUpRequest)
+
+        var endpoint = ""
+        if( process.env.NODE_ENV === "production"){
+            endpoint = "/signUp/auth"
+        }else{
+            endpoint = "http://localhost:5555/signUp/auth"
+        }
+        
+        return makeUserRequest( "POST", data, endpoint)
+            .then(response => {
+                if(response.data.success){
+                    dispatch(signUpSuccess(response.data.user))
+                }
+                else{
+                    dispatch(signUpError())
+                    let signUpMessage = response.data.message
+                    return signUpMessage
+                }
+            })
+            .catch(function (response) {
+                if (response instanceof Error) {
+                    console.log("Error", response.message)
+                }
+            })
     }
 }

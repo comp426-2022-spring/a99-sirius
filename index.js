@@ -14,7 +14,7 @@ mongoose.connect(keys.mongoURI)
 const app = express();
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded(extended = true))
+app.use(bodyParser.urlencoded({extended: true}))
 
 var corsOptions = {
     origin: keys.URL,
@@ -49,4 +49,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const PORT = process.env.PORT || 5555
+console.log(`Server is Up and Running on port: ${PORT}.`)
 app.listen(PORT)

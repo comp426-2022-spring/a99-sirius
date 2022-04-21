@@ -4,9 +4,7 @@ const passwordHash = require('password-hash')
 const GoogleStrategy = require('passport-google-oauth20')
 const GitHubStrategy = require('passport-github2')
 const LocalStrategy = require('passport-local')
-
 const keys = require('../config/keys')
-
 const User = mongoose.model('users');
 
 passport.serializeUser((user, done) => {
@@ -32,7 +30,6 @@ passport.use(new GoogleStrategy({
                 userId: profile.id,
                 email: profile._json.email,
                 login: login[0],
-                name: profile._json.name,
                 firstName: profile._json.given_name,
                 lastName: profile._json.family_name,
                 password: passwordHash.generate("password")
@@ -60,7 +57,6 @@ passport.use(new GitHubStrategy ({
                 userId: profile.id,
                 email: profile._json.email,
                 login: profile._json.login,
-                name: profile._json.name,
                 firstName: name[0],
                 lastName: name[1] + " " + name[2],
                 password: passwordHash.generate("password")
@@ -81,3 +77,42 @@ passport.use(new LocalStrategy( async (username, password, done) => {
     return done(null, user)
     }
 ))
+
+// Registration
+exports.register = function(req, res) {
+    User.findOne({ email: req.body.email }, (err, user) =>{
+        // verify if email address already in use
+        if(user) {
+            res.json({ success: false, message: "Email already in use" })
+            return
+        }
+        else{
+            User.findOne( {login: req.body.login}, (err, user) => {
+                if(user) {
+                    res.json({ success: false, message: "Username already in use" })
+                    return
+                }
+                else{
+                    data = {
+                        userId: randomID(),
+                        ...req.body,
+                    }
+                    User.create(data, (err) => {
+                        if(err){
+                            console.error(err)
+                            res.json({ success: false})
+                        }
+                        res.json({success: true, user: data, message: "Authentication succeeded"})
+                        return
+                    })
+                }
+            })
+        }
+        
+    })
+}
+
+function randomID() {
+    var ID = Math.floor(Math.random() * 90000000000000) + 10000000000000
+    return ID
+}

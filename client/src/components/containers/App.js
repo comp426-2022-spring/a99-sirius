@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
-import { Route, Redirect} from 'react-router-dom'
+import { Route, Switch, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from'../../store/actions/actions'
 
 import LoginContainer from './LoginContainer'
+import SignUpContainer from './SignUpContainer'
+import DashBoardContainer from './DashBoardContainer'
 
 class App extends Component {
     componentDidMount(){
@@ -12,17 +14,18 @@ class App extends Component {
     render(){
         return(
             <div>
-                <Route exact path="/">
-                    {this.props.auth.authenticated ? <Redirect to={"/" + this.props.auth.user.login}/> : <LoginContainer/>}
-                </Route>
-                <Route path={ "/" + this.props.auth.user.login}>
-                    <div>
-                        <h1>DashBaord Component</h1>
-                        <h2> Hello {this.props.auth.user.firstName}</h2>
-                        <h3> You were redirected to the dashboard component!</h3>
-                        <h3> Feel free to logout by typing https://siriustodoapp.herokuapp.com/logout </h3>
-                    </div>
-                </Route>
+                {this.props.auth.authenticated ? <Redirect from="/" to={"/" + this.props.auth.user.login}/> : <></> }
+                <Switch>
+                    <Route exact path = "/login">
+                        <LoginContainer/>
+                    </Route>
+                    <Route exact path = {"/" + this.props.auth.user.login}>
+                        <DashBoardContainer/>
+                    </Route>
+                    <Route exact path="/">
+                        <SignUpContainer/>
+                    </Route>
+                </Switch>
             </div>
         );
     }  

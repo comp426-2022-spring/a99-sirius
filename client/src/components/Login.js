@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 // Import Buttons
 import GoogleButton from 'react-google-button'
 import GitHubButton from 'react-github-login-button'
+import { Link } from 'react-router-dom'
 
 
 const loginMessageStyle = { 
@@ -21,13 +22,12 @@ const Login = (props) => {
         props.login({
             username,
             password
-        }, "/" + username)
+        })
         .then((loginMessage) => {
             if(loginMessage){
                 //report to the user that there was a problem during login
                 setLoginMessage(loginMessage)
             }
-            
         })
     }
 
@@ -35,14 +35,18 @@ const Login = (props) => {
         <div>
             <h3> If you logged in with google before just type your email username and "password" as the password</h3>
             <h2>Log In Form</h2>
-            <form onSubmit={onLoginSubmit}>
+            <form>
                 <input required type="username" placeholder="Username" onChange={e => {setUserName(e.target.value)}}/>
                 <input  required type="password" placeholder="password" onChange={e => {setPassword(e.target.value)}}/>
-                <button className="btn" type="submit">Login</button>
+                <Link className="btn" type="submit" to="/" onClick={onLoginSubmit}>Login</Link>
                 <span className="span"style = {loginMessageStyle}>{loginMessage}</span>
             </form>
             <GoogleButton />
             <GitHubButton />
+
+            <Link to="/" >
+                <h1> Test </h1>
+            </Link>
         </div>
     )
 }

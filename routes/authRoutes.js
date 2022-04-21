@@ -1,5 +1,5 @@
-const { reset } = require('nodemon');
 const passport = require('passport')
+const user = require('../services/passport')
 
 module.exports = (app) => {
 
@@ -9,7 +9,7 @@ module.exports = (app) => {
     ))
 
     // Google Callback
-    app.get('/auth/google-token',
+    app.get('/auth/google-token/',
         passport.authenticate('google', { failureRedirect: '/login' }),
         (req, res) => {
             redirectPath = "/" + req.user.login
@@ -17,19 +17,23 @@ module.exports = (app) => {
         }
     );
 
+    // ------------------------------------------
+
     // GitHub Auth
     app.get('/auth/github', passport.authenticate('github',
         { scope: ['profile', 'user:email'] }
     ));
 
     // GitHub callback
-    app.get('/auth/github-token',
+    app.get('/auth/github-token/',
         passport.authenticate('github', { failureRedirect: '/login' }),
         (req, res) => {
             redirectPath = "/" + req.user.login
             res.redirect(redirectPath)
         }
     )
+
+    // ------------------------------------------
 
     // Local Authentication
     app.post('/login/auth', (req, res, next) => {
@@ -46,10 +50,12 @@ module.exports = (app) => {
                 return res.json( {success: true, user: user, message: "authenticate succeeded"})
             })
         })(req, res, next)
-    }
-        
-    )
+    })
 
+    // Register
+    app.post('/signUp/auth', user.register)
+    
+    // ------------------------------------------
 
     // Logout
     app.get('/logout', (req, res) => {

@@ -15,7 +15,6 @@ export default function(state = InitialState, action) {
             }
         case types.FETCH_USER_SUCCESS:
             return{
-                ...state,
                 isWaiting: false,
                 authenticated: true,
                 user: action.data,
@@ -23,18 +22,15 @@ export default function(state = InitialState, action) {
         case types.FETCH_USER_FAILURE:
             return{
                 ...state,
-                isWaiting: true,
-                authenticated: false,
-                user: "",
+                isWaiting: false,
             }
         case types.LOGIN_USER_REQUEST:
                 return {
                     ...state,
-                    isWaiting: true
+                    isWaiting: true,
                 }
         case types.LOGIN_USER_SUCCESS:
                 return {
-                    ...state,
                     isWaiting : false,
                     authenticated: true,
                     user: action.data
@@ -43,21 +39,22 @@ export default function(state = InitialState, action) {
             return {
                 ...state,
                 isWaiting: false,
-                authenticated: false
             }
         case types.REGISTER_USER_REQUEST:
             return {
+                ...state,
                 isWaiting: true,
             }
         case types.REGISTER_USER_SUCCESS:
             return{
                 isWaiting: false,
+                user : action.data,
                 authenticated: true
             }
         case types.REGISTER_USER_ERROR:
             return{
+                ...state,
                 isWaiting: false,
-                authenticated: false
             }
         case types.LOGOUT_USER_REQUEST:
             return {
@@ -71,8 +68,9 @@ export default function(state = InitialState, action) {
             }
         case types.LOGOUT_USER_ERROR:
             return{
+                ...state,
                 authenticated: false,
-                isWaiting: false
+                isWaiting: false,
             }
         default:
             return state

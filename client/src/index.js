@@ -2,9 +2,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {BrowserRouter} from 'react-router-dom'
-import {createBrowserHistory} from 'history'
-
+import { BrowserRouter, Redirect } from 'react-router-dom'
 
 // Components
 import App from './components/containers/App'
@@ -13,13 +11,11 @@ import App from './components/containers/App'
 import { Provider } from 'react-redux'
 import { store } from './store'
 
-export const history = createBrowserHistory({forceRefresh: true})
-
 // Render
 ReactDOM.createRoot(document.querySelector('#root')).render(
-    <BrowserRouter forceRefresh={true} history ={history}>
+    <BrowserRouter>
         <Provider store= {store}>
-                <App />
+            <App></App>   
         </Provider>
     </BrowserRouter>
 );
