@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import { Route, Switch, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as actions from'../../store/actions/actions'
+import * as actions from'../store/actions/actions'
 
 import LoginContainer from './LoginContainer'
 import SignUpContainer from './SignUpContainer'
 import DashBoardContainer from './DashBoardContainer'
-
-import Header from '../Header'
+import Header from '../components/Header'
 
 class App extends Component {
     componentDidMount() {

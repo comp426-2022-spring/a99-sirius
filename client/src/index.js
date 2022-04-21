@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 
 // Components
-import App from './components/containers/App'
+import App from './containers/App'
 
 // Redux 
 import { Provider } from 'react-redux'
