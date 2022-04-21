@@ -1,8 +1,8 @@
 # a99 Final Project
 
-## UPDATE
 
-You don't need to accept this assignment since you are already assigned to teams. So, there is not assignment invite link for a99.
+## Stages 
+
 
 ## Summary 
 
@@ -12,6 +12,13 @@ Rough template of the app can be found below:
 
 <img width="461" alt="Screen Shot 2022-04-04 at 5 07 33 PM" src="https://user-images.githubusercontent.com/89430088/161632522-db10d3a1-c21e-4213-8a86-b40541c50af2.png">
 
+## Project Goal
+
+
+## Deliverables
+This github repository contains the code for a simple task management web application. The package will take the form of a node/react package, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
+
+    Markup :  # npm run dev 1 #
 
 ## First steps
 
