@@ -2,7 +2,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Redirect } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 // Components
 import App from './components/containers/App'

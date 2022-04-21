@@ -6,6 +6,7 @@
     "npm" : "8.1.2",
     "node": "16.13.2"
   },
+  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
