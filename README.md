@@ -18,7 +18,7 @@ Rough template of the app can be found below:
 ## Deliverables
 This github repository contains the code for a simple task management web application. The package will take the form of a node/react package, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
 
-    Markup :  # npm run dev 1 #
+     npm run dev 
 
 ## First steps
 
