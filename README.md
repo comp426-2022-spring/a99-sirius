@@ -3,9 +3,9 @@
 
 ## Stages 
 ***
-*Backend
-*Frontend for the frontend framework. 
-*CSS for styling
+* Backend
+* Frontend for the frontend framework. 
+* CSS for styling
 
 ## Summary 
 
