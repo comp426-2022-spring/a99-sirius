@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
-
+import { Link } from 'react-router-dom'
 
 // Import Buttons
 import GoogleButton from 'react-google-button'
 import GitHubButton from 'react-github-login-button'
-import { Link } from 'react-router-dom'
 
 
 const loginMessageStyle = { 
@@ -41,12 +40,8 @@ const Login = (props) => {
                 <Link className="btn" type="submit" to="/" onClick={onLoginSubmit}>Login</Link>
                 <span className="span"style = {loginMessageStyle}>{loginMessage}</span>
             </form>
-            <GoogleButton />
-            <GitHubButton />
-
-            <Link to="/" >
-                <h1> Test </h1>
-            </Link>
+            <Link to="/auth/google"><GoogleButton/></Link>
+            <Link to="/auth/github"><GitHubButton /></Link>
         </div>
     )
 }

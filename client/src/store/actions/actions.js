@@ -1,8 +1,9 @@
 import axios from 'axios'
 import * as types from '../types'
 
+// -------- FETCH USER --------
 const fetchUserRequest = () => {
-    return { type : types.FETCH_USER_FAILURE}
+    return { type : types.FETCH_USER_REQUEST}
 }
 
 const fetchUserSuccess = (user) => {
@@ -18,6 +19,8 @@ const fetchUserFailure = () => {
     }
 }
 
+// -------- LOG IN --------
+
 const loginRequest = () => {
     return { type: types.LOGIN_USER_REQUEST}
 }
@@ -32,6 +35,8 @@ const loginSuccess = (user) => {
 const loginError = () => {
     return { type: types.LOGIN_USER_ERROR}
 }
+
+// -------- SING UP --------
 
 const signUpRequest = () => {
     return {
@@ -52,6 +57,25 @@ const signUpError = () => {
     }
 }
 
+// -------- LOGOUT --------
+const logoutRequest = () => {
+    return {
+        type : types.LOGOUT_USER_REQUEST
+    }
+}
+
+const logoutSuccess = () => {
+    return {
+        type: types.LOGOUT_USER_SUCCESS
+    }
+}
+
+const logoutError = () => {
+    return {
+        type: types.LOGOUT_USER_ERROR
+    }
+}
+
 function makeUserRequest(method, data, endpoint){
     return axios({
         method: method,
@@ -62,24 +86,23 @@ function makeUserRequest(method, data, endpoint){
 }
 
 
-
 // Async Action Creators 
 export const fetchUser = () => async dispatch => {
-    dispatch(fetchUserRequest)
+    await dispatch(fetchUserRequest())
 
     const response = await axios.get('/user')
     if(response.data){
         dispatch(fetchUserSuccess(response.data))
     }
     else{
-        dispatch(fetchUserFailure)
+        dispatch(fetchUserFailure())
     }
     
 }
 
 export const login = (data) => {
     return async dispatch => {
-        dispatch(loginRequest)
+        await dispatch(loginRequest())
         
         var endpoint = ""
         if( process.env.NODE_ENV === "production"){
@@ -108,7 +131,7 @@ export const login = (data) => {
 
 export const signUp = (data) => {
     return async dispatch => {
-        dispatch(signUpRequest)
+        await dispatch(signUpRequest())
 
         var endpoint = ""
         if( process.env.NODE_ENV === "production"){
@@ -133,5 +156,32 @@ export const signUp = (data) => {
                     console.log("Error", response.message)
                 }
             })
+    }
+}
+
+export const logout = () => {
+    return async dispatch => {
+        await dispatch(logoutRequest())
+
+        var endpoint = ""
+        if( process.env.NODE_ENV === "production"){
+            endpoint = "/logout"
+        }else{
+            endpoint = "http://localhost:5555/logout"
+        }
+
+       return makeUserRequest("GET", {} , endpoint)
+       .then( response => {
+           if(response.data.success){
+               dispatch(logoutSuccess())
+           } else{
+               dispatch(logoutError())
+           }
+       })
+       .catch(function (response) {
+        if (response instanceof Error) {
+            console.log("Error", response.message)
+        }
+    })
     }
 }

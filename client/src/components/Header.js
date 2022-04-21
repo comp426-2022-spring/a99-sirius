@@ -1,44 +1,39 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-class Header extends Component {
-    renderContent() {
-        switch(this.props.auth){
-            case null:
-                return
-            case false: 
-                return (
-                <ul className="right">
-                    <li><a href='/login'>Login</a></li>
-                    <li><a href='/'>Sign Up</a></li>
-                </ul>
-                )
-            default:
-                return <ul className="right">
-                        <li><a href="/">{this.props.auth.login}</a></li>
-                        <li><a href="/logout">Logout</a></li>
+import * as userActions from '../store/actions/actions'
+
+const Header = (props) => {
+
+    const onLogout = async () => {
+        await props.logout()
+    }
+
+    return(
+        <nav>
+            <div className="nav-wrapper">
+                <Link to={ props.auth.authenticated ? "/" + props.auth.user.login : '/'}
+                    className="left brand-logo"> APP-NAME-AND-LOGO </Link>
+                {props.auth.authenticated 
+                    ? <ul className = "right">
+                        <li>{props.auth.user.login}</li>
+                        <li><Link to="/" onClick={onLogout}>Logout</Link></li>
                     </ul>
-        }
-    }
-    render() {
-        console.log(this.props)
-        return(
-          <nav>
-            <div className = "nav-wrapper">
-                <Link to={this.props.auth ? '/' : '/'}
-                    className='left brand-logo'>
-                        TO-DO
-                </Link>
-                {this.renderContent()}
+                    : <ul className="right">
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to='/'>Sign Up</Link></li>
+                    </ul>
+                }
             </div>
-          </nav>  
-        )
+        </nav> 
+    )
+}
+
+function mapStateToProps( {auth} ) {
+    return {
+        auth
     }
 }
 
-function mapStateToProps( {auth} ){
-    return { auth }
-}
-
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps, userActions)(Header)

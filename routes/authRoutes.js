@@ -9,11 +9,10 @@ module.exports = (app) => {
     ))
 
     // Google Callback
-    app.get('/auth/google-token/',
+    app.get('/auth/google-token',
         passport.authenticate('google', { failureRedirect: '/login' }),
         (req, res) => {
-            redirectPath = "/" + req.user.login
-            res.redirect(redirectPath)
+            res.json({success: true})
         }
     );
 
@@ -25,11 +24,10 @@ module.exports = (app) => {
     ));
 
     // GitHub callback
-    app.get('/auth/github-token/',
+    app.get('/auth/github-token',
         passport.authenticate('github', { failureRedirect: '/login' }),
         (req, res) => {
-            redirectPath = "/" + req.user.login
-            res.redirect(redirectPath)
+            res.json({success: true})
         }
     )
 
@@ -59,9 +57,11 @@ module.exports = (app) => {
 
     // Logout
     app.get('/logout', (req, res) => {
-        req.logout();
-        res.redirect('/')
+        req.logout() 
+        res.json({success: true})
     })
+
+    // ------------------------------------------
 
     // Current User
     app.get('/user', (req, res) => {

@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import GoogleButton from 'react-google-button'
+import GitHubButton from 'react-github-login-button'
+
 const loginMessageStyle = {
     color: "red"
 }
@@ -45,6 +48,8 @@ const Signup = (props) => {
                 <Link className="btn" type="submit" to="/login" onClick={onSignUpSubmit}>Sign Up</Link>
                 <span className="span"style = {loginMessageStyle}>{signUpMessage}</span>
             </form>
+            <Link to="/auth/google"><GoogleButton/></Link>
+            <Link to="/auth/github"><GitHubButton/></Link>
         </div>
     )
 }

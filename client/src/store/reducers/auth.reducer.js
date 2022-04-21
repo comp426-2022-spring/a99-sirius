@@ -8,61 +8,48 @@ const InitialState = {
 
 export default function(state = InitialState, action) {
     switch(action.type) {
+        // ---- FETCH HANDLING ----
         case types.FETCH_USER_REQUEST:
-            return {
-                ...state,
-                isWaiting: true,
-            }
+            return { ...state, isWaiting: true }
         case types.FETCH_USER_SUCCESS:
             return{
+                ...state,
                 isWaiting: false,
                 authenticated: true,
                 user: action.data,
             }
         case types.FETCH_USER_FAILURE:
-            return{
-                ...state,
-                isWaiting: false,
-            }
+            return{ ...state, isWaiting: false}
+        // ---- LOGIN HANDLING ----
         case types.LOGIN_USER_REQUEST:
-                return {
-                    ...state,
-                    isWaiting: true,
-                }
+            return { ...state, isWaiting: true }
         case types.LOGIN_USER_SUCCESS:
-                return {
-                    isWaiting : false,
-                    authenticated: true,
-                    user: action.data
-                }
+            return {
+                isWaiting : false,
+                authenticated: true,
+                user: action.data
+            }
         case types.LOGIN_USER_ERROR:
-            return {
-                ...state,
-                isWaiting: false,
-            }
+            return { ...state, isWaiting: false }
+        // ---- REGISTRATION HANDLING ----
         case types.REGISTER_USER_REQUEST:
-            return {
-                ...state,
-                isWaiting: true,
-            }
+            return { ...state, isWaiting: true }
         case types.REGISTER_USER_SUCCESS:
             return{
+                ...state,
                 isWaiting: false,
                 user : action.data,
                 authenticated: true
             }
         case types.REGISTER_USER_ERROR:
-            return{
-                ...state,
-                isWaiting: false,
-            }
+            return{ ...state, isWaiting: false }
+        // ---- LOGOUT ----
         case types.LOGOUT_USER_REQUEST:
-            return {
-                isWaiting: true
-            }
+            return { ...state, isWaiting: true }
         case types.LOGOUT_USER_SUCCESS:
             return {
-                 authenticated: false,
+                ...state,
+                authenticated: false,
                 isWaiting: false,
                 user: ""
             }
@@ -72,6 +59,7 @@ export default function(state = InitialState, action) {
                 authenticated: false,
                 isWaiting: false,
             }
+        // ---- DEFAULT ----
         default:
             return state
     }   
