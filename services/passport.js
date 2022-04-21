@@ -97,7 +97,7 @@ exports.register = function(req, res) {
                         userId: randomID(),
                         ...req.body,
                     }
-                    User.create(data, (err) => {
+                    User.create({...data, password: passwordHash.generate(data.password)}, (err) => {
                         if(err){
                             console.error(err)
                             res.json({ success: false})
