@@ -71,6 +71,7 @@ const Signup = (props) => {
                         stateObj["signUp"] = "Make Sure password is of length 8-20, contains one upper-case letter, one digit and one special character (._:$!&-@*):"
                         return stateObj
                     }
+                    stateObj["signUp"] = ""
                     if(input.confirmPassword && value !== input.confirmPassword){
                         stateObj["confirmPassword"] = "Password and Confirm Password does not match"
                     } else{
