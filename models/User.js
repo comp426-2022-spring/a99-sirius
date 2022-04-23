@@ -8,6 +8,7 @@ const userSchema = new Schema({
     firstName: String,
     lastName: String,
     password: String,
+    ownPassword: Boolean,
 })
 
 mongoose.model('users', userSchema);

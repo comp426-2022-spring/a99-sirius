@@ -32,7 +32,8 @@ passport.use(new GoogleStrategy({
                 login: login[0],
                 firstName: profile._json.given_name,
                 lastName: profile._json.family_name,
-                password: passwordHash.generate("password")
+                password: passwordHash.generate("password"),
+                ownPassword: false,
                 }).save()
             return done(null, user)
         }else{
@@ -59,7 +60,8 @@ passport.use(new GitHubStrategy ({
                 login: profile._json.login,
                 firstName: name[0],
                 lastName: name[1] + " " + name[2],
-                password: passwordHash.generate("password")
+                password: passwordHash.generate("password"),
+                ownPassword: false
             }).save()
             return done(null, user)
         }
@@ -97,7 +99,7 @@ exports.register = function(req, res) {
                         userId: randomID(),
                         ...req.body,
                     }
-                    User.create({...data, password: passwordHash.generate(data.password)}, (err) => {
+                    User.create({...data, password: passwordHash.generate(data.password), ownPassword: true}, (err) => {
                         if(err){
                             console.error(err)
                             res.json({ success: false})

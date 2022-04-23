@@ -14,6 +14,7 @@ const Login = (props) => {
     const [loginMessage, setLoginMessage] = useState("")
     const [username, setUserName] = useState()
     const [password, setPassword] = useState()
+    const [passwordShown, setPasswordShown] = useState(false)
 
     function onLoginSubmit(event) {
         event.preventDefault()
@@ -30,13 +31,18 @@ const Login = (props) => {
         })
     }
 
+    function togglePassword() {
+        setPasswordShown(!passwordShown)
+    }
+
     return( 
         <div>
             <h3> If you logged in with google before just type your email username and "password" as the password</h3>
             <h2>Log In Form</h2>
             <form>
                 <input required type="username" placeholder="Username" onChange={e => {setUserName(e.target.value)}}/>
-                <input  required type="password" placeholder="password" onChange={e => {setPassword(e.target.value)}}/>
+                <input  required type={passwordShown ? "text" : "password"} placeholder="password" onChange={e => {setPassword(e.target.value)}}/>
+                <button onClick={togglePassword}>Show Password</button>
                 <Link className="btn" type="submit" to="/" onClick={onLoginSubmit}>Login</Link>
                 <span className="span"style = {loginMessageStyle}>{loginMessage}</span>
             </form>
