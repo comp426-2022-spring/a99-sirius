@@ -10,13 +10,16 @@ const Header = (props) => {
         await props.logout()
     }
 
-    return(
+    return (
         <nav>
             <div className="nav-wrapper">
-                <Link to={ props.auth.authenticated ? "/" + props.auth.user.login : '/'}
-                    className="left brand-logo"> APP-NAME-AND-LOGO </Link>
-                {props.auth.authenticated 
-                    ? <ul className = "right">
+                <img src={require('../logo.png')} width="80px" height="64px" />
+                <Link to={props.auth.authenticated ? "/" + props.auth.user.login : '/'}
+                    className="left brand-logo" >
+                    To-do App
+                </Link>
+                {props.auth.authenticated
+                    ? <ul className="right">
                         <li>{props.auth.user.login}</li>
                         <li><Link to="/" onClick={onLogout}>Logout</Link></li>
                     </ul>
@@ -26,11 +29,11 @@ const Header = (props) => {
                     </ul>
                 }
             </div>
-        </nav> 
+        </nav>
     )
 }
 
-function mapStateToProps( {auth} ) {
+function mapStateToProps({ auth }) {
     return {
         auth
     }
