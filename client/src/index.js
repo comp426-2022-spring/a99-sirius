@@ -15,8 +15,8 @@ import { store } from './store'
 // Render
 ReactDOM.createRoot(document.querySelector('#root')).render(
     <BrowserRouter>
-        <Provider store= {store}>
-            <App></App>   
+        <Provider store={store}>
+            <App></App>
         </Provider>
     </BrowserRouter>
 );
