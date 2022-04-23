@@ -3,10 +3,9 @@ import { Route, Switch, Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from'../store/actions/actions'
 
-import LoginContainer from './LoginContainer'
-import SignUpContainer from './SignUpContainer'
 import DashBoardContainer from './DashBoardContainer'
 import Header from '../components/Header'
+import LandingContainer from './Landing Container'
 
 class App extends Component {
     componentDidMount() {
@@ -20,13 +19,13 @@ class App extends Component {
                 <Header />
                 <Switch>
                     <Route exact path = "/login">
-                        <LoginContainer/>
+                        <LandingContainer/>
                     </Route>
                     <Route exact path = {"/" + this.props.auth.user.login}>
                         <DashBoardContainer/>
                     </Route>
                     <Route exact path="/">
-                        <SignUpContainer/>
+                        <LandingContainer/>
                     </Route>
                 </Switch>
             </div>

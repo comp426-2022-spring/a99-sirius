@@ -84,7 +84,7 @@ const Signup = (props) => {
                     stateObj[name] = "Please enter Confirm Password"
                 } else{
                     if(input.password && value !== input.password){
-                        stateObj[name] = "Password and Confirm Password does not match.";
+                        stateObj[name] = "Password and Confirm Password do not match.";
                     }
                 }
             break
@@ -112,7 +112,7 @@ const Signup = (props) => {
     return(
         <div>
             <form className="registration" onSubmit={onSignUpSubmit}>
-                <h1>👋 Welcome!</h1>
+                <h1>👋 Register Here!</h1>
                 
                 <label>
                     <input required type="text" name="firstName" placeholder="First Name" onChange={e => {handleChange(e)}}/>
