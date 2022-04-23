@@ -40,10 +40,12 @@ const Login = (props) => {
             <form className="loginForm" onSubmit={onLoginSubmit}>
                 <h1>😁 Login Here!</h1>
                 <label className="loginUsername">
-                    <input required type="text" placeholder="Username" onChange={e => {setUserName(e.target.value)}}/>
+                    <input required type="text" placeholder="Username" onChange={e => {setUserName(e.target.value) 
+                        setLoginMessage("")}}/>
                 </label>
                 <label className="loginPassword">
-                    <input  required type={passwordShown ? "text" : "password"} placeholder="Password" onChange={e => {setPassword(e.target.value)}}/>
+                    <input  required type={passwordShown ? "text" : "password"} placeholder="Password" onChange={e => {setPassword(e.target.value)
+                    setLoginMessage("")}}/>
                 </label>
 
                 <button type="button" className="showPassword"style={{}} onClick={togglePassword}>Show Password</button>

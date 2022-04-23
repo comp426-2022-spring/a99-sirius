@@ -144,6 +144,11 @@
     left: 35%;
 }
 
+.login {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
 .loginForm .btn {
     grid-column-start: 2;
     grid-column-end: 3;
