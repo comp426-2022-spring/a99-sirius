@@ -37,17 +37,25 @@ const Login = (props) => {
 
     return( 
         <div>
-            <h3> If you logged in with google before just type your email username and "password" as the password</h3>
-            <h2>Log In Form</h2>
-            <form>
-                <input required type="username" placeholder="Username" onChange={e => {setUserName(e.target.value)}}/>
-                <input  required type={passwordShown ? "text" : "password"} placeholder="password" onChange={e => {setPassword(e.target.value)}}/>
-                <button onClick={togglePassword}>Show Password</button>
-                <Link className="btn" type="submit" to="/" onClick={onLoginSubmit}>Login</Link>
-                <span className="span"style = {loginMessageStyle}>{loginMessage}</span>
+            <form className="loginForm" onSubmit={onLoginSubmit}>
+                <h1>😁 Login Here!</h1>
+                <label className="loginUsername">
+                    <input required type="text" placeholder="Username" onChange={e => {setUserName(e.target.value)}}/>
+                </label>
+                <label className="loginPassword">
+                    <input  required type={passwordShown ? "text" : "password"} placeholder="Password" onChange={e => {setPassword(e.target.value)}}/>
+                </label>
+
+                <button type="button" className="showPassword"style={{}} onClick={togglePassword}>Show Password</button>
+
+                <button className="btn" type="submit" href="/">Login</button>
+                <span className="err login" style={loginMessageStyle}>{loginMessage}</span>
+
+                <div className="links">
+                <a href="/auth/google"><GoogleButton label="Login with Google"/></a>
+                <a href="/auth/github"><GitHubButton label="Login with Github"/></a>
+                </div>
             </form>
-            <a href="/auth/google"><GoogleButton/></a>
-            <a href="/auth/github"><GitHubButton/></a>
         </div>
     )
 }

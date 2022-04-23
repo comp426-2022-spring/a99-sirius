@@ -124,7 +124,7 @@ const Signup = (props) => {
                 </label>
 
                 <label>
-                <input required type="text" name="login" placeholder="Enter username" onChange={e => {handleChange(e)}}/>
+                    <input required type="text" name="login" placeholder="Enter username" onChange={e => {handleChange(e)}}/>
                 </label>
                 
                 
