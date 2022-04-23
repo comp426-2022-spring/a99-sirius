@@ -89,13 +89,6 @@ function makeUserRequest(method, data, endpoint){
 export const fetchUser = () => async dispatch => {
     await dispatch(fetchUserRequest())
 
-    var endpoint = ""
-        if( process.env.NODE_ENV === "production"){
-            endpoint = "/user"
-        }else{
-            endpoint = "http://localhost:5555/user"
-        }
-
     makeUserRequest("GET", {}, "/user")
     .then(response => {
         if(response.data){
