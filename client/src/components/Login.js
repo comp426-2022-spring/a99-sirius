@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
 
 // Import Buttons
 import GoogleButton from 'react-google-button'
