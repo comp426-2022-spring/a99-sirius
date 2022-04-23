@@ -14,12 +14,12 @@ function Todo({ text, todo, todos, setTodos }) {
                 }
             }
             return element;
-        }))
+        }));
     };
 
     return (
         <div className='todo'>
-            <li className={`todo-item ${todo.completed ? "complted" : ""}`}>
+            <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
                 {text}
             </li>
 
