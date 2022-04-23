@@ -21,7 +21,7 @@ const Header = (props) => {
                 {props.auth.authenticated
                     ? <ul className="right">
                         <li>{props.auth.user.login}</li>
-                        <li><Link to="/" onClick={onLogout}>Logout</Link></li>
+                        <li><a href="/logout" onClick={onLogout}>Logout</a></li>
                     </ul>
                     : <ul className="right">
                         <li><Link to="/login">Login</Link></li>

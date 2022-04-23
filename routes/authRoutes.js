@@ -60,7 +60,7 @@ module.exports = (app) => {
     // Logout
     app.get('/logout', (req, res) => {
         req.logout() 
-        res.json({success: true})
+        res.redirect('/')
     })
 
     // ------------------------------------------

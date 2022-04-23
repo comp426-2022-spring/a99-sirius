@@ -70,12 +70,6 @@ const logoutSuccess = () => {
     }
 }
 
-const logoutError = () => {
-    return {
-        type: types.LOGOUT_USER_ERROR
-    }
-}
-
 function makeUserRequest(method, data, endpoint){
     return axios({
         method: method,
@@ -165,25 +159,6 @@ export const logout = () => {
     return async dispatch => {
         await dispatch(logoutRequest())
 
-        var endpoint = ""
-        if( process.env.NODE_ENV === "production"){
-            endpoint = "/logout"
-        }else{
-            endpoint = "http://localhost:5555/logout"
-        }
-
-       return makeUserRequest("GET", {} , endpoint)
-       .then( response => {
-           if(response.data.success){
-               dispatch(logoutSuccess())
-           } else{
-               dispatch(logoutError())
-           }
-       })
-       .catch(function (response) {
-        if (response instanceof Error) {
-            console.log("Error", response.message)
-        }
-    })
+        await dispatch(logoutSuccess())
     }
 }

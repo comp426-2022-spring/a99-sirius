@@ -31,7 +31,7 @@
                 0 2px 2px 0 rgba(0, 0, 0, 0.14),
                 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    background-color:white
+    background-color:white;
 }
 
 .registration > h1 {
@@ -41,6 +41,7 @@
     font-family: "Robot", "Segoe UI", blinkMacSystemFont, system-ui, --apple-system;
     font-weight: normal;
     text-align: center;
+    color: black;
 }
 
 .registration > label {
@@ -82,6 +83,14 @@
     margin-top: 10px;
 }
 
+.registration .showPassword {
+    font-size: 12px;
+}
+
+.registration .showPassword:focus {
+    background-color: white;
+    color:blue;
+}
 
 .links {
     grid-column-start: 1;
@@ -116,6 +125,7 @@
     font-family: "Robot", "Segoe UI", blinkMacSystemFont, system-ui, --apple-system;
     font-weight: normal;
     text-align: center;
+    color: black;
 }
 
 .loginForm > label {

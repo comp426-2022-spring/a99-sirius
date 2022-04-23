@@ -1,11 +1,18 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import * as userActions from '../store/actions/actions'
+import TodoApp from './TodoApp'
 
-const DashBoardContainer = () => {
+const mapStateToProps = (state, ownProps) => {
     
-    return (
-        <Link to="/logout"> Logout</Link>
-    )
+    let nextPathname = "/"
+
+    try{ nextPathname = ownProps.location.state.nextPathname}
+    catch(err) {}
+
+    return {
+        user: state.user,
+        nextPathname
+    }
 }
 
-export default DashBoardContainer
+export default connect(mapStateToProps, userActions)(TodoApp)

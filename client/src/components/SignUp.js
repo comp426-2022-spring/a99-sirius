@@ -134,13 +134,13 @@ const Signup = (props) => {
                     
                 <label>
                     <input required type={passwordShown ? "text" : "password"} name="password" placeholder="Enter password" onChange={e => {handleChange(e)}}/>
-                    <button type="button" style={{}} onClick={togglePassword}>Show Password</button>
+                    <button class="showPassword" type="button" style={{}} onClick={togglePassword}>Show Password</button>
             
                 </label>
                     
                 <label>
                 <input required type={confirmPassShown ? "text" : "password"} name="confirmPassword" placeholder="Confirm Password" onChange={e => {handleChange(e)}}/>
-                <button type="button" style={{}} onClick={toggleConfirmPassword}>Show Password</button>
+                <button class="showPassword" type="button" style={{}} onClick={toggleConfirmPassword}>Show Password</button>
                     
                 </label>
                     

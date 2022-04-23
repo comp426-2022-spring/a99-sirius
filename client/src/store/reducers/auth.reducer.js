@@ -53,12 +53,6 @@ export default function(state = InitialState, action) {
                 isWaiting: false,
                 user: ""
             }
-        case types.LOGOUT_USER_ERROR:
-            return{
-                ...state,
-                authenticated: false,
-                isWaiting: false,
-            }
         // ---- DEFAULT ----
         default:
             return state
