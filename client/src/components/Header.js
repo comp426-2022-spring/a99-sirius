@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import * as userActions from '../store/actions/actions'
 
 const Header = (props) => {
