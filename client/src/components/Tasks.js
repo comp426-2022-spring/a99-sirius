@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 import Task from './Task'
+import Form from './To-do/Form'
 
 
 class Tasks extends Component{
@@ -11,6 +12,7 @@ class Tasks extends Component{
     render(){
         return(
             <div>
+            <Form/>
             {this.props.tasks.tasks.map((task, index) => (
                 <Task key={index} taskInfo={task}></Task>
             ))}

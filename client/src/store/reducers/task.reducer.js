@@ -23,6 +23,13 @@ export default function(state = InitialState, action) {
             return {...state, isWaiting: false, statusMessage: action.message}
         case types.DELETE_TASKS_ERROR:
             return {...state, isWaiting: false, statusMessage: action.message}
+        // ---- ADD TASKS ----
+        case types.ADD_TASK_REQUEST:
+            return {...state, isWaiting: true}
+        case types.ADD_TASK_SUCCESS:
+            return {...state, isWaiting: false}
+        case types.ADD_TASK_ERROR:
+            return {...state, isWaiting: false}
         default:
             return state
     }

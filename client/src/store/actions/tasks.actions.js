@@ -25,6 +25,16 @@ const deleteTaskSuccess = () => {
 const deleteTaskError = () => {
     return {type: types.DELETE_TASKS_ERROR}
 }
+const addTaskRequest = () => {
+    return {type: types.ADD_TASK_REQUEST}
+}
+const addTaskSuccess = () => {
+    return {type: types.ADD_TASK_SUCCESS}
+}
+
+const addTaskError = () => {
+    return {type: types.ADD_TASK_ERROR}
+}
 
 function makeUserRequest(method, data, endpoint){
     return axios({
@@ -39,11 +49,11 @@ export const fetchTasks = (data) => {
         await dispatch(fetchTasksRequest())
 
         var endpoint = ""
-            if( process.env.NODE_ENV === "production"){
-                endpoint = "/fetchTasks"
-            }else{
+        if( process.env.NODE_ENV === "production"){
+            endpoint = "/fetchTasks"
+        }else{
                 endpoint = "http://localhost:5555/fetchTasks"
-            }
+        }
 
         return makeUserRequest("POST", data, endpoint)
             .then(response => {
@@ -62,18 +72,15 @@ export const fetchTasks = (data) => {
     }
 }
 
-
-    
-
 export const deleteTask = (data) => async dispatch => {
     await dispatch(deleteTaskRequest())
 
     var endpoint = ""
-        if( process.env.NODE_ENV === "production"){
-            endpoint = "/deleteTask"
-        }else{
-            endpoint = "http://localhost:5555/deleteTask"
-        }
+    if( process.env.NODE_ENV === "production"){
+        endpoint = "/deleteTask"
+    }else{
+        endpoint = "http://localhost:5555/deleteTask"
+    }
 
     return makeUserRequest("POST", data, endpoint)
         .then(response => {
@@ -89,5 +96,30 @@ export const deleteTask = (data) => async dispatch => {
                 console.log("Error", response.message)
             }
         })
+}
+
+export const addTask = (data) => async dispatch => {
+    await dispatch(addTaskRequest())
+
+    var endpoint = ""
+    if( process.env.NODE_ENV === "production"){
+        endpoint = "/addTask"
+    }else{
+        endpoint = "http://localhost:5555/addTask"
+    }
+    
+    return makeUserRequest("POST", data, endpoint)
+    .then( response => {
+        if(response.data.success){
+            dispatch(addTaskSuccess())
+        }else{
+            dispatch(addTaskError())
+        }
+    })
+    .catch(function (response) {
+        if (response instanceof Error) {
+            console.log("Error", response.message)
+        }
+    })
 }
 
