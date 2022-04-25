@@ -16,7 +16,7 @@ import { store } from './store'
 ReactDOM.createRoot(document.querySelector('#root')).render(
     <BrowserRouter>
         <Provider store={store}>
-            <App></App>
+            <App />
         </Provider>
     </BrowserRouter>
 );
