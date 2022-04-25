@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "Task Management Web Application",
   "main": "index.js",
+<<<<<<< Updated upstream
+=======
+  "engines": {
+    "npm": "8.1.2",
+    "node": "16.13.2"
+  },
+>>>>>>> Stashed changes
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
@@ -52,7 +59,7 @@
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "save": "^2.4.0",
+    "save": "^2.5.0",
     "semantic-ui-react": "^2.1.2",
     "styled-components": "^5.3.5"
   }
