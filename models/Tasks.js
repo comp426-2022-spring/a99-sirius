@@ -3,10 +3,11 @@ const Schema = mongoose.Schema
 
 const taskSchema = new Schema({
     taskId: String,
-    taskUser: String,
-    taskName: String,
-    taskDescription: String,
-    taskReminder: Boolean,
+    user: String,
+    name: String,
+    description: String,
+    reminder: Boolean,
+    completed: Boolean,
 })
 
 mongoose.model('tasks', taskSchema)

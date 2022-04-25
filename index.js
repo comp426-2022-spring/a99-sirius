@@ -8,7 +8,7 @@ const cors = require('cors');
 
 // Database Models
 require('./models/User')
-require('./models/Task')
+require('./models/Tasks')
 
 require('./services/passport')
 
