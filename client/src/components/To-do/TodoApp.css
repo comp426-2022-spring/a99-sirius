@@ -73,23 +73,19 @@ form button:hover {
     flex: 1;
 }
 
-.trash-button {
-    background: #ff6f47;
-    color: white;
-    border: none;
-    padding: 1.4rem;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-
 .todo-item {
     padding: 0rem 2rem;
     font-size: 2rem;
+}
 
+.fall {
+    transform: translateY(10rem) rotateZ(20deg);
+    opacity: 0;
 }
 
 /*     Using minimalize css to style        */
+
+/* FOR INPUT FIELDS */
 .input-field>input::placeholder {
     color: rgb(102, 102, 102);
 }
@@ -107,6 +103,7 @@ form button:hover {
     padding: 0.5rem;
 }
 
+/* Materialize CSS icon styles */
 .material-icons.prefix {
     color: black;
 }
@@ -118,11 +115,6 @@ form button:hover {
 .material-icons.addbox::after {
     background: #f7fffe;
     color: #26c5ff;
-}
-
-.fall {
-    transform: translateY(10rem) rotateZ(20deg);
-    opacity: 0;
 }
 
 .completed {
@@ -142,7 +134,6 @@ form button:hover {
 }
 
 /*                                       */
-
 
 
 /*CUSTOM SELECTOR */
