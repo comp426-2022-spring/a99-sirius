@@ -1,18 +1,16 @@
 import { connect } from 'react-redux'
-import * as userActions from '../store/actions/actions'
-import TodoApp from './TodoApp'
+import * as taskActions from '../store/actions/tasks.actions'
 
-const mapStateToProps = (state, ownProps) => {
+import Tasks from '../components/Tasks'
+
+const mapStateToProps = (state) => {
     
-    let nextPathname = "/"
-
-    try{ nextPathname = ownProps.location.state.nextPathname}
-    catch(err) {}
-
     return {
-        user: state.user,
-        nextPathname
+        user: state.auth.user,
+        tasks: state.tasks,
     }
 }
 
-export default connect(mapStateToProps, userActions)(TodoApp)
+
+
+export default connect(mapStateToProps, taskActions)(Tasks)

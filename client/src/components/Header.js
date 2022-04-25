@@ -12,7 +12,7 @@ const Header = (props) => {
     return (
         <nav>
             <div className="nav-wrapper">
-                <img src={require('../logo.png')} width="80px" height="64px" />
+                <img alt="App logo" src={require('../logo.png')} width="80px" height="64px"/>
                 <Link to={props.auth.authenticated ? "/" + props.auth.user.login : '/'}
                     className="left brand-logo" >
                     To-do App
