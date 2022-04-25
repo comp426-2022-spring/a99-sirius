@@ -1,10 +1,23 @@
-.container{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(120deg, #65bff6 0%, #52abff 100%);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+
+.container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 100px;
 }
 
-.container > .intro {
+.container>.intro {
     display: grid;
     grid-template-columns: 1fr 20px;
     grid-template-rows: 1fr 1fr;
@@ -28,13 +41,13 @@
     border-radius: 8px;
     padding: 16px 20px;
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-                0 2px 2px 0 rgba(0, 0, 0, 0.14),
-                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    background-color:white;
+    background-color: white;
 }
 
-.registration > h1 {
+.registration>h1 {
     grid-column-start: 1;
     grid-column-end: 4;
     margin: 16px 0;
@@ -44,38 +57,38 @@
     color: black;
 }
 
-.registration > label {
-    display:block;
+.registration>label {
+    display: block;
     margin: 15px 5;
     width: 170px;
 }
 
-.registration > .email {
+.registration>.email {
     grid-column-start: 1;
     grid-column-end: 4;
     width: 520px;
 }
 
-.registration > .password {
+.registration>.password {
     grid-row-start: 6;
     grid-column-start: 1;
     grid-column-end: 2;
 }
 
-.registration > .passwordConf {
+.registration>.passwordConf {
     grid-row-start: 6;
     grid-column-start: 2;
     grid-column-end: 4;
 }
 
-.registration > .signUp {
-    grid-row-start : 8;
+.registration>.signUp {
+    grid-row-start: 8;
     grid-column-start: 1;
     grid-column-end: 4
 }
 
 
-.registration > .btn {
+.registration>.btn {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 7;
@@ -89,7 +102,7 @@
 
 .registration .showPassword:focus {
     background-color: white;
-    color:blue;
+    color: blue;
 }
 
 .links {
@@ -112,13 +125,13 @@
     border-radius: 8px;
     padding: 16px 20px;
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
-                0 2px 2px 0 rgba(0, 0, 0, 0.14),
-                0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    background-color:white
+    background-color: white
 }
 
-.loginForm > h1 {
+.loginForm>h1 {
     grid-column-start: 1;
     grid-column-end: 4;
     margin: 16px 0;
@@ -128,23 +141,23 @@
     color: black;
 }
 
-.loginForm > label {
-    display:block;
+.loginForm>label {
+    display: block;
     margin: 15px 5;
     width: 380px;
 }
 
-.loginForm > .loginUsername {
+.loginForm>.loginUsername {
     grid-column-start: 2;
     grid-column-end: 3;
 }
 
-.loginForm > .loginPassword {
+.loginForm>.loginPassword {
     grid-column-start: 2;
     grid-column-end: 3;
 }
 
-.loginForm > .showPassword {
+.loginForm>.showPassword {
     grid-column-start: 2;
     grid-column-end: 3;
     width: 120px;
@@ -165,4 +178,3 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
-
