@@ -3,7 +3,6 @@ import '../components/To-do/TodoApp.css';
 import Form from '../components/To-do/Form';
 import TodoList from '../components/To-do/TodoList';
 
-
 function TodoApp() {
     // States
     const [inputText, setInputText] = useState("");
@@ -19,10 +18,10 @@ function TodoApp() {
     // Functions
     const filterHandler = () => {
         switch (status) {
-            case 'completed':
+            case '2':
                 setFilteredTodos(todos.filter(todo => todo.completed === true));
                 break;
-            case 'uncompleted':
+            case '3':
                 setFilteredTodos(todos.filter(todo => todo.completed === false));
                 break;
             default:
@@ -31,13 +30,11 @@ function TodoApp() {
         }
     }
 
-
     return (
         <div className="App">
             <header>
-                <h1>COMP 426 : To-do List</h1>
+                <h1>COMP 426 : To do List</h1>
             </header>
-
             <Form
                 inputText={inputText}
                 todos={todos}
@@ -45,14 +42,13 @@ function TodoApp() {
                 setInputText={setInputText}
                 setStatus={setStatus}
             />
-
             <TodoList
                 setTodos={setTodos}
                 todos={todos}
                 filteredTodos={filteredTodos}
             />
         </div>
-    )
+    );
 }
 
-export default TodoApp
+export default TodoApp;

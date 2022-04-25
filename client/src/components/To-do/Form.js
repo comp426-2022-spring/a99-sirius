@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import 'material-icons';
+import M from 'materialize-css';
 
 function Form({ setInputText, todos, setTodos, inputText, setStatus }) {
     const inputTextHandler = (e) => {
-        console.log(e.target.value);
         setInputText(e.target.value);
     }
 
     const submitTodoHandler = (e) => {
-        e.preventDefault(); // Prevents default behavior (from refreshing).
+        e.preventDefault(); // Prevents default behavior (from refreshing)
 
-        // Create object.
-        setTodos([...todos, { text: inputText, completed: false, id: Math.raondom() * 1000 }]);
+        // Creates an object.
+        setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000 }]);
 
         // Resets the Input Text back to empty.
         setInputText("");
@@ -20,28 +21,44 @@ function Form({ setInputText, todos, setTodos, inputText, setStatus }) {
         setStatus(e.target.value);
     }
 
+    useEffect(() => {
+        M.AutoInit();
+    }, []);
+
     return (
-        <form>
-            <input
-                value={inputText}
-                onChange={inputTextHandler}
-                type="text"
-                placeholder='Insert To-do'
-                className="todo-input"
-            />
-
-            <button onClick={submitTodoHandler} className="todo-button" type="submit">
-                <i className='fas fa-plus-square'></i>
-            </button>
-
-            <div className='select'>
-                <select onChange={statusHandler} name="todos" className='filter-todo'>
-                    <option value="all">All</option>
-                    <option value="completed">Completed</option>
-                    <option value="uncompleted">Not Completed</option>
-                </select>
+        <form class="col s12">
+            <div class="input-field col s12 insert">
+                <i class="material-icons prefix">create</i>
+                <input id="icon_prefix"
+                    class="validate"
+                    value={inputText}
+                    placeholder="Insert To-do"
+                    onChange={inputTextHandler}
+                    type="text"
+                />
+                <label for="icon_prefix"></label>
             </div>
 
+
+
+            <button onClick={submitTodoHandler} className="todo-button" type="submit" >
+                <i class="material-icons addbox">add_box</i>
+            </button>
+
+            <div className="input-field col s12 options">
+                <select
+                    onChange={statusHandler}
+                    name="todos"
+                    className="filter-todo"
+
+                >
+                    <option value="" disabled selected>Filter</option>
+                    <option value="1">All</option>
+                    <option value="2">Completed</option>
+                    <option value="3">Not Completed</option>
+                </select>
+
+            </div>
         </form>
     )
 }

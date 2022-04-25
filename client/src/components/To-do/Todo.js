@@ -1,4 +1,5 @@
 import React from 'react'
+import 'material-icons';
 
 function Todo({ text, todo, todos, setTodos }) {
     // Events
@@ -18,17 +19,20 @@ function Todo({ text, todo, todos, setTodos }) {
     };
 
     return (
-        <div className='todo'>
+        <div className="todo">
             <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
                 {text}
             </li>
 
-            <button onClick={completeHandler} className="complete-button">
-                <i className='fas fa-check'></i>
-            </button>
+
+            <label className="completed">
+                <input onClick={completeHandler} id="indeterminate-checkbox" type="checkbox" />
+                <span>Completed</span>
+            </label>
+
 
             <button onClick={deleteHandler} className="trash-button">
-                <i className='fas fa-trash'></i>
+                <i class="small material-icons">clear</i>
             </button>
         </div>
     )
