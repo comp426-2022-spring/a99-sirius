@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {...taskActions, changePassword})(DashBoard)
+export default connect(mapStateToProps,{...taskActions, changePassword})(DashBoard)

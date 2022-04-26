@@ -18,7 +18,9 @@ const ChangePass = (props) => {
 
     const {openPasswordDialog, login, setOpenPasswordDialog} = props
     const[passwordVisibility, setPasswordVisibility] = useState(false)
+    const[confirmPasswordVis, setConfirmPasswordVis] = useState(false)
     const[verifiedPassword, setVerifiedPassword] = useState(true)
+    const[passwordMatch, setPasswordMatch] = useState(true)
 
     useEffect(() => {
         setOpenPasswordDialog(openPasswordDialog)
@@ -27,6 +29,11 @@ const ChangePass = (props) => {
     const toggleVisibility = () => {
         setPasswordVisibility(!passwordVisibility)
     }
+
+    const toggleConVisibility = () => {
+        setConfirmPasswordVis(!confirmPasswordVis)
+    }
+
     
     const validPassword = new RegExp(
         '(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}:;<>,.?~_+-=|]).{8,32}'
@@ -37,13 +44,19 @@ const ChangePass = (props) => {
         const data = new FormData(event.currentTarget)
         var info = {
             password : data.get("newPassword"),
-            login: login
+            confirmPassword: data.get("confirmPassword"),
+            login: login,
         }
         if(validPassword.test(info.password)){
-            props.props.changePassword(info)
-            .then(() => {
-                setOpenPasswordDialog(false)
-            })
+            if(info.password === info.confirmPassword){
+                props.props.changePassword(info)
+                .then(() => {
+                    setOpenPasswordDialog(false)
+                })
+            }
+            else{
+                setPasswordMatch(false)
+            }  
         }else{
             setVerifiedPassword(false)
         }
@@ -70,7 +83,25 @@ const ChangePass = (props) => {
                                         <Button color="primary" disableElevation onClick={toggleVisibility}><Visibility/></Button>
                                     </InputAdornment>}}
                                 error={!verifiedPassword}
-                                onChange={e => {setVerifiedPassword(true)}}
+                                onChange={e => {setVerifiedPassword(true); setPasswordMatch(true)}}
+                            />
+                        </Grid>
+                        <Grid item width={350} >
+                            <TextField
+                                name="confirmPassword"
+                                required
+                                fullWidth
+                                id="ConfirmPassword"
+                                label="Confirm Password"
+                                type={confirmPasswordVis ? "text" : "password"}
+                                sx={{ marginTop: 1}}
+                                InputProps={{
+                                    endAdornment: <InputAdornment position="end">
+                                        <Button color="primary" disableElevation onClick={toggleConVisibility}><Visibility/></Button>
+                                    </InputAdornment>}}
+                                error={!passwordMatch}
+                                helperText={!passwordMatch ? "Passwords do not match" : ""}
+                                onChange={e => {setVerifiedPassword(true); setPasswordMatch(true)}}
                             />
                         </Grid>
                         <Grid item width={350}>
