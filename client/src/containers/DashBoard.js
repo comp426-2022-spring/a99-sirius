@@ -6,8 +6,6 @@ import { changePassword } from '../store/actions/actions'
 import ChangePass from '../components/ChangePass';
 import { Container, Grid } from '@mui/material'
 
-import TodoApp from './TodoApp';
-
 
 const DashBoard = (props) => {
 
