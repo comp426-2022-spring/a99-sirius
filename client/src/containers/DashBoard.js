@@ -1,18 +1,21 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import Header from '../components/Header'
 import * as taskActions from '../store/actions/tasks.actions'
-import {changePassword} from '../store/actions/actions'
+import { changePassword } from '../store/actions/actions'
 import ChangePass from '../components/ChangePass';
+
+import TodoApp from './TodoApp';
 
 
 const DashBoard = (props) => {
-    
-    return(
+
+    return (
         <div>
-            <Header/>
-            <ChangePass props={props}/>
+            <Header />
+            <ChangePass props={props} />
+            <TodoApp />
         </div>
     )
 }
@@ -26,4 +29,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {...taskActions, changePassword})(DashBoard)
+export default connect(mapStateToProps, { ...taskActions, changePassword, TodoApp })(DashBoard)
