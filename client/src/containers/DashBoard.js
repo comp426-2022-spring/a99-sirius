@@ -6,8 +6,6 @@ import * as taskActions from '../store/actions/tasks.actions'
 import { changePassword } from '../store/actions/actions'
 import ChangePass from '../components/ChangePass';
 
-import TodoApp from './TodoApp';
-
 
 const DashBoard = (props) => {
 
@@ -29,4 +27,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { ...taskActions, changePassword, TodoApp })(DashBoard)
+export default connect(mapStateToProps, { ...taskActions, changePassword })(DashBoard)
