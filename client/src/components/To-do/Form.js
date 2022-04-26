@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import 'material-icons';
-import M from 'materialize-css';
+
 
 function Form({ setInputText, todos, setTodos, inputText, setStatus }) {
     const inputTextHandler = (e) => {
@@ -20,10 +20,6 @@ function Form({ setInputText, todos, setTodos, inputText, setStatus }) {
     const statusHandler = (e) => {
         setStatus(e.target.value);
     }
-
-    useEffect(() => {
-        M.AutoInit();
-    }, []);
 
     return (
         <form class="col s12">

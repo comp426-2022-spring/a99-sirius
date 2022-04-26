@@ -4,6 +4,8 @@ import Header from '../components/Header'
 import * as taskActions from '../store/actions/tasks.actions'
 import {changePassword} from '../store/actions/actions'
 import ChangePass from '../components/ChangePass';
+import { Container, Grid } from '@mui/material'
+
 
 const DashBoard = (props) => {
 
@@ -16,7 +18,12 @@ const DashBoard = (props) => {
     return(
         <div>
             <Header/>
-            <ChangePass openPasswordDialog={openPasswordDialog} login={props.user.login} setOpenPasswordDialog={setOpenPasswordDialog} props={props}/>
+            {/* <ChangePass openPasswordDialog={openPasswordDialog} login={props.user.login} setOpenPasswordDialog={setOpenPasswordDialog} props={props}/> */}
+            <Grid
+                container
+            >
+
+            </Grid>
         </div>
     )
 }
