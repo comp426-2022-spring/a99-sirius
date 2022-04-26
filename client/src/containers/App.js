@@ -5,7 +5,8 @@ import * as actions from '../store/actions/actions'
 import {Redirect} from 'react-router-dom'
 
 import DashBoard from './DashBoard'
-import LandingContainer from './Landing Container'
+import SignInContainer from './SignInContainer'
+import SignUpContainer from './SignUpContainer'
 
 
 class App extends Component {
@@ -19,10 +20,10 @@ class App extends Component {
             <div>
                 {this.props.auth.authenticated ? <Redirect to={"/" + this.props.auth.user.login}/> : <></>}
                 <Route exact path="/login">
-                    <LandingContainer/>
+                    <SignInContainer/>
                 </Route>
                 <Route exact path="/">
-                    <LandingContainer/>
+                    <SignUpContainer/>
                 </Route>
                 <Route path={"/" + this.props.auth.user.login}>
                     <DashBoard/>
