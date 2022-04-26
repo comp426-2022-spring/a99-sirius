@@ -19,25 +19,13 @@ import GoogleButton from 'react-google-button'
 import GitHubButton from 'react-github-login-button'
 import Copyright from './Copyright';
 
-const theme = createTheme({
-    palette: {
-        error: {
-            light:'#a30000',
-            main: '#a30000',
-            dark: '#a30004',
-            contrastText: '#dd2c00'
-        },
-        success: {
-            main: '#64dd17'
-        }
-    }
-});
+const theme = createTheme();
 
 const SignUp = (props) => {
 
     const[passwordVisibility, setPasswordVisibility] = useState(false)
     const[signUpMessage, setSignUpMessage] = useState("")
-    const[signupError, setSignUpError] = useState(false)
+
     const[emailError, setEmailError] = useState(false)
     const[usernameError, setUsernameError] = useState(false)
     const[verifiedPassword, setVerifiedPassword] = useState(true)
@@ -60,7 +48,6 @@ const SignUp = (props) => {
         if(validPassword.test(info.password)){
             props.signUp(info)
                 .then(signUpStatus => {
-                setSignUpError(true)
                 setSignUpMessage(signUpStatus.message)
                 setEmailError(signUpStatus.emailError)
                 setUsernameError(signUpStatus.usernameError)
@@ -93,9 +80,6 @@ const SignUp = (props) => {
                     <Typography component="h1" variant="h5">
                         Sign Up
                     </Typography>
-                    {signupError ? <Alert severity="error">
-                        <AlertTitle severity="error">Error - {signUpMessage}</AlertTitle>
-                    </Alert> : <></>}
                     <Box component="form" onSubmit={handleSubmit} sx={{ mt : 3 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
@@ -117,7 +101,6 @@ const SignUp = (props) => {
                                     label="Last Name"
                                     name='lastName'
                                     autoComplete="family-name"
-                                    onChange={e => setSignUpError(false)}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -128,8 +111,9 @@ const SignUp = (props) => {
                                     label="Username"
                                     name="username"
                                     autoComplete="username"
-                                    onChange={e => {setSignUpError(false); setUsernameError(false)}}
+                                    onChange={e => {setUsernameError(false)}}
                                     error={usernameError}
+                                    helperText={usernameError ? signUpMessage : ""}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -141,7 +125,8 @@ const SignUp = (props) => {
                                     name="email"
                                     autoComplete="email"
                                     error={emailError}
-                                    onChange={e => {setSignUpError(false); setEmailError(false)}}
+                                    helperText={emailError ? signUpMessage : ""}
+                                    onChange={e => {setEmailError(false)}}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -179,7 +164,7 @@ const SignUp = (props) => {
                                     type="submit"
                                     fullWidth
                                     variant="contained"
-                                    sx={{mt: 3, mb: 2}}
+                                    sx={{mt: 1, mb: 2}}
                                 > Sign In
                                 </Button>
                             </Grid>
