@@ -26,6 +26,7 @@ export default function(state = InitialState, action) {
             return { ...state, isWaiting: true }
         case types.LOGIN_USER_SUCCESS:
             return {
+                ...state,
                 isWaiting : false,
                 authenticated: true,
                 user: action.data

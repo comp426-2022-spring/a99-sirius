@@ -118,7 +118,7 @@ export const login = (data) => {
         return makeUserRequest("POST", data, endpoint)
                 .then(response => {
                     if(response.data.success) {
-                        dispatch(loginSuccess(response.data))
+                        dispatch(loginSuccess(response.data.user))
                     } else{
                         dispatch(loginError())
                         let loginMessage = response.data.message
