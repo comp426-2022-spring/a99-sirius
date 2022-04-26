@@ -14,11 +14,12 @@ const Header = (props) => {
     }
 
     return (
-         <AppBar position="static">
+         <AppBar position="absolute">
             <Toolbar>
                 <Typography variant="h6" 
-                    component="div" 
-                    sx={{ flexGrow: 1 }}>
+                    component="h1" 
+                    sx={{ flexGrow: 1 }}
+                    noWrap>
                     TO-DO-APP
                 </Typography>
                 <Button 
