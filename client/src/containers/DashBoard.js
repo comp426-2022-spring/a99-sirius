@@ -9,20 +9,27 @@ import { ThemeProvider, createTheme } from '@mui/material'
 import { Box } from '@mui/material'
 import { Toolbar } from '@mui/material'
 import { Paper } from '@mui/material'
+import Task from '../components/MaterialUIDesignComponents/Task'
+import Tasks from '../components/MaterialUIDesignComponents/Tasks'
 
 const theme = createTheme()
 
 const DashBoard = (props) => {
 
+    const {fetched} = props.tasks.fetched
+    const {login} = props.user.login
+    const {fetchTasks} = props
+
     const[openPasswordDialog, setOpenPasswordDialog] = useState(false)
 
     useEffect(() => {
         setOpenPasswordDialog(!props.user.ownPassword)
-    },[props.user.ownPassword])
+        fetchTasks(login)
+    },[props.user.ownPassword, login, fetchTasks, fetched])
     
     return(
         <ThemeProvider theme={theme}>
-            <Box sx={{ display: 'flex', marginTop: 0}}>
+            <Box sx={{ display: 'flex', overflow: 'auto'}}>
                 <Header/>
                 {/* <ChangePass openPasswordDialog={openPasswordDialog} login={props.user.login} setOpenPasswordDialog={setOpenPasswordDialog} props={props}/> */}
                 <Box 
@@ -39,12 +46,12 @@ const DashBoard = (props) => {
                             <Grid item xs={12} md={8} lg={9} xl={15}>
                                 <Paper
                                     sx={{
-                                        p:10,
+                                        p:2,
                                         display: 'flex',
                                         flexDirection: 'column',
                                         height: 240
                                     }}>
-                                    
+                                    <Tasks/>
                                 </Paper>
                             </Grid>
                         </Grid>
