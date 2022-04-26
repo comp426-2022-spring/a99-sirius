@@ -6,6 +6,7 @@ function Form({ setInputText, todos, setTodos, inputText, setStatus }) {
         setInputText(e.target.value);
     }
 
+
     const submitTodoHandler = (e) => {
         e.preventDefault(); // Prevents default behavior (from refreshing)
 
