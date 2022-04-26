@@ -26,14 +26,8 @@ const ChangePass = (props) => {
         setPasswordVisibility(!passwordVisibility)
     }
     useEffect(() => {
-        getStatus()
+        setOpenPasswordDialog(props.props.user.ownPassword)
     }, [props])
-
-    function getStatus() {
-        if(!props.props.user.ownPassword){
-            setOpenPasswordDialog(true)
-        }
-    }
 
     const validPassword = new RegExp(
         '(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}:;<>,.?~_+-=|]).{8,32}'
