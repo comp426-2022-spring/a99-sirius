@@ -23,8 +23,8 @@ const Header = (props) => {
                         <li><a href="/logout" onClick={onLogout}>Logout</a></li>
                     </ul>
                     : <ul className="right">
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to='/'>Sign Up</Link></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href='/'>Sign Up</a></li>
                     </ul>
                 }
             </div>

@@ -71,7 +71,7 @@ passport.use(new GitHubStrategy ({
 // Local Authentication
 passport.use(new LocalStrategy( async (username, password, done) => {
     const user = await User.findOne({ login : username})
-    if(!user) return done(null, false, {message: "Username " + username + " not found" })
+    if(!user) return done(null, false, {message: "Incorrect Username of Password"})
     const verified = passwordHash.verify(password, user.password)
     if(!verified){
         return done(null, false, {message: 'Incorrect username or password!'})
@@ -85,13 +85,13 @@ exports.register = function(req, res) {
     User.findOne({ email: req.body.email }, (err, user) =>{
         // verify if email address already in use
         if(user) {
-            res.json({ success: false, message: "Email already in use" })
+            res.json({ success: false, message: "Email already in use", emailError: true, usernameError: false})
             return
         }
         else{
             User.findOne( {login: req.body.login}, (err, user) => {
                 if(user) {
-                    res.json({ success: false, message: "Username already in use" })
+                    res.json({ success: false, message: "Username already in use" , usernameError: true, emailError: false})
                     return
                 }
                 else{

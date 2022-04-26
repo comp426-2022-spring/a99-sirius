@@ -12,22 +12,17 @@ class App extends Component {
         this.props.fetchUser();
     }
     render() {
+        if(this.props.auth.authenticated){
+            return <DashBoardContainer/>
+        }
         return (
             <div>
-                <Redirect from="/auth/" to="/"></Redirect>
-                {this.props.auth.authenticated ? <Redirect from="/" to={"/" + this.props.auth.user.login} /> : <></>}
-                <Header />
-                <Switch>
-                    <Route exact path="/login">
-                        <LandingContainer />
-                    </Route>
-                    <Route exact path={"/" + this.props.auth.user.login}>
-                        <DashBoardContainer />
-                    </Route>
-                    <Route exact path="/">
-                        <LandingContainer />
-                    </Route>
-                </Switch>
+                <Route exact path="/login">
+                    <LandingContainer/>
+                </Route>
+                <Route exact path="/">
+                    <LandingContainer/>
+                </Route>
             </div>
         );
     }

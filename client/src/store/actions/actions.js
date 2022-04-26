@@ -143,8 +143,12 @@ export const signUp = (data) => {
                 }
                 else{
                     dispatch(signUpError())
-                    let signUpMessage = response.data.message
-                    return signUpMessage
+                    let signUpStatus = {
+                        message: response.data.message,
+                        emailError: response.data.emailError,
+                        usernameError: response.data.usernameError
+                    } 
+                    return signUpStatus
                 }
             })
             .catch(function (response) {

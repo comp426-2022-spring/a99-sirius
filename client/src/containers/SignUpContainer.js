@@ -2,19 +2,9 @@ import { connect } from 'react-redux'
 import * as UserActions from '../store/actions/actions'
 import SignUp from '../components/SignUp'
 
-const mapStateToProps = (state, ownProps) => {
-
-    let nextPathname = "/"
-    try {
-        nextPathname = ownProps.location.state.nextPathname
-    }
-    catch(err){
-        //empty
-    }
-
+const mapStateToProps = (state) => {
     return {
-        user: state.user,
-        nextPathname
+        user: state.user
     }
 }
 

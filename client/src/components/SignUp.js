@@ -1,163 +1,218 @@
 import React, { useState } from 'react'
-// import { Link } from 'react-router-dom'
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import { Alert} from '@mui/material';
+import { AlertTitle } from '@mui/material';
 
 import GoogleButton from 'react-google-button'
 import GitHubButton from 'react-github-login-button'
+import Copyright from './Copyright';
 
-const MessageStyle = {
-    color: "red"
-}
-
-const Signup = (props) => {
-    const[errorMessage, setErrorMessage] = useState({
-        signUp : '',
-        password: '',
-        confirmPassword: '',
-    })
-
-    const[input, setInput] = useState({
-        login: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    })
-
-    const [passwordShown, setPasswordShown] = useState(false)
-    const [confirmPassShown, setConfirmPassShown] = useState(false)
-
-    function onSignUpSubmit(event) {
-        event.preventDefault()
-
-        props.signUp(input)
-        .then((error) => {
-            if(error){
-                //report to the user that there was a problem during signUp
-                setErrorMessage({...errorMessage, signUp : error})
-            }
-        })
-    }
-
-    function handleChange(event){
-        let { name, value } = event.target
-
-        switch(name){
-            case "firstName":
-                value = value.split(" ")[0]
-                break
-            default:
-                
+const theme = createTheme({
+    palette: {
+        error: {
+            light: '#a30000',
+            main: '#a30000',
+            dark: '#a30004',
+            contrastText: '#dd2c00'
+        },
+        success: {
+            main: '#64dd17'
         }
-        setInput(prev => ({
-            ...prev,
-            [name] : value
-        }))
-        validateInput(event)
+    }
+});
+
+const SignUp = (props) => {
+
+    const[passwordVisibility, setPasswordVisibility] = useState(false)
+    const[signUpMessage, setSignUpMessage] = useState("")
+    const[signupError, setSignUpError] = useState(false)
+    const[emailError, setEmailError] = useState(false)
+    const[usernameError, setUsernameError] = useState(false)
+    const[verifiedPassword, setVerifiedPassword] = useState(true)
+    
+
+    const toggleVisibility = () => {
+        setPasswordVisibility(!passwordVisibility)
     }
 
-    function validateInput(event) {
-        let {name, value} = event.target
-        setErrorMessage( prev => {
-            const stateObj = { ...prev, [name]: "" }
-        
-        switch(name){
-            case "password":
-                if(!value) {
-                    stateObj[name] = "Please enter Password!"
-                    stateObj["signUp"] = ""
-                }else{
-                    if(!validPassword.test(value)){
-                        stateObj["signUp"] = "Make Sure password is of length 8-20, contains one upper-case letter, one digit and one special character (._:$!&-@*):"
-                        return stateObj
-                    }
-                    stateObj["signUp"] = ""
-                    if(input.confirmPassword && value !== input.confirmPassword){
-                        stateObj["confirmPassword"] = "Password and Confirm Password does not match"
-                    } else{
-                        stateObj["confirmPassword"] = input.confirmPassword ? "" : errorMessage.confirmPassword
-                    }
-                }
-                break
-            case "confirmPassword":
-                if(!value){
-                    stateObj[name] = "Please enter Confirm Password"
-                } else{
-                    if(input.password && value !== input.password){
-                        stateObj[name] = "Password and Confirm Password do not match.";
-                    }
-                }
-            break
-            default: 
-                break
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget)
+        var info = {
+            login: data.get("username"),
+            email: data.get("email"),
+            firstName: data.get("firstName"),
+            lastName: data.get("lastName"),
+            password: data.get("password")
         }
-
-        return stateObj
-    })
+        if(validPassword.test(info.password)){
+            props.signUp(info)
+                .then(signUpStatus => {
+                setSignUpError(true)
+                setSignUpMessage(signUpStatus.message)
+                setEmailError(signUpStatus.emailError)
+                setUsernameError(signUpStatus.usernameError)
+            })
+        }else{
+            setVerifiedPassword(false)
+        }
     }
-
-    function togglePassword() {
-        setPasswordShown(!passwordShown)
-    }
-
-    function toggleConfirmPassword() {
-        setConfirmPassShown(!confirmPassShown)
-    }
-
 
     const validPassword = new RegExp(
         '(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}:;<>,.?~_+-=|]).{8,32}'
     )
 
+
     return(
-        <div>
-            <form className="registration" onSubmit={onSignUpSubmit}>
-                <h1>👋 Register Here!</h1>
-                
-                <label>
-                    <input required type="text" name="firstName" placeholder="First Name" onChange={e => {handleChange(e)}}/>
-                </label>
-    
-                
-                <label >
-                    <input required type="text" name="lastName" placeholder="Last Name" onChange={e => {handleChange(e)}}/>
-                </label>
-
-                <label>
-                    <input required type="text" name="login" placeholder="Enter username" onChange={e => {handleChange(e)}}/>
-                </label>
-                
-                
-                <label className="email">
-                <input required type="email" name="email" placeholder="Enter email address" onChange={e => {handleChange(e)}}/>
-                </label>
-                    
-                <label>
-                    <input required type={passwordShown ? "text" : "password"} name="password" placeholder="Enter password" onChange={e => {handleChange(e)}}/>
-                    <button class="showPassword" type="button" style={{}} onClick={togglePassword}>Show Password</button>
-            
-                </label>
-                    
-                <label>
-                <input required type={confirmPassShown ? "text" : "password"} name="confirmPassword" placeholder="Confirm Password" onChange={e => {handleChange(e)}}/>
-                <button class="showPassword" type="button" style={{}} onClick={toggleConfirmPassword}>Show Password</button>
-                    
-                </label>
-                    
-                
-                <button className="btn" type="submit" href="/login" >Sign Up</button>
-
-                {errorMessage.password && <span className="err password" style={MessageStyle}>{errorMessage.password}</span>}
-                {errorMessage.confirmPassword && <span className="err passwordConf" style={MessageStyle}>{errorMessage.confirmPassword}</span>}
-                {errorMessage.signUp && <span className="err signUp"style ={MessageStyle}>{errorMessage.signUp}</span>}
-
-                <div className="links">
-                    <a href="/auth/google"><GoogleButton/></a>
-                    <a href="/auth/github"><GitHubButton/></a>
-                </div>
-            </form>
-        </div>
+        <ThemeProvider theme={theme}>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline/>
+                <Box
+                    sx={{
+                        marginTop: 8,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                    }}
+                >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                        <LockOutlinedIcon/>
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign Up
+                    </Typography>
+                    {signupError ? <Alert severity="error">
+                        <AlertTitle severity="error">Error - {signUpMessage}</AlertTitle>
+                    </Alert> : <></>}
+                    <Box component="form" onSubmit={handleSubmit} sx={{ mt : 3 }}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    autoComplete='given-name'
+                                    name="firstName"
+                                    required
+                                    fullWidth
+                                    id='firstName'
+                                    label='First Name'
+                                    autoFocus
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField 
+                                    required
+                                    fullWidth
+                                    id="lastName"
+                                    label="Last Name"
+                                    name='lastName'
+                                    autoComplete="family-name"
+                                    onChange={e => setSignUpError(false)}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="username"
+                                    label="Username"
+                                    name="username"
+                                    autoComplete="username"
+                                    onChange={e => {setSignUpError(false); setUsernameError(false)}}
+                                    error={usernameError}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Email Address"
+                                    name="email"
+                                    autoComplete="email"
+                                    error={emailError}
+                                    onChange={e => {setSignUpError(false); setEmailError(false)}}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    id="password"
+                                    type={passwordVisibility ? "text" : "password"}
+                                    autoComplete="new-password"
+                                    InputProps={{
+                                        endAdornment: <InputAdornment position="end">
+                                            <Button color="primary" disableElevation onClick={toggleVisibility}><Visibility/></Button>
+                                        </InputAdornment>,
+                                    }}
+                                    error={!verifiedPassword}
+                                    onChange={e => {setVerifiedPassword(true)}}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                {!verifiedPassword ? <Alert severity="error">
+                                    <AlertTitle severity="error">Password Requirements Not Met</AlertTitle>
+                                        <ul>Password Must:
+                                            <li>At least 8 characters long</li>
+                                            <li>Contain at least one upper case Letter</li>
+                                            <li>Contain at least one lower case letter</li>
+                                            <li>Contain at least one special character</li>
+                                        </ul>
+                                </Alert> 
+                                : <></>}
+                            </Grid>
+                            
+                            <Grid item xs={12}>
+                                <Button
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    sx={{mt: 3, mb: 2}}
+                                > Sign In
+                                </Button>
+                            </Grid>
+                            <Grid container justifyContent="flex-end">
+                                <Grid item>
+                                    <Link href="/login" variant="body2">
+                                        Already have an account? Sign in
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Box>
+                    <Link
+                    href="/auth/google"
+                        sx={{
+                            marginTop: 3
+                        }}>
+                        <GoogleButton/>
+                    </Link>
+                    <Link
+                        href="/auth/github"
+                        sx={{
+                            marginTop: 2
+                        }}
+                    >
+                        <GitHubButton/>
+                    </Link>
+                </Box>
+                <Copyright sx={{mt: 8, mb: 4}}/>
+            </Container>
+        </ThemeProvider>
     )
 }
 
-export default Signup
+export default SignUp
