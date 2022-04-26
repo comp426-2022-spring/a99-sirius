@@ -174,7 +174,6 @@ const SignUp = (props) => {
                                 </Alert> 
                                 : <></>}
                             </Grid>
-                            
                             <Grid item xs={12}>
                                 <Button
                                     type="submit"

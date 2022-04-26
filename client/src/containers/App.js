@@ -1,27 +1,31 @@
 import React, { Component } from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route} from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions/actions'
+import {Redirect} from 'react-router-dom'
 
-import DashBoardContainer from './DashBoardContainer'
-import Header from '../components/Header'
+import DashBoard from './DashBoard'
 import LandingContainer from './Landing Container'
 
+
 class App extends Component {
+    
     componentDidMount() {
         this.props.fetchUser();
     }
+    
     render() {
-        if(this.props.auth.authenticated){
-            return <DashBoardContainer/>
-        }
         return (
             <div>
+                {this.props.auth.authenticated ? <Redirect to={"/" + this.props.auth.user.login}/> : <></>}
                 <Route exact path="/login">
                     <LandingContainer/>
                 </Route>
                 <Route exact path="/">
                     <LandingContainer/>
+                </Route>
+                <Route path={"/" + this.props.auth.user.login}>
+                    <DashBoard/>
                 </Route>
             </div>
         );

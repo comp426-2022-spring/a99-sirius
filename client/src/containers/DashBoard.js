@@ -1,7 +1,14 @@
 import { connect } from 'react-redux'
 import * as taskActions from '../store/actions/tasks.actions'
 
-import Tasks from '../components/Tasks'
+
+import Header from '../components/Header'
+
+const DashBoard = (props) => {
+    return(
+        <Header/>
+    )
+}
 
 const mapStateToProps = (state) => {
 
@@ -12,5 +19,4 @@ const mapStateToProps = (state) => {
 }
 
 
-
-export default connect(mapStateToProps, taskActions)(Tasks)
+export default connect(mapStateToProps, taskActions)(DashBoard)
