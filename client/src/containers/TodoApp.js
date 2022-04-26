@@ -32,10 +32,10 @@ function TodoApp() {
 
     return (
         <div className="App">
-            <header>
+            <header className="TodoHeader">
                 <h1>COMP 426 : To do List</h1>
             </header>
-            <Form
+            <Form className="TodoForm"
                 inputText={inputText}
                 todos={todos}
                 setTodos={setTodos}
