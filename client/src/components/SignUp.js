@@ -22,7 +22,7 @@ import Copyright from './Copyright';
 const theme = createTheme({
     palette: {
         error: {
-            light: '#a30000',
+            light:'#a30000',
             main: '#a30000',
             dark: '#a30004',
             contrastText: '#dd2c00'
@@ -166,7 +166,7 @@ const SignUp = (props) => {
                                 {!verifiedPassword ? <Alert severity="error">
                                     <AlertTitle severity="error">Password Requirements Not Met</AlertTitle>
                                         <ul>Password Must:
-                                            <li>At least 8 characters long</li>
+                                            <li>Be at least 8 characters long</li>
                                             <li>Contain at least one upper case Letter</li>
                                             <li>Contain at least one lower case letter</li>
                                             <li>Contain at least one special character</li>

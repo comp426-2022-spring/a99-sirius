@@ -70,6 +70,14 @@ const logoutSuccess = () => {
     }
 }
 
+const changePasswordRequest = () => {
+    return {type: types.CHANGE_PASSWORD_REQUEST}
+}
+
+const changePasswordSuccess = (user) => {
+    return {type: types.CHANGE_PASSWORD_SUCCESS, data: user}
+}
+
 function makeUserRequest(method, data, endpoint){
     return axios({
         method: method,
@@ -110,7 +118,7 @@ export const login = (data) => {
         return makeUserRequest("POST", data, endpoint)
                 .then(response => {
                     if(response.data.success) {
-                        dispatch(loginSuccess(response.data.user))
+                        dispatch(loginSuccess(response.data))
                     } else{
                         dispatch(loginError())
                         let loginMessage = response.data.message
@@ -159,6 +167,31 @@ export const signUp = (data) => {
     }
 }
 
+export const changePassword = (data) => {
+    return async dispatch => {
+        await dispatch(changePasswordRequest())
+
+        var endpoint = ""
+        if( process.env.NODE_ENV === "production"){
+            endpoint = "/changePassword"
+        }else{
+            endpoint = "http://localhost:5555/changePassword"
+        }
+
+        return makeUserRequest("POST", data, endpoint)
+            .then(response => {
+                if(response.data.success){
+                    dispatch(changePasswordSuccess(response.data.user))
+                }
+            })
+            .catch(function (response) {
+                if (response instanceof Error) {
+                    console.log("Error", response.message)
+                }
+            })
+    }
+}
+
 export const logout = () => {
     return async dispatch => {
         await dispatch(logoutRequest())
@@ -166,3 +199,5 @@ export const logout = () => {
         await dispatch(logoutSuccess())
     }
 }
+
+

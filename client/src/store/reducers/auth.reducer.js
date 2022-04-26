@@ -3,7 +3,8 @@ import * as types from "../types"
 const InitialState = {
     isWaiting: false,
     authenticated: false,
-    user : {}
+    user : {
+    }
 }
 
 export default function(state = InitialState, action) {
@@ -53,6 +54,11 @@ export default function(state = InitialState, action) {
                 isWaiting: false,
                 user: ""
             }
+        // ---- CHANGE_PASSWORD ----
+        case types.CHANGE_PASSWORD_REQUEST:
+            return {...state, isWaiting: true}
+        case types.CHANGE_PASSWORD_SUCCESS:
+            return {...state, isWaiting: false, user: action.data}
         // ---- DEFAULT ----
         default:
             return state

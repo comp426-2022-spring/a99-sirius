@@ -63,6 +63,8 @@ module.exports = (app) => {
         res.redirect('/')
     })
 
+    // Change Password
+    app.post("/changePassword", user.changePassword)
     // ------------------------------------------
 
     // Current User

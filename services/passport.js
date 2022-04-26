@@ -99,12 +99,17 @@ exports.register = function(req, res) {
                         userId: randomID(),
                         ...req.body,
                     }
-                    User.create({...data, password: passwordHash.generate(data.password), ownPassword: true}, (err) => {
+                    const newData = {
+                        ...data,
+                        password: passwordHash.generate(data.password),
+                        ownPassword: true
+                    }
+                    User.create(newData, (err) => {
                         if(err){
                             console.error(err)
                             res.json({ success: false})
                         }
-                        res.json({success: true, user: data, message: "Authentication succeeded"})
+                        res.json({success: true, user: newData, message: "Authentication succeeded"})
                         return
                     })
                 }
@@ -112,6 +117,15 @@ exports.register = function(req, res) {
         }
         
     })
+}
+
+// CHANGE PASSWORD
+exports.changePassword = async function (req, res) {
+    const new_password = passwordHash.generate(req.body.password)
+    let doc = await User.findOneAndUpdate({ login : req.body.login}, {password: new_password, ownPassword: true}, {returnOriginal: false})
+    if(doc){
+        return res.json({success: true, user : doc})
+    }
 }
 
 function randomID() {

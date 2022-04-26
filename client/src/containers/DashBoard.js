@@ -1,12 +1,19 @@
+import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
-import * as taskActions from '../store/actions/tasks.actions'
-
 
 import Header from '../components/Header'
+import * as taskActions from '../store/actions/tasks.actions'
+import {changePassword} from '../store/actions/actions'
+import ChangePass from '../components/ChangePass';
+
 
 const DashBoard = (props) => {
+    
     return(
-        <Header/>
+        <div>
+            <Header/>
+            <ChangePass props={props}/>
+        </div>
     )
 }
 
@@ -19,4 +26,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, taskActions)(DashBoard)
+export default connect(mapStateToProps, {...taskActions, changePassword})(DashBoard)

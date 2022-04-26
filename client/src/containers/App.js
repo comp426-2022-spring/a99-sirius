@@ -18,14 +18,14 @@ class App extends Component {
     render() {
         return (
             <div>
-                {this.props.auth.authenticated ? <Redirect to={"/" + this.props.auth.user.login}/> : <></>}
+                {this.props.auth.authenticated ? <Redirect to={"/dashboard/" + this.props.auth.user.login}/> : <></>}
                 <Route exact path="/login">
                     <SignInContainer/>
                 </Route>
                 <Route exact path="/">
                     <SignUpContainer/>
                 </Route>
-                <Route path={"/" + this.props.auth.user.login}>
+                <Route path="/dashboard">
                     <DashBoard/>
                 </Route>
             </div>
