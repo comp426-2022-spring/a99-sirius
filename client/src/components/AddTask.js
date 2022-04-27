@@ -21,9 +21,6 @@ const AddTask = (props) => {
             <DialogContent>
             <Grid container width={550}>
                 <Grid item width={550} >
-                <Typography variant="h6" component="h5">
-                    Task Name:
-                    </Typography>
                     <TextField
                     id="Description"
                     label="Please add a description to your task:"
