@@ -58,6 +58,18 @@ const AddTask = (props) => {
                     </TextField>
                 </Grid>
                 <Grid item xs={5}>
+                <Typography  align="right">
+                    <TextField
+                    id="Date"
+                    label="Task Date"
+                    type="date"
+                    size="small"
+                    defaultValue="yyyy-mm-dd"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    />
+                    </Typography>
                     <FormGroup>
                         <FormControlLabel 
                             size="small" 
@@ -78,19 +90,6 @@ const AddTask = (props) => {
                         size={"small"}
                     >
                     </TextField>
-                    
-                    <Typography  align="right">
-                    <TextField
-                    id="Date"
-                    label="Task Date"
-                    type="date"
-                    defaultValue="yyyy-mm-dd"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    />
-                    </Typography>
-
                 </Grid>
                 <Grid item xs={12} sx={{display: "flex", justifyContent: "center"}}>
                     <Button type="submit" variant='contained'>
