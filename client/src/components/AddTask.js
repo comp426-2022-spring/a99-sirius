@@ -15,10 +15,13 @@ const AddTask = (props) => {
         setOpenWindow(!openWindow)
     }
 
+
+
     return(
         <Dialog open={openWindow}>
             <DialogTitle textAlign="center">Add a new Task</DialogTitle>
             <DialogContent>
+            <Box component="form">
             <Grid container width={550}>
                 <Grid item width={550} >
                     <TextField
@@ -27,12 +30,14 @@ const AddTask = (props) => {
                     multiline
                     autoFocus
                     fullWidth
-          ></TextField>
+                    >
+                    </TextField>
                 </Grid>
                 </Grid>
                 <Button onClick={toggleOpenWindow}>
                 Close
                 </Button>
+                </Box>
                 </DialogContent> 
         </Dialog>
     )
