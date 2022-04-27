@@ -17,8 +17,8 @@ const deleteTaskRequest = () => {
     return {type: types.DELETE_TASK_REQUEST}
 }
 
-const deleteTaskSuccess = () => {
-    return {type: types.DELETE_TASK_SUCCESS}
+const deleteTaskSuccess = (taskId) => {
+    return {type: types.DELETE_TASK_SUCCESS, data: taskId}
 }
 
 const deleteTaskError = () => {
@@ -86,6 +86,8 @@ export const fetchTasks = (data) => {
 export const deleteTask = (data) => async dispatch => {
     await dispatch(deleteTaskRequest())
 
+    console.log(data.taskId)
+
     var endpoint = ""
     if( process.env.NODE_ENV === "production"){
         endpoint = "/deleteTask"
@@ -96,7 +98,8 @@ export const deleteTask = (data) => async dispatch => {
     return makeUserRequest("POST", data, endpoint)
         .then(response => {
             if(response.data.success){
-                dispatch(deleteTaskSuccess())
+                console.log(response.data.taskId)
+                dispatch(deleteTaskSuccess(response.data.taskId))
             }else{
                 dispatch(deleteTaskError())
                 return response.data.message
@@ -104,6 +107,7 @@ export const deleteTask = (data) => async dispatch => {
         })
         .catch(function (response) {
             if (response instanceof Error) {
+                dispatch(deleteTaskError())
                 console.log("Error", response.message)
             }
         })

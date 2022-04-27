@@ -18,11 +18,11 @@ exports.fetchTasks =  async function(req, res) {
 
 // ---- DELETE TASK ----
 exports.deleteTask = async function(req, res) {
-    await Tasks.deleteMany( {taskId: req.body.taskId }, (err) => {
+    await Tasks.deleteOne( {taskId: req.body.taskId }, (err) => {
         if(err) return res.json( {success: false, message: "Task Could not be deleted!"})
 
-        return res.json({success: true, message: "Task deleted Successfully"})
-    })
+        return res.json({success: true, message: "Task deleted Successfully", taskId: req.body.taskId})
+    }).clone()
 }
 
 

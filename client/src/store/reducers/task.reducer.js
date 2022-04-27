@@ -20,7 +20,8 @@ export default function(state = InitialState, action) {
         case types.DELETE_TASK_REQUEST:
             return {...state, isWaiting: true}
         case types.DELETE_TASK_SUCCESS:
-            return {...state, isWaiting: false, statusMessage: action.message}
+            const newTasks = state.tasks.filter(task => task.taskId !== action.data)
+            return {...state, isWaiting: false, statusMessage: action.message, tasks : newTasks}
         case types.DELETE_TASKS_ERROR:
             return {...state, isWaiting: false, statusMessage: action.message}
         // ---- ADD TASKS ----
@@ -30,6 +31,7 @@ export default function(state = InitialState, action) {
             return {...state, isWaiting: false}
         case types.ADD_TASK_ERROR:
             return {...state, isWaiting: false}
+        // ---- UPDATE TASK ----
         case types.UPDATE_TASK_REQUEST:
             return {...state, isWaiting: true}
         case types.UPDATE_TASK_SUCCESS:

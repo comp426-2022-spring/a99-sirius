@@ -18,14 +18,18 @@ const Task = (props) => {
     const[reminder, setReminder] = useState(props.task.reminder)
     const[completed,setCompleted] = useState(props.task.completed)
 
-    async function toggleCompleted(){
+    function toggleCompleted(){
         setCompleted(!completed)
         return props.update({taskId: props.task.taskId, completed: !completed, reminder: reminder})
     }
 
-    async function toggleReminder(){
+    function toggleReminder(){
         setReminder(!reminder)
         return props.update({taskId: props.task.taskId, completed: completed, reminder: !reminder})
+    }
+
+    function onDelete(){
+        return props.delete({taskId: props.task.taskId})
     }
 
     return(
@@ -41,41 +45,43 @@ const Task = (props) => {
                             {!completed ? <CheckBoxOutlineBlankIcon /> : <CheckBoxIcon color="success"/>}
                         </IconButton>
                         <Typography 
-                            component="h6" 
-                            variant="subtitle1"
+                            component="h4" 
+                            variant="h5"
+                            sx={completed ? {textDecoration: "line-through 0.7px"} : {}}
                             flexGrow={1}
                             noWrap
                         > {props.task.name}
                         </Typography>
-                        <FormControlLabel
-                        control={<Switch checked={reminder != null ? reminder : false} color="primary"/>}
-                        label="reminder?"
-                        labelPlacement="start"
-                        onClick={toggleReminder}
-                        >
-                        </FormControlLabel>
                     </Box>
-                    <Box sx={{display: "flex", alignItems: 'center'}}>
+                    <Box sx={{display: "flex", justifyContent: 'space-evenly', alignItems: "center"}}>
+
                         {completed ? <CheckIcon color="success"/> : <MoreHorizIcon/>}
-                        <Typography
-                            variant="subtitle2"
-                            sx={{
-                                p:3,
-                                pr: 1,
-                                pl: 0,
-                                overflow: 'visible',
-                                textAlign: "center",
-                            }}
-                            noWrap
-                            fontSize={15}
-                        > 
-                        {completed ? "completed" : "pending"}
-                        </Typography>
+                            <Typography
+                                variant="h6"
+                                sx={{
+                                    p:3,
+                                    pr: 1,
+                                    pl: 0,
+                                    overflow: 'visible',
+                                    textAlign: "center",
+                                }}
+                                noWrap
+                                fontSize={17}
+                            > 
+                            {completed ? "completed" : "pending"}
+                            </Typography>
+                        <FormControlLabel
+                            control={<Switch size="small" checked={reminder != null ? reminder : false} color="primary"/>}
+                            label="alerts"
+                            labelPlacement="top"
+                            onClick={toggleReminder}
+                            >
+                        </FormControlLabel>
+                        <IconButton color="error" onClick={onDelete}>
+                            <DeleteIcon/>
+                        </IconButton>
                     </Box>
                     
-                    <IconButton color="error">
-                        <DeleteIcon/>
-                    </IconButton>
                 </Grid>
                 <Grid item  xs={12} display='flex' justifyContent={"center"}>
                     <Typography 
