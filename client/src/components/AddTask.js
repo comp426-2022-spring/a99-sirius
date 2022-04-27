@@ -40,6 +40,7 @@ const AddTask = (props) => {
                 </TextField>
                 </Typography>
                     <TextField
+                    margin = "normal"
                     id="Description"
                     label="Please add a description to your task:"
                     multiline
@@ -59,15 +60,7 @@ const AddTask = (props) => {
                     }}
                     />
                     </Typography>
-                    <ToggleButton
-                    value="check"
-                    selected={selected}
-                    onChange={() => {
-                        setSelected(!selected);
-                        }}
-                        >
-                            <CheckIcon />
-                            </ToggleButton>
+
                 </Grid>
                 </Grid>
                 <Box textAlign='center'>
