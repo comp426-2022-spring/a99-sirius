@@ -39,7 +39,7 @@ const Task = (props) => {
                 marginTop: 2,
                 }}>
             <Grid container rowSpacing={1} sx={{paddingTop: 0}}>
-                <Grid item xs={12}sx={{display: 'flex', direction: 'row', overflow: 'hidden', paddingTop: 0}}>
+                <Grid item xs={12}sx={{display: 'flex', direction: 'row', overflow: 'hidden',}}>
                     <Box sx={{display: 'flex', alignItems: 'center', flexGrow: 1}}>
                         <IconButton component="span" onClick={toggleCompleted} >
                             {!completed ? <CheckBoxOutlineBlankIcon /> : <CheckBoxIcon color="success"/>}
