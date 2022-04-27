@@ -34,6 +34,11 @@ const AddTask = (props) => {
                     </TextField>
                 </Grid>
                 </Grid>
+                <Box textAlign='center'>
+                    <Button variant='contained'>
+                        Create Task!
+                         </Button>
+                        </Box>
                 <Button onClick={toggleOpenWindow}>
                 Close
                 </Button>
