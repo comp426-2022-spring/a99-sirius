@@ -34,7 +34,7 @@ const AddTask = (props) => {
         setReminder(!reminder)
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const data = new FormData(event.currentTarget)
@@ -45,7 +45,8 @@ const AddTask = (props) => {
             reminder: reminder,
             completed: false
         }
-        return props.addTask(info)
+        await props.addTask(info)
+        handleClose()
     }
 
     return(
