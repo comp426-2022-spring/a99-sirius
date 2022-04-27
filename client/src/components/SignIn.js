@@ -115,12 +115,13 @@ const Login = (props) => {
                         <GoogleButton/>
                     </Link>
                     <Link
+                        disabled
                         href="/auth/github"
                         sx={{
                             marginTop: 2
                         }}
                     >
-                        <GitHubButton/>
+                        <GitHubButton disabled/>
                     </Link>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
