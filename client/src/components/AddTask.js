@@ -21,6 +21,15 @@ const AddTask = (props) => {
         openWindow(false)
     }
 
+    const getDate = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, "0");
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        return today
+    }
+
     const toggleReminder = () => {
         setReminder(!reminder)
     }
@@ -60,14 +69,17 @@ const AddTask = (props) => {
                 <Grid item xs={5}>
                 <Typography  align="right">
                     <TextField
-                    id="Date"
-                    label="Task Date"
-                    type="date"
-                    size="small"
-                    defaultValue="yyyy-mm-dd"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
+                        id="Date"
+                        label="Task Date"
+                        type="date"
+                        size="small"
+                        required
+                        name="date"
+                        defaultValue={getDate()}
+                        InputLabelProps={{
+                            shrink: true,
+                            max: "2100-01-01"
+                        }}
                     />
                     </Typography>
                     <FormGroup>
