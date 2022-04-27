@@ -72,7 +72,11 @@ const Tasks = (props) => {
                 >
                     <Button>
                         ADD NEW TASK
+<<<<<<< HEAD
                         <AddTask />
+=======
+                        <AddTask/>
+>>>>>>> e48e4ca9e056e974886e17f96d0df5d50e28423f
                     </Button>
                 </Grid>
                 <Grid item xs={8} md={8}>
