@@ -31,7 +31,7 @@ const DashBoard = (props) => {
         <ThemeProvider theme={theme}>
             <Box sx={{ display: 'flex', overflow: 'auto'}}>
                 <Header/>
-                {/* <ChangePass openPasswordDialog={openPasswordDialog} login={props.user.login} setOpenPasswordDialog={setOpenPasswordDialog} props={props}/> */}
+                <ChangePass openPasswordDialog={openPasswordDialog} login={props.user.login} setOpenPasswordDialog={setOpenPasswordDialog} props={props}/>
                 <Box 
                     component="main"
                     sx={{
@@ -51,7 +51,7 @@ const DashBoard = (props) => {
                                         flexDirection: 'column',
                                         height: 240
                                     }}>
-                                    <Tasks/>
+                                    <Tasks tasks={props.tasks.tasks}/>
                                 </Paper>
                             </Grid>
                         </Grid>

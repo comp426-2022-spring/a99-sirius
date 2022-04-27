@@ -50,6 +50,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Tasks = (props) => {
 
+    const {tasks} = props
+
     return(
         <Container 
             component="main"
@@ -84,9 +86,13 @@ const Tasks = (props) => {
             </Grid>
             <Grid container
                 rowSpacing={2}
-                mt={2}>
-                    <Task/>
+                mt={2}
+            >
+                {tasks.map((task, index) => {
+                return <Task key={index} taskInfo={task}/>
+                })}
             </Grid>
+            
         </Container>
     )
 }

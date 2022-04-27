@@ -10,12 +10,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import React from 'react'
 
 
-const Task = (props) => {
+const Task = ({taskInfo}) => {
+
 
     return(
         <Grid item xs={12}
             sx={{backgroundColor: 'red',
-                borderRadius: 2}}>
+                borderRadius: 2,
+                marginTop: 2}}>
             <Grid container spacing={2}>
                 <Grid item xs={12}sx={{display: 'flex', direction: 'row', overflow: 'hidden'}}>
                     <IconButton>
@@ -30,7 +32,7 @@ const Task = (props) => {
                         }}
                         flexGrow={1}
                         noWrap
-                    > Task Name Here
+                    > {taskInfo.name}
                     </Typography>
                     <Typography
                         component="h4"
