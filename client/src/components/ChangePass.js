@@ -77,6 +77,7 @@ const ChangePass = (props) => {
                                 id="newPassword"
                                 label="New Password"
                                 autoFocus
+                                size={"small"}
                                 type={passwordVisibility ? "text" : "password"}
                                 sx={{ marginTop: 1}}
                                 InputProps={{
@@ -92,6 +93,7 @@ const ChangePass = (props) => {
                                 name="confirmPassword"
                                 required
                                 fullWidth
+                                size={"small"}
                                 id="ConfirmPassword"
                                 label="Confirm Password"
                                 type={confirmPasswordVis ? "text" : "password"}

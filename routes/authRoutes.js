@@ -22,7 +22,7 @@ module.exports = (app) => {
 
     // GitHub Auth
     app.get('/auth/github', passport.authenticate('github',
-        { scope: ['profile', 'user:email'] }
+        { scope: ['user:email'] }
     ));
 
     // GitHub callback
