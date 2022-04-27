@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const taskSchema = new Schema({
     taskId: String,
-    user: String,
+    login: String,
     name: String,
     description: String,
     reminder: Boolean,

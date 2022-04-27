@@ -1,31 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import Header from '../components/Header'
 import * as taskActions from '../store/actions/tasks.actions'
 import { changePassword } from '../store/actions/actions'
 import ChangePass from '../components/ChangePass';
-import { Container, Grid, Typography } from '@mui/material'
+import { Container, Grid} from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material'
 import { Box } from '@mui/material'
 import { Toolbar } from '@mui/material'
-import { Paper } from '@mui/material'
-import Task from '../components/MaterialUIDesignComponents/Task'
 import Tasks from '../components/MaterialUIDesignComponents/Tasks'
 
 const theme = createTheme()
 
 const DashBoard = (props) => {
 
-    const {fetched} = props.tasks.fetched
-    const {login} = props.user.login
+    const fetched = props.tasks.fetched
+    const login = props.user.login
     const {fetchTasks} = props
+    const { deleteTask } = props
+    const {addTask } = props
+    const { updateTask } = props
+    const ownPassword = props.user.ownPassword
+    const tasks = props.tasks.tasks
 
-    const[openPasswordDialog, setOpenPasswordDialog] = useState(false)
-
+    const[openPasswordDialog, setOpenPasswordDialog] = useState(ownPassword)
+    
     useEffect(() => {
-        setOpenPasswordDialog(!props.user.ownPassword)
-        fetchTasks(login)
-    },[props.user.ownPassword, login, fetchTasks, fetched])
+        setOpenPasswordDialog(!ownPassword)
+        fetchTasks({login: login})
+    },[ownPassword, fetchTasks, fetched, login, updateTask])
     
     return(
         <ThemeProvider theme={theme}>
@@ -44,15 +47,7 @@ const DashBoard = (props) => {
                     <Container maxWidth="lg" sx={{mt:0, mb: 4}}>
                         <Grid container spacing={3}>
                             <Grid item xs={12} md={8} lg={9} xl={15}>
-                                <Paper
-                                    sx={{
-                                        p:2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240
-                                    }}>
-                                    <Tasks tasks={props.tasks.tasks}/>
-                                </Paper>
+                                <Tasks userTasks={tasks} update={updateTask} add={addTask} delete={deleteTask} />
                             </Grid>
                         </Grid>
                     </Container>

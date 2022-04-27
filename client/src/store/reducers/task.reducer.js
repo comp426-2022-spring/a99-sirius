@@ -30,6 +30,12 @@ export default function(state = InitialState, action) {
             return {...state, isWaiting: false}
         case types.ADD_TASK_ERROR:
             return {...state, isWaiting: false}
+        case types.UPDATE_TASK_REQUEST:
+            return {...state, isWaiting: true}
+        case types.UPDATE_TASK_SUCCESS:
+            return {...state, isWaiting: false}
+        case types.UPDATE_TASK_ERROR:
+            return {...state, isWaiting: false}
         default:
             return state
     }

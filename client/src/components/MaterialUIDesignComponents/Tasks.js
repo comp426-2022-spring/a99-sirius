@@ -3,10 +3,10 @@ import { Container, Grid} from '@mui/material'
 import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
-
 import React from 'react'
 import Task from './Task';
-import AddTask from '../AddTask'
+// import AddTask from '../AddTask'
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -51,7 +51,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Tasks = (props) => {
 
-    const {tasks} = props
+    const userTasks = props.userTasks
 
     return(
         <Container 
@@ -69,7 +69,7 @@ const Tasks = (props) => {
                 <Grid 
                     item xs={3} md={3}
                 >
-                    <Button noWrap>
+                    <Button>
                         ADD NEW TASK
                     </Button>
                 </Grid>
@@ -89,13 +89,13 @@ const Tasks = (props) => {
                 rowSpacing={2}
                 mt={2}
             >
-                {tasks.map((task, index) => {
-                return <Task key={index} taskInfo={task}/>
+                {userTasks.map((task, index) => {
+                return <Task key={index} task={task} delete={props.delete} update={props.update}/>
                 })}
             </Grid>
-            <AddTask/>
         </Container>
     )
 }
+
 
 export default Tasks

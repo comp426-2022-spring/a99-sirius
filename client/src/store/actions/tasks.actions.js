@@ -2,7 +2,6 @@ import axios from 'axios'
 import * as types from '../types'
 
 const fetchTasksRequest = () => {
-    console.log("Now here")
     return { type: types.FETCH_TASKS_REQUEST}
 }
 
@@ -34,6 +33,18 @@ const addTaskSuccess = () => {
 
 const addTaskError = () => {
     return {type: types.ADD_TASK_ERROR}
+}
+
+const updateTaskRequest = () => {
+    return {type: types.UPDATE_TASK_REQUEST}
+}
+
+const updateTaskSuccess = () => {
+    return {type: types.UPDATE_TASK_SUCCESS}
+}
+
+const updateTaskError = () => {
+    return {type: types.UPDATE_TASK_ERROR}
 }
 
 function makeUserRequest(method, data, endpoint){
@@ -123,3 +134,29 @@ export const addTask = (data) => async dispatch => {
     })
 }
 
+export const updateTask = (data) => async dispatch => {
+
+    console.log(data)
+    await dispatch(updateTaskRequest())
+
+    var endpoint = ""
+    if( process.env.NODE_ENV === "production"){
+        endpoint = "/updateTask"
+    }else{
+        endpoint = "http://localhost:5555/updateTask"
+    }
+
+    return makeUserRequest("POST", data, endpoint)
+    .then( response => {
+        if(response.data.success){
+            dispatch(updateTaskSuccess())
+        }else{
+            dispatch(updateTaskError())
+        }
+    })
+    .catch(function (response) {
+        if (response instanceof Error) {
+            console.log("Error", response.message)
+        }
+    })
+}
