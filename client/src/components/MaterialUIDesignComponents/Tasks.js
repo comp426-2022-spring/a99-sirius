@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import React from 'react'
 import Task from './Task';
+import AddTask from '../AddTask'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -92,7 +93,7 @@ const Tasks = (props) => {
                 return <Task key={index} taskInfo={task}/>
                 })}
             </Grid>
-            
+            <AddTask/>
         </Container>
     )
 }
