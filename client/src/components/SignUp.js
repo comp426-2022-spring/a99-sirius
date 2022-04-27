@@ -154,7 +154,7 @@ const SignUp = (props) => {
                                             <li>Be at least 8 characters long</li>
                                             <li>Contain at least one upper case Letter</li>
                                             <li>Contain at least one lower case letter</li>
-                                            <li>Contain at least one numerical chracter</li>
+                                            <li>Contain at least one numerical character</li>
                                             <li>Contain at least one special character</li>
                                         </ul>
                                 </Alert> 
