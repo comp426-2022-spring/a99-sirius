@@ -5,6 +5,7 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import React from 'react'
 import Task from './Task';
+import AddTask from '../AddTask';
 // import AddTask from '../AddTask'
 
 
@@ -71,6 +72,7 @@ const Tasks = (props) => {
                 >
                     <Button>
                         ADD NEW TASK
+                        <AddTask/>
                     </Button>
                 </Grid>
                 <Grid item xs={8} md={8}>
