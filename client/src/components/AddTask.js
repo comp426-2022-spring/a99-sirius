@@ -1,9 +1,10 @@
 import { Button, DialogContent } from '@mui/material'
 import { Dialog } from '@mui/material'
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import { DialogTitle } from '@mui/material'
 import { Box } from '@mui/material'
 import { Grid } from '@mui/material'
+import CheckIcon from '@mui/icons-material/Check';
 import { TextField } from '@mui/material'
 import { Typography } from '@mui/material';
 import { FormGroup } from '@mui/material'
@@ -77,6 +78,19 @@ const AddTask = (props) => {
                         size={"small"}
                     >
                     </TextField>
+                    
+                    <Typography  align="right">
+                    <TextField
+                    id="Date"
+                    label="Task Date"
+                    type="date"
+                    defaultValue="yyyy-mm-dd"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    />
+                    </Typography>
+
                 </Grid>
                 <Grid item xs={12} sx={{display: "flex", justifyContent: "center"}}>
                     <Button type="submit" variant='contained'>
@@ -92,5 +106,4 @@ const AddTask = (props) => {
         </Dialog>
     )
 }
-
 export default AddTask

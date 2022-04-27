@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import { Container, Grid} from '@mui/material'
+import { Container, Grid } from '@mui/material'
 import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
@@ -14,19 +14,19 @@ const Search = styled('div')(({ theme }) => ({
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+        backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: '100%',
+        marginLeft: theme.spacing(3),
+        width: '100%',
     },
 }));
-  
+
 const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, ),
+    padding: theme.spacing(0,),
     height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
@@ -34,20 +34,20 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
 }));
-  
+
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
-      },
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: '20ch',
+        },
     },
-  
+
 }));
 
 const Tasks = (props) => {
@@ -61,36 +61,37 @@ const Tasks = (props) => {
         setAddNewTask(true)
     }
 
-    return(
-        <Container 
+    return (
+        <Container
             component="main"
             sx={{
                 borderRadius: 2,
                 paddingLeft: '0 !important',
                 paddingRight: '0 !important',
             }}
-            
+
         >
             <Grid container sx={{
                 display: 'flex', justifyContent: 'space-evenly'
             }} >
-                <Grid 
+                <Grid
                     item xs={3} md={3}
                 >
                     <Button onClick={handleAddTask}>
                         ADD NEW TASK
+                        <AddTask />
                     </Button>
                 </Grid>
                 <Grid item xs={8} md={8}>
-                <Search sx={{paddingLeft: 0}}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search Task..."
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+                    <Search sx={{ paddingLeft: 0 }}>
+                        <SearchIconWrapper>
+                            <SearchIcon />
+                        </SearchIconWrapper>
+                        <StyledInputBase
+                            placeholder="Search Task..."
+                            inputProps={{ 'aria-label': 'search' }}
+                        />
+                    </Search>
                 </Grid>
             </Grid>
             <Grid container
@@ -98,7 +99,7 @@ const Tasks = (props) => {
                 mt={2}
             >
                 {userTasks.map((task, index) => {
-                return <Task key={index} task={task} delete={props.delete} update={props.update}/>
+                    return <Task key={index} task={task} delete={props.delete} update={props.update} />
                 })}
             </Grid>
             <AddTask open={addNewTask} openWindow={setAddNewTask} addTask={props.add} login={login}/>
