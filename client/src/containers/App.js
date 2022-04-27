@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route} from 'react-router-dom'
+import { Route, Switch} from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../store/actions/actions'
 import {Redirect} from 'react-router-dom'
@@ -19,18 +19,29 @@ class App extends Component {
         return (
             <div>
                 {this.props.auth.authenticated ? <Redirect to={"/dashboard/" + this.props.auth.user.login}/> : <></>}
-                <Route exact path="/login">
-                    <SignInContainer/>
-                </Route>
-                <Route exact path="/">
-                    <SignUpContainer/>
-                </Route>
-                <Route path="/dashboard">
-                    <DashBoard/>
-                </Route>
+                <Switch>
+                    <Route exact path="/login">
+                        <SignInContainer/>
+                    </Route>
+                    <Route path="/dashboard">
+                        <ProtectedRoute redirectPath={"/"} authenticated={this.props.auth.authenticated}>
+                            <DashBoard />
+                        </ProtectedRoute>
+                    </Route>
+                    <Route path="/">
+                        <SignUpContainer/>
+                    </Route>
+                </Switch>
             </div>
         );
     }
+}
+
+const ProtectedRoute = ({children, redirectPath, authenticated}) => {
+    if(!authenticated){
+        return <Redirect to={redirectPath}/>
+    }
+    return children
 }
 
 function mapStateToProps({ auth }) {
