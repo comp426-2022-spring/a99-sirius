@@ -28,7 +28,9 @@ export default function(state = InitialState, action) {
         case types.ADD_TASK_REQUEST:
             return {...state, isWaiting: true}
         case types.ADD_TASK_SUCCESS:
-            return {...state, isWaiting: false}
+            const tasks = state.tasks
+            tasks.unshift(action.data)
+            return {...state, isWaiting: false, tasks: tasks}
         case types.ADD_TASK_ERROR:
             return {...state, isWaiting: false}
         // ---- UPDATE TASK ----

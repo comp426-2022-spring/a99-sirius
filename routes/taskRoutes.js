@@ -7,7 +7,7 @@ module.exports = (app) => {
 
     app.post("/deleteTask", tasks.deleteTask)
 
-    // app.post("/addTask", tasks.addTask)
+    app.post("/addTask", tasks.addTask)
 
     app.post("/updateTask", tasks.update)
 }

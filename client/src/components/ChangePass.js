@@ -64,7 +64,7 @@ const ChangePass = (props) => {
 
     return(
         <Dialog open={openPasswordDialog}>
-            <DialogTitle>Set Up Account Password</DialogTitle>
+            <DialogTitle textAlign="center">Set Up Account Password</DialogTitle>
             <DialogContent>
                 <Box component="form" onSubmit={handleSubmit}>
                     <Grid container width={350}>

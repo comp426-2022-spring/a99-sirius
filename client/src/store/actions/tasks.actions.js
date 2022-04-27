@@ -27,8 +27,8 @@ const deleteTaskError = () => {
 const addTaskRequest = () => {
     return {type: types.ADD_TASK_REQUEST}
 }
-const addTaskSuccess = () => {
-    return {type: types.ADD_TASK_SUCCESS}
+const addTaskSuccess = (task) => {
+    return {type: types.ADD_TASK_SUCCESS, data: task}
 }
 
 const addTaskError = () => {
@@ -126,7 +126,8 @@ export const addTask = (data) => async dispatch => {
     return makeUserRequest("POST", data, endpoint)
     .then( response => {
         if(response.data.success){
-            dispatch(addTaskSuccess())
+            console.log(response.data.task)
+            dispatch(addTaskSuccess(response.data.task))
         }else{
             dispatch(addTaskError())
         }

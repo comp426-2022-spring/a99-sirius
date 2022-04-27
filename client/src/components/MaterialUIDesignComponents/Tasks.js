@@ -3,9 +3,10 @@ import { Container, Grid} from '@mui/material'
 import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
-import React from 'react'
+import React, { useState }from 'react'
 import Task from './Task';
-// import AddTask from '../AddTask'
+import AddTask from '../AddTask'
+import { useEffect } from 'react';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -52,6 +53,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Tasks = (props) => {
 
     const userTasks = props.userTasks
+    const login = props.login
+
+    const[addNewTask, setAddNewTask] = useState(false)
+
+    function handleAddTask(){
+        setAddNewTask(true)
+    }
 
     return(
         <Container 
@@ -69,7 +77,7 @@ const Tasks = (props) => {
                 <Grid 
                     item xs={3} md={3}
                 >
-                    <Button>
+                    <Button onClick={handleAddTask}>
                         ADD NEW TASK
                     </Button>
                 </Grid>
@@ -93,6 +101,7 @@ const Tasks = (props) => {
                 return <Task key={index} task={task} delete={props.delete} update={props.update}/>
                 })}
             </Grid>
+            <AddTask open={addNewTask} openWindow={setAddNewTask} addTask={props.add} login={login}/>
         </Container>
     )
 }
