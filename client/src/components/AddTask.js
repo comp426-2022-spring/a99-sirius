@@ -8,17 +8,20 @@ import CheckIcon from '@mui/icons-material/Check';
 import { TextField } from '@mui/material'
 import { Typography } from '@mui/material';
 import { ToggleButton } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
+import { spacing } from '@mui/system';
 
 
 const AddTask = (props) => {
+    const [value, setValue] = React.useState(null);
 
     const[openWindow, setOpenWindow] = useState(true)
-
 
     const toggleOpenWindow = () => {
         setOpenWindow(!openWindow)
     }
     const [selected, setSelected] = React.useState(false);
+
     return(
         <Dialog open={openWindow}>
             <DialogTitle textAlign="center">Add a new Task</DialogTitle>
@@ -44,13 +47,18 @@ const AddTask = (props) => {
                     fullWidth
                     >
                     </TextField>
-
-
+                    
                     <Typography  align="right">
-
-                        </Typography>
-
-
+                    <TextField
+                    id="Date"
+                    label="Task Date"
+                    type="date"
+                    defaultValue="2022-04-27"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    />
+                    </Typography>
                     <ToggleButton
                     value="check"
                     selected={selected}
