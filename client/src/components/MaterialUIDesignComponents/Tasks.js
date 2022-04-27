@@ -6,7 +6,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import React from 'react'
 import Task from './Task';
 import AddTask from '../AddTask';
-// import AddTask from '../AddTask'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -72,11 +71,7 @@ const Tasks = (props) => {
                 >
                     <Button>
                         ADD NEW TASK
-<<<<<<< HEAD
                         <AddTask />
-=======
-                        <AddTask/>
->>>>>>> e48e4ca9e056e974886e17f96d0df5d50e28423f
                     </Button>
                 </Grid>
                 <Grid item xs={8} md={8}>
