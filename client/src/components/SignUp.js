@@ -39,11 +39,16 @@ const SignUp = (props) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget)
         var info = {
-            login: data.get("username"),
-            email: data.get("email"),
+            login: data.get("username").split("@")[0].toLowerCase(),
+            email: data.get("email").toLowerCase(),
             firstName: data.get("firstName"),
             lastName: data.get("lastName"),
             password: data.get("password")
+        }
+        if(!validEmail.test(info.email)){
+            setSignUpMessage("Invalid Email")
+            setEmailError(true)
+            return
         }
         if(validPassword.test(info.password)){
             props.signUp(info)
@@ -61,6 +66,9 @@ const SignUp = (props) => {
         '(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}:;<>,.?~_+-=|]).{8,32}'
     )
 
+    const validEmail = new RegExp(
+        '^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$'
+    )
 
     return(
         <ThemeProvider theme={theme}>
