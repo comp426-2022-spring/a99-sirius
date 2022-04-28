@@ -36,7 +36,7 @@ const Login = (props) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget)
         
-        props.login({username: data.get("username").split("@")[0], password: data.get("password")})
+        props.login({username: data.get("username").split("@")[0].toLowerCase(), password: data.get("password")})
         .then(loginMessage => {
             setLoginError(true)
             setLoginMessage(loginMessage)
