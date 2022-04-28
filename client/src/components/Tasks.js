@@ -5,7 +5,7 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import React, { useState }from 'react'
 import Task from './Task';
-import AddTask from '../AddTask'
+import AddTask from './AddTask'
 import { useEffect } from 'react';
 
 

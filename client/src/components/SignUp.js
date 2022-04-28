@@ -180,7 +180,7 @@ const SignUp = (props) => {
                             <Grid container justifyContent="flex-end">
                                 <Grid item>
                                     <Link href="/login" variant="body2">
-                                        Already have an account? Sign in
+                                        Already have an account? Sign In
                                     </Link>
                                 </Grid>
                             </Grid>
@@ -191,7 +191,7 @@ const SignUp = (props) => {
                         sx={{
                             marginTop: 3
                         }}>
-                        <GoogleButton/>
+                        <GoogleButton label="Sign Up with Google"/>
                     </Link>
                     <Link
                         disabled
@@ -200,7 +200,7 @@ const SignUp = (props) => {
                             marginTop: 2
                         }}
                     >
-                        <GitHubButton disabled/>
+                        <GitHubButton label="Sign Up with Github" disabled/>
                     </Link>
                 </Box>
                 <Copyright sx={{mt: 8, mb: 4}}/>
