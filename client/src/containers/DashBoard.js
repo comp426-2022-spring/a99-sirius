@@ -14,21 +14,27 @@ const theme = createTheme()
 
 const DashBoard = (props) => {
 
-    const fetched = props.tasks.fetched
     const login = props.user.login
     const {fetchTasks} = props
     const { deleteTask } = props
     const {addTask } = props
     const { updateTask } = props
-    const ownPassword = props.user.ownPassword
     const tasks = props.tasks.tasks
+    const[fetched, setFetched] = useState(props.tasks.fetched)
+    const[openPasswordDialog, setOpenPasswordDialog] = useState(!props.ownPassword)
 
-    const[openPasswordDialog, setOpenPasswordDialog] = useState(ownPassword)
-    
+    const handleLoad = (fetched) => {
+        if(!fetched){
+            setFetched(true)
+            fetchTasks({login: login})
+        }else{
+            return 
+        }
+    }
+
     useEffect(() => {
-        setOpenPasswordDialog(!ownPassword)
-        fetchTasks({login: login})
-    },[ownPassword, fetchTasks, fetched, login, updateTask])
+        handleLoad(fetched)
+    })
     
     return(
         <ThemeProvider theme={theme}>

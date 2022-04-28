@@ -25,7 +25,7 @@ class App extends Component {
                     </Route>
                     <Route path="/dashboard">
                         <ProtectedRoute redirectPath={"/"} authenticated={this.props.auth.authenticated}>
-                            <DashBoard />
+                            <DashBoard ownPassword={this.props.auth.user.ownPassword} />
                         </ProtectedRoute>
                     </Route>
                     <Route path="/">
