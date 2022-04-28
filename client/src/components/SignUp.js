@@ -174,7 +174,7 @@ const SignUp = (props) => {
                                     fullWidth
                                     variant="contained"
                                     sx={{mt: 1, mb: 2}}
-                                > Sign In
+                                > Sign Up
                                 </Button>
                             </Grid>
                             <Grid container justifyContent="flex-end">
