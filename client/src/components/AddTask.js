@@ -54,8 +54,8 @@ const AddTask = (props) => {
             <DialogTitle textAlign="center">Add New Task</DialogTitle>
             <DialogContent>
             <Box component="form" marginTop={1} onSubmit={handleSubmit}>
-            <Grid container rowSpacing={2}>
-                <Grid item xs={7} >
+            <Grid container columnSpacing={2} rowSpacing={2}>
+                <Grid item xs={12} md={7} >
                     <TextField
                     id='TaskName'
                     label="Task Name:"
@@ -67,31 +67,31 @@ const AddTask = (props) => {
                     >
                     </TextField>
                 </Grid>
-                <Grid item xs={5}>
-                <Typography  align="right">
-                    <TextField
-                        id="Date"
-                        label="Task Date"
-                        type="date"
-                        size="small"
-                        required
-                        name="date"
-                        defaultValue={getDate()}
-                        InputLabelProps={{
-                            shrink: true,
-                            max: "2100-01-01"
-                        }}
-                    />
-                    </Typography>
-                    <FormGroup>
-                        <FormControlLabel 
-                            size="small" 
-                            labelPlacement="start" 
-                            control={<Switch/>} 
-                            label="Set Reminder"
-                            onClick={toggleReminder}
+                <Grid item xs={9} md={5}>
+                    <Box container display={"flex"} flexDirection="column">
+                        <TextField
+                            id="Date"
+                            label="Task Date"
+                            type="date"
+                            size="small"
+                            required
+                            name="date"
+                            defaultValue={getDate()}
+                            InputLabelProps={{
+                                shrink: true,
+                                max: "2100-01-01"
+                            }}
                         />
-                    </FormGroup>
+                        <FormGroup>
+                            <FormControlLabel 
+                                size="small" 
+                                labelPlacement="start" 
+                                control={<Switch/>} 
+                                label="Set Reminder"
+                                onClick={toggleReminder}
+                            />
+                        </FormGroup>
+                    </Box>
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
