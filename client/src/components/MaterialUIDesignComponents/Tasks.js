@@ -79,7 +79,6 @@ const Tasks = (props) => {
                 >
                     <Button onClick={handleAddTask}>
                         ADD NEW TASK
-                        <AddTask />
                     </Button>
                 </Grid>
                 <Grid item xs={8} md={8}>
