@@ -233,6 +233,5 @@ Response:
         ownPassword: true,
         __v: 0
     }
-}
-    
+}  
 ````
