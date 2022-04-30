@@ -5,11 +5,13 @@ import { Box } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import CheckIcon from '@mui/icons-material/Check';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { FormControlLabel } from '@mui/material';
 import { Switch } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import TextField from '@mui/material/TextField';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 
 
@@ -17,6 +19,8 @@ const Task = (props) => {
 
     const[reminder, setReminder] = useState(props.task.reminder)
     const[completed,setCompleted] = useState(props.task.completed)
+    const[color, setColor] = useState("")
+    const [value, setValue] = React.useState(null);
 
     function toggleCompleted(){
         setCompleted(!completed)
@@ -31,6 +35,24 @@ const Task = (props) => {
     function onDelete(){
         return props.delete({taskId: props.task.taskId})
     }
+ 
+    useEffect(() => {
+        priorityColor(props.task.priority)
+    })
+    
+
+    function priorityColor(priority = props.task.priority){
+        switch (priority){
+            case "high":
+               return setColor("red")
+            case "low":
+                return setColor("dark-green")
+            case "medium":
+                return setColor("orange")
+            default:
+                return 
+        }
+    }
 
     return(
         <Grid item xs={12}
@@ -39,37 +61,23 @@ const Task = (props) => {
                 marginTop: 2,
                 }}>
             <Grid container rowSpacing={1} sx={{paddingTop: 0}}>
-                <Grid item xs={12}sx={{display: 'flex', direction: 'row', overflow: 'hidden',}}>
+                <Grid item xs={12}sx={{display: 'flex', direction: 'row', overflow: 'hidden', paddingTop: "0px !important"}}>
                     <Box sx={{display: 'flex', alignItems: 'center', flexGrow: 1}}>
-                        <IconButton component="span" onClick={toggleCompleted} >
+                        <IconButton sx={{paddingBottom: "10px"}} component="span" onClick={toggleCompleted} >
                             {!completed ? <CheckBoxOutlineBlankIcon /> : <CheckBoxIcon color="success"/>}
                         </IconButton>
                         <Typography 
-                            component="h4" 
-                            variant="h5"
-                            sx={completed ? {textDecoration: "line-through 0.7px"} : {}}
+                            component="h6" 
+                            variant="h6"
                             flexGrow={1}
-                            noWrap
+                            fontSize="20px"
                         > {props.task.name}
                         </Typography>
                     </Box>
                     <Box sx={{display: "flex", justifyContent: 'space-evenly', alignItems: "center"}}>
-
-                        {completed ? <CheckIcon color="success"/> : <MoreHorizIcon/>}
-                            <Typography
-                                variant="h6"
-                                sx={{
-                                    p:3,
-                                    pr: 1,
-                                    pl: 0,
-                                    overflow: 'visible',
-                                    textAlign: "center",
-                                }}
-                                noWrap
-                                fontSize={17}
-                            > 
-                            {completed ? "completed" : "pending"}
-                            </Typography>
+                        <Typography style={{color: color}}>
+                            {props.task.priority}
+                        </Typography>
                         <FormControlLabel
                             control={<Switch size="small" checked={reminder != null ? reminder : false} color="primary"/>}
                             label="alerts"
@@ -81,15 +89,15 @@ const Task = (props) => {
                             <DeleteIcon/>
                         </IconButton>
                     </Box>
-                    
                 </Grid>
                 <Grid item  xs={12} display='flex' justifyContent={"center"}>
-                    <Typography 
+                <Typography 
                         component="h6"
                         variant="subtitle1"
                     >
-                         Description
+                         Description:
                     </Typography>
+
                 </Grid>
                 <Grid item xs={12}>
                 <Typography 

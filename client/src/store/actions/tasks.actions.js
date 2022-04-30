@@ -139,8 +139,6 @@ export const addTask = (data) => async dispatch => {
 }
 
 export const updateTask = (data) => async dispatch => {
-
-    console.log(data)
     await dispatch(updateTaskRequest())
 
     var endpoint = ""
