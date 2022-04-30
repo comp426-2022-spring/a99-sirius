@@ -2,9 +2,12 @@
 
 ### Dependency Lists
 **Please install all dependencies in the _client directory_ by doing the following:
-`cd client`
------------
-`npm install (dependency name)`
+
+`cd client`  
+
+
+`npm install (dependency name)`  
+
 
 
 | Dependencies                |  Version      |
