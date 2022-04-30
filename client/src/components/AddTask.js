@@ -4,12 +4,12 @@ import React, { useState } from 'react'
 import { DialogTitle } from '@mui/material'
 import { Box } from '@mui/material'
 import { Grid } from '@mui/material'
-import CheckIcon from '@mui/icons-material/Check';
 import { TextField } from '@mui/material'
 import { Typography } from '@mui/material';
 import { FormGroup } from '@mui/material'
 import { FormControlLabel } from '@mui/material'
 import { Switch } from '@mui/material'
+import BasicDateTimePicker from './To-do/DateTimePicker'
 
 const AddTask = (props) => {
 
@@ -19,15 +19,6 @@ const AddTask = (props) => {
 
     function handleClose() {
         openWindow(false)
-    }
-
-    const getDate = () => {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, "0");
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
-        today = yyyy + '-' + mm + '-' + dd;
-        return today
     }
 
     const toggleReminder = () => {
@@ -69,19 +60,20 @@ const AddTask = (props) => {
                 </Grid>
                 <Grid item xs={9} md={5}>
                     <Box container display={"flex"} flexDirection="column">
-                        <TextField
+                        <BasicDateTimePicker />
+                        {/* <TextField
                             id="Date"
                             label="Task Date"
                             type="date"
                             size="small"
                             required
                             name="date"
-                            defaultValue={getDate()}
+                            defaultValue={}
                             InputLabelProps={{
                                 shrink: true,
                                 max: "2100-01-01"
                             }}
-                        />
+                        /> */}
                         <FormGroup>
                             <FormControlLabel 
                                 size="small" 

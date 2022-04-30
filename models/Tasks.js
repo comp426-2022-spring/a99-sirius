@@ -8,6 +8,8 @@ const taskSchema = new Schema({
     description: String,
     reminder: Boolean,
     completed: Boolean,
+    priority: String,
+    dueDate: String,
 })
 
 mongoose.model('tasks', taskSchema)
