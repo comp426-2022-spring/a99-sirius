@@ -40,7 +40,7 @@ const Task = (props) => {
             case "high":
                return setColor("red")
             case "low":
-                return setColor("dark-green")
+                return setColor("green")
             case "medium":
                 return setColor("orange")
             default:
