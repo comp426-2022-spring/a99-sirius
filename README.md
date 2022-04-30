@@ -16,9 +16,8 @@ This github repository contains the code for a simple task management web applic
     
 2. Access the client directory and install all dependencies
 
-     `cd/client 
-     
-     npm install/`
+     `cd/client`
+     `npm install/`
    
 3. Go back to the main riectory and run the following command:
 
