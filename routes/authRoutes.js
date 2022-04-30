@@ -7,14 +7,14 @@ module.exports = (app) => {
     app.get('/auth/google', passport.authenticate('google',
         { scope: ['profile', 'email'] }
     ), (req, res) => {
-        res.json({ success: true })
+        res.status(200).json({ success: true })
     })
 
     // Google Callback
     app.get('/auth/google-token',
         passport.authenticate('google', { failureRedirect: '/login' }),
         (req, res) => {
-            res.redirect("/")
+            res.status(200).redirect("/")
         }
     );
 
@@ -29,7 +29,7 @@ module.exports = (app) => {
     app.get('/auth/github-token',
         passport.authenticate('github', { failureRedirect: '/login' }),
         (req, res) => {
-            res.redirect("/")
+            res.status(200).redirect("/")
         }
     )
 
@@ -40,14 +40,14 @@ module.exports = (app) => {
         passport.authenticate('local', function(err, user, info) {
             if(err) return next(err)
             if(!user) {
-                return res.json({ success : false, message: info.message })
+                return res.status(200).json({ success : false, message: info.message })
             }
             req.logIn(user, loginErr => {
                 if(loginErr) {
                     
-                    return res.json({ success: false,  message: loginErr})
+                    return res.status(200).json({ success: false,  message: loginErr})
                 }
-                return res.json( {success: true, user: user, message: "authenticate succeeded"})
+                return res.status(200).json( {success: true, user: user, message: "authenticate succeeded"})
             })
         })(req, res, next)
     })
@@ -60,7 +60,7 @@ module.exports = (app) => {
     // Logout
     app.get('/logout', (req, res) => {
         req.logout() 
-        res.redirect('/')
+        res.status(200).redirect('/')
     })
 
     // Change Password
@@ -69,6 +69,6 @@ module.exports = (app) => {
 
     // Current User
     app.get('/user', (req, res) => {
-        res.send(req.user)
+        res.status(200).send(req.user)
     })
 }

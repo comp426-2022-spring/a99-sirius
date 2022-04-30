@@ -84,13 +84,13 @@ exports.register = function(req, res) {
     User.findOne({ email: req.body.email }, (err, user) =>{
         // verify if email address already in use
         if(user) {
-            res.json({ success: false, message: "Email already in use", emailError: true, usernameError: false})
+            res.status(200).json({ success: false, message: "Email already in use", emailError: true, usernameError: false})
             return
         }
         else{
             User.findOne( {login: req.body.login}, (err, user) => {
                 if(user) {
-                    res.json({ success: false, message: "Username already in use" , usernameError: true, emailError: false})
+                    res.status(200).json({ success: false, message: "Username already in use" , usernameError: true, emailError: false})
                     return
                 }
                 else{
@@ -106,9 +106,9 @@ exports.register = function(req, res) {
                     User.create(newData, (err) => {
                         if(err){
                             console.error(err)
-                            res.json({ success: false})
+                            res.status(200).json({ success: false})
                         }
-                        res.json({success: true, user: newData, message: "Authentication succeeded"})
+                        res.status(200).json({success: true, user: newData, message: "Authentication succeeded"})
                         return
                     })
                 }
@@ -123,7 +123,7 @@ exports.changePassword = async function (req, res) {
     const new_password = passwordHash.generate(req.body.password)
     let doc = await User.findOneAndUpdate({ login : req.body.login}, {password: new_password, ownPassword: true}, {returnOriginal: false})
     if(doc){
-        return res.json({success: true, user : doc})
+        return res.status(200).json({success: true, user : doc})
     }
 }
 
