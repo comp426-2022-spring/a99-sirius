@@ -39,7 +39,8 @@ This github repository contains the code for a simple task management web applic
 
 ## Databases Schemas and Connection
 Sirius integrated `MongoDB` to manage database connections for the application. `MongoDB` is a NoSQL document database with scalability and flexibility to store data in JSON-like documents.  
-Whenever a user log-in or sign-up for the application locally or through Google/Github authentication, the information will be sent to the Sirius database to store the information of the users. This will allow users to reset their password or change their password later since their information will be stored inside the database. 
+  
+More documentation regarding the database can be found [here](./docs/Database.md)
 
 ## Project Goals
 Create a task management application.
@@ -66,36 +67,7 @@ MIT License is a short and simple permissive license with conditions only requir
   
   * The license can be found in [LICENSE](./LICENSE)
 
-## Stages 
-* Backend Design
-* Databases Schemas and Connection
-* Backend Implementation
-* Front End Design
-* Backend / Front End Connection
-* CSS for styling
+## Sirius DEVELOPMENT TEAM
+The Sirius Project concluded team members from Team Sirius in COMP 426: Modern Web Programming at University of North Carolina at Chapel Hill.  
+Below is the link to the contributors and roles of each individuals for the project.
 
-
-
-## Team mangement
-
-Plan to meet with your team ASAP.
-Talk through identifying roles within your team.
-
-Try to figure out what each of you are good at/enjoy doing and try to work out roles that incorporate that.
-
-Some basic roles you will want to consider:
-
-1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions
-2. A plan manager - someone to keep an eye on the overall plan and keep the project tab/to-do list up to date
-3. A documentation manager - someone to keep the documentation in order and identify what is missing and needs to be documented
-4. A release manager - someone to manage the packaging and release process for your prototype package
-5. A project manager - someone keeping track of all the moving parts and make sure that everything that needs to happen is happening.
-5. Roles for team members to take charge or different parts of the project. Possible roles:
-    1. Front end lead
-    2. Back end lead
-    3. Database lead
-    4. Design lead
-    5. Etc.
-
-You will notice that there are more roles than people in your group.
-That is because you will all be doing a hybrid job of managing a thing while working on other things.
