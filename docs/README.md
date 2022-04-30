@@ -17,7 +17,7 @@ Below is a direct link to the API Endpoints for Authentication Routes.
 ## Database API Endpoints
 Below is a direct link to the Database API Endpoints
   
-* [Database](./endpoints/Database.md)
+* [Database](./database/Database.md)
 
 
 ## Task Routes API Endpoints
