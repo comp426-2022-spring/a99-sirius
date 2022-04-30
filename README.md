@@ -15,11 +15,11 @@ This github repository contains the code for a simple task management web applic
 
 ### To run the application locally:
 
-1. Open your terminal and run the following command to install server dependencies:
+1. Open your terminal and run the following command to install server dependencies[^1]:
 
      `npm install --`
     
-2. Access the client directory and install all dependencies
+2. Access the client directory and install all dependencies[^1]:
 
      `cd/client`
      
@@ -34,24 +34,37 @@ This github repository contains the code for a simple task management web applic
 4. The client side will be running on port : http://localhost:3000.  
    The server will be running on port : http://localhost:5555. 
 
+[^1]: All dependencies for server and client will be listed inside `docs` directory.
+
+
+## Databases Schemas and Connection
+Sirius integrated `MongoDB` to manage database connections for the application. `MongoDB` is a NoSQL document database with scalability and flexibility to store data in JSON-like documents.  
+Whenever a user log-in or sign-up for the application locally or through Google/Github authentication, the information will be sent to the Sirius database to store the information of the users. This will allow users to reset their password or change their password later since their information will be stored inside the database. 
+
 ## Project Goals
-Create a task managent application.
+Create a task management application.
 
 This will include:
 * Creating an account locally.
-* Signing in through Google/Github *Note: GitHub Authentication in production enviroment will be disabled*
-* If singing in with Google/Github the user will be able to set his own password.
+* Signing in through Google/Github *Note: GitHub Authentication in production environment will be disabled*
+* If signing in with Google/Github, the user will have an opportunity to set their own password.
 * Signing into the application locally.
-* Connecting a database in order to store/authenticate logging information.
-* Connection a database to fetch user tasks and task status.
+* Connecting to a database in order to store/authenticate logging information.
+* Connection to a database to fetch user tasks and task status.
 * Allow users to create/remove tasks.
-* Allow user to modify task status and toggle reminders.
+* Allow users to modify the task status and toggle reminders.
 
-Future Implementations might include:
-* Implement a Calendar API Future Impplementation
-* Allow users to collaborate on tasks
-* Give the users the ability to add other users
-* Add time's to complete certain tasks
+Future Implementations will include:
+* Implementing a Calendar API in Dashboard for users to have an overall view of all tasks in a calendar view.
+* Allow users to collaborate on tasks with other users of the application.
+* Give users the ability to add other users
+* Add a specific timeline to complete certain tasks
+
+## License
+* The license that was used for Sirius Project was MIT License.  
+MIT License is a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.  
+  
+  * The license can be found in [LICENSE](./LICENSE)
 
 ## Stages 
 * Backend Design
@@ -62,19 +75,6 @@ Future Implementations might include:
 * CSS for styling
 
 
-## First steps
-
-Other steps that you will need to take after your team has accepted the assignment:
-
-1. Choose a license and update the LICENSE file accordingly. 
-2. Edit this README.md file and use it as the main location of your technical documentation with links out to information contained under `/docs/`.
-3. Create a `/docs/` directory for more elaborate documentation of your API, planning notes, etc.
-4. Make sure that all of your team members have access to the repository as administrators.
-5. Create a project under the **Projects** tab. Use this to manage your planning. Create a To-do list, etc. Explore the tools available and user them to manage your project.
-7. Assign team roles and include a listing of those roles in this README.md file or in another file under `/docs/`.
-8. Then put your entire development workflow in this repository.
-9. Use **Pull requests** to propose changes and incorporate them into your code from various team members. 
-10. Use **Issues** to identify and track bugs and also to communicate about various aspects of the project.
 
 ## Team mangement
 
@@ -99,15 +99,3 @@ Some basic roles you will want to consider:
 
 You will notice that there are more roles than people in your group.
 That is because you will all be doing a hybrid job of managing a thing while working on other things.
-
-## Check in with instructional staff
-
-Schedule a few times throughout the rest of the semester for your team to check-in with your assigned instructional staff member during their scheduled office hours. 
-
-## Assignment instructions
-
-And that is about all you need to get started.
-
-All the rest of the assignment instructions are available at: https://comp426.johndmart.in/a/99
-
-Good skill and be creative!
