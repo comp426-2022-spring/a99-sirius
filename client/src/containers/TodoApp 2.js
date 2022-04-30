@@ -32,10 +32,17 @@ function TodoApp() {
 
     return (
         <div className="App">
+<<<<<<< Updated upstream
             <header>
                 <h1>COMP 426 : To do List</h1>
             </header>
             <Form
+=======
+            <header className="TodoHeader">
+                <h1>COMP 426 : To do List</h1>
+            </header>
+            <Form className="TodoForm"
+>>>>>>> Stashed changes
                 inputText={inputText}
                 todos={todos}
                 setTodos={setTodos}

@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import * as UserActions from '../store/actions/actions'
 import SignUp from '../components/SignUp'
 
+<<<<<<< Updated upstream
 const mapStateToProps = (state, ownProps) => {
 
     let nextPathname = "/"
@@ -15,6 +16,11 @@ const mapStateToProps = (state, ownProps) => {
     return {
         user: state.user,
         nextPathname
+=======
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+>>>>>>> Stashed changes
     }
 }
 

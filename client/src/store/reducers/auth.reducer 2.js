@@ -3,7 +3,12 @@ import * as types from "../types"
 const InitialState = {
     isWaiting: false,
     authenticated: false,
+<<<<<<< Updated upstream
     user : {}
+=======
+    user : {
+    }
+>>>>>>> Stashed changes
 }
 
 export default function(state = InitialState, action) {
@@ -25,6 +30,10 @@ export default function(state = InitialState, action) {
             return { ...state, isWaiting: true }
         case types.LOGIN_USER_SUCCESS:
             return {
+<<<<<<< Updated upstream
+=======
+                ...state,
+>>>>>>> Stashed changes
                 isWaiting : false,
                 authenticated: true,
                 user: action.data
@@ -53,6 +62,14 @@ export default function(state = InitialState, action) {
                 isWaiting: false,
                 user: ""
             }
+<<<<<<< Updated upstream
+=======
+        // ---- CHANGE_PASSWORD ----
+        case types.CHANGE_PASSWORD_REQUEST:
+            return {...state, isWaiting: true}
+        case types.CHANGE_PASSWORD_SUCCESS:
+            return {...state, isWaiting: false, user: action.data}
+>>>>>>> Stashed changes
         // ---- DEFAULT ----
         default:
             return state
