@@ -41,16 +41,21 @@ Rough template of the app can be found below:
 
 <img width="461" alt="Screen Shot 2022-04-04 at 5 07 33 PM" src="https://user-images.githubusercontent.com/89430088/161632522-db10d3a1-c21e-4213-8a86-b40541c50af2.png">
 
-## Project Goal
+## Project Goals
 Create a task managent application.
 
 This will include:
-* Signing in through Google/Github
-* Creating an account locally
-* Connecting a database in order to store/authenticate logging information
-* Allow users to create/remove tasks
-* Implement a Calendar API
-Advanced implementations to improve this:
+* Creating an account locally.
+* Signing in through Google/Github *Note: GitHub Authentication in production enviroment will be disabled*
+* If singing in with Google/Github the user will be able to set his own password.
+* Signing into the application locally.
+* Connecting a database in order to store/authenticate logging information.
+* Connection a database to fetch user tasks and task status.
+* Allow users to create/remove tasks.
+* Allow user to modify task status and toggle reminders.
+
+Future Implementations might include:
+* Implement a Calendar API Future Impplementation
 * Allow users to collaborate on tasks
 * Give the users the ability to add other users
 * Add time's to complete certain tasks
