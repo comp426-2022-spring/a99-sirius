@@ -32,3 +32,8 @@ Our application uses a MONGO DB URI to connect remotely, notice that these keys 
     dueDate: String,
 ````
 
+### Additional Resources
+
+1. <a href="https://www.mongodb.com">Mongo DB</a>
+2. <a href="https://mongoosejs.com">mongoose</a>
+
