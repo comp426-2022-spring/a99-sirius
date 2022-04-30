@@ -4,7 +4,7 @@
 **Please install all dependencies in the _root directory_ by using:**
 
 `npm install (dependency name)`  
-  
+
   
 | Dependencies                |  Version    |
 | ----------------------------|:-----------:|

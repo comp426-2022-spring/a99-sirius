@@ -15,13 +15,13 @@ This github repository contains the code for a simple task management web applic
 
 ### To run the application locally:
 
-1. Open your terminal and run the following command to install server *dependencies*:
+1. Open your terminal and run the following command to install [server dependencies](./docs/dependencies/serverDependency.md):
 
      `npm install --`
     
-2. Access the client directory and install all *dependencies*:
+2. Access the client directory and install all [client dependencies](./docs/dependencies/clientDependency.md):
 
-     `cd/client
+     `cd client
      
      `npm install --`
    
