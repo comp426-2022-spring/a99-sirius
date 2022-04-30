@@ -40,15 +40,14 @@ This github repository contains the code for a simple task management web applic
 
 5. **All dependencies for server and client will be listed inside `/docs/dependencies` directory.**
 
+## Project Documentation
+
+Documentation regarding our project's structure and design can be found [here](./docs/README.md)
 
 ## Databases Schemas and Connection
 Sirius integrated `MongoDB` to manage database connections for the application. `MongoDB` is a NoSQL document database with scalability and flexibility to store data in JSON-like documents.  
   
 More documentation regarding the database can be found [here](./docs/database/Database.md)
-
-## Project Documentation
-
-Documentation regarding our project's structure and design can be found [here](./docs/README.md)
 
 ## Project Goals
 Create a task management application.
