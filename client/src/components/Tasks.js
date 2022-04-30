@@ -81,7 +81,7 @@ const Tasks = (props) => {
                         ADD NEW TASK
                     </Button>
                 </Grid>
-                <Grid item xs={8} md={8}>
+                {/* <Grid item xs={8} md={8}>
                     <Search sx={{ paddingLeft: 0 }}>
                         <SearchIconWrapper>
                             <SearchIcon />
@@ -91,7 +91,7 @@ const Tasks = (props) => {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                </Grid>
+                </Grid> */}
             </Grid>
             <Grid container
                 rowSpacing={2}
