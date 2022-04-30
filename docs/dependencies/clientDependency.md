@@ -7,30 +7,31 @@
 `npm install (dependency name)`
 
 
-| Dependencies                |  Version    |
-| ----------------------------|:-----------:|
-| axios                       | 0.26.1      |
-| body-parser                 | 1.20.0      |
-| concurrently                | 7.1.0       |
-| cookie-session              | 2.0.0       |
-| cors                        | 2.8.5       |
-| express                     | 4.17.3      |
-| http-proxy-middleware       | 2.0.4       |
-| install                     | 0.13.0      |
-| mongoose                    | 6.2.10      |
-| nodemon                     | 2.0.15      |
-| npm                         | 8.8.0       |
-| passport                    | 0.5.2       |
-| passport-github2            | 0.1.12      |
-| passport-google-oauth20     | 2.0.0       |
-| passport-local              | 1.0.0       |
-| password-hash               | 1.2.2       |
-| path                        | 0.12.7      |
-| react-github-login-button   | 1.0.1       |
-| react-google-button         | 0.7.2       |
-| redux                       | 4.1.2       |
-| redux-devtools-extension    | 2.13.9      |
-| redux-thunk                 | 2.4.1       |
-| save                        | 2.4.0       |
-| semantic-ui-react           | 2.1.2       |
-| styled-components           | 5.3.5       |
+| Dependencies                |  Version      |
+| ----------------------------|:-------------:|
+| @date-io/date-fns           | 2.13.1        |
+| @emotion/react              | 1.20.0        |
+| @emotion/styled             | 11.8.1        |
+| @fullcalendar/daygrid       | 5.11.0        |
+| @fullcalendar/react         | 5.11.1        |
+| @fullcalendar/timegrid      | 5.11.0        |
+| @mui/icons-material         | 5.6.2         |
+| @mui/material               | 5.6.3         |
+| @mui/x-date-pickers         | 5.0.0-alpha.2 |
+| @testing-library/jest-dom   | 5.16.4        |
+| @testing-library/react      | 12.1.4        |
+| @testing-library/user-event | 13.5.0        |
+| axios                       | 0.26.1        |
+| history                     | 5.3.0         |
+| http-proxy-middleware       | 2.0.4         |
+| react                       | 18.0.0        |
+| react-dom                   | 18.0.0        |
+| react-github-login-button   | 1.0.1         |
+| react-google-button         | 0.7.2         |
+| react-redux                 | 7.2.8         |
+| react-router-dom            | 5.3.0         |
+| react-scripts               | 5.0.1         |
+| redux                       | 4.1.2         |
+| redux-devtools-extension    | 2.13.9        |
+| redux-thunk                 | 2.4.1         |
+| web-vitals                  | 2.1.4         |
