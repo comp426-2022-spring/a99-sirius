@@ -126,7 +126,6 @@ export const addTask = (data) => async dispatch => {
     return makeUserRequest("POST", data, endpoint)
     .then( response => {
         if(response.data.success){
-            console.log(response.data.task)
             dispatch(addTaskSuccess(response.data.task))
         }else{
             dispatch(addTaskError())

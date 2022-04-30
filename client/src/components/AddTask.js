@@ -1,4 +1,4 @@
-import { Button, DialogContent } from '@mui/material'
+import { Autocomplete, Button, DialogContent } from '@mui/material'
 import { Dialog } from '@mui/material'
 import React, { useState } from 'react'
 import { DialogTitle } from '@mui/material'
@@ -11,6 +11,10 @@ import { FormControlLabel } from '@mui/material'
 import { Switch } from '@mui/material'
 
 const AddTask = (props) => {
+    
+    const priority = [ "high", "medium", "low", ""]
+
+    const[value, setValue] = useState('')
 
     const login = props.login
     const {open, openWindow} = props
@@ -21,13 +25,12 @@ const AddTask = (props) => {
         var dd = String(today.getDate()).padStart(2, "0")
         var mm = String(today.getMonth() + 1).padStart(2, '0')
         var yyyy = today.getFullYear()
-        var min = today.getMinutes()
+        var min = String(today.getMinutes())
         var hours = today.getHours()
-        
+        if(min < 10){
+            min = "0" + min
+        }
         var time = yyyy + '-' + mm + '-' + dd + 'T' + hours + ':' + min
-
-        console.log(time)
-
         return time
     }
 
@@ -49,9 +52,9 @@ const AddTask = (props) => {
             description: data.get("taskDescription"),
             reminder: reminder,
             completed: false,
-            
+            dueDate: data.get("date"),
+            priority: value
         }
-        console.log(data.get("date"))
         await props.addTask(info)
         handleClose()
     }
@@ -90,16 +93,30 @@ const AddTask = (props) => {
                                 max: "2100-01-01"
                             }}
                         />
-                        <FormGroup>
-                            <FormControlLabel 
-                                size="small" 
-                                labelPlacement="start" 
-                                control={<Switch/>} 
-                                label="Set Reminder"
-                                onClick={toggleReminder}
-                            />
-                        </FormGroup>
                     </Box>
+                </Grid>
+                <Grid item  display={"flex"}md={12}>
+                    <Autocomplete
+                        value={value}
+                        disablePortal
+                        onChange={(event, newValue) => {
+                            setValue(newValue)
+                        }}
+                        size="small"
+                        options={priority}
+                        sx={{width: "140px"}}
+                        renderInput={(params) => <TextField size="small" {...params} label="Priority"/>}
+                    />
+                    <FormGroup>
+                        <FormControlLabel 
+                            size="small" 
+                            labelPlacement="start" 
+                            control={<Switch/>} 
+                            label="Reminder"
+                            onClick={toggleReminder}
+                        />
+                    </FormGroup>
+                    
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
