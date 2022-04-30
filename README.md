@@ -24,11 +24,11 @@ This github repository contains the code for a simple task management web applic
 2. Access the client directory and install all dependencies
 
      ````
-     cd/client`
+     cd/client
      npm install
      ````
    
-3. Go back to the main riectory and run the following command to start the server and run the client side concurrently
+3. Go back to the main directory and run the following command to start the server and run the client side concurrently
 
      ````
      ..
@@ -38,11 +38,11 @@ This github repository contains the code for a simple task management web applic
 4. The client side will be running on http://localhost:3000 and the server in http://localhost:5555  
 
 ## Project Goals
-Create a task managent application.
+Create a task management application.
 
 This will include:
 * Creating an account locally.
-* Signing in through Google/Github *Note: GitHub Authentication in production enviroment will be disabled*
+* Signing in through Google/Github *Note: GitHub Authentication in production environment will be disabled*
 * If singing in with Google/Github the user will be able to set his own password.
 * Signing into the application locally.
 * Connecting a database in order to store/authenticate logging information.
