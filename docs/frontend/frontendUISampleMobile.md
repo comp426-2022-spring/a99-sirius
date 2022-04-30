@@ -6,7 +6,7 @@
 
 #### Login Component
 
-<img src='../pictures/LoginComponent.PNG'/>
+<img src='../pictures/LoginComponent.PNG' width="250px" height="600px"/>
 
 #### User DropDown Component
 
