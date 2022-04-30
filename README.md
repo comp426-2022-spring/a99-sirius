@@ -15,11 +15,11 @@ This github repository contains the code for a simple task management web applic
 
 ### To run the application locally:
 
-1. Open your terminal and run the following command to install server dependencies[^1]:
+1. Open your terminal and run the following command to install server *dependencies*:
 
      `npm install --`
     
-2. Access the client directory and install all dependencies[^1]:
+2. Access the client directory and install all *dependencies*:
 
      `cd/client
      
@@ -34,7 +34,7 @@ This github repository contains the code for a simple task management web applic
 4. The client side will be running on port : http://localhost:3000.  
    The server will be running on port : http://localhost:5555. 
 
-[^1]: All dependencies for server and client will be listed inside `docs` directory.
+5. **All dependencies for server and client will be listed inside `docs` directory.**
 
 
 ## Databases Schemas and Connection
