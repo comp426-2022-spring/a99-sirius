@@ -4,6 +4,9 @@
 
 You can access our project in a production enviroment by clicking <a href="https://siriustodoapp.herokuapp.com/" target="blank"> here! </a>
 
+## Summary 
+
+Open source task management web app, and possibily a phone version as well. Users will be able to login in through a username/email and passowrd, or through google authentication. The task managment app will consist of creating tasks, deleting tasks, pinning important tasks, adding other users to a task, allow the user to set up recurring "reminders", add other users as a friend to allow task colloberations. 
 
 ## Deliverables
 This github repository contains the code for a simple task management web application. The package will take the form of a node/react package, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
@@ -26,20 +29,7 @@ This github repository contains the code for a simple task management web applic
      
       `npm run dev`
      
-4. The client side will be running on http://localhost:3000 and the server in http://localhost:5555     
-
-## Stages 
-* Backend
-* Frontend for the frontend framework. 
-* CSS for styling
-
-## Summary 
-
-Open source task management web app, and possibily a phone version as well. Users will be able to login in through a username/email and passowrd, or through google authentication. The task managment app will consist of creating tasks, deleting tasks, pinning important tasks, adding other users to a task, allow the user to set up recurring "reminders", add other users as a friend to allow task colloberations. 
-
-Rough template of the app can be found below:
-
-<img width="461" alt="Screen Shot 2022-04-04 at 5 07 33 PM" src="https://user-images.githubusercontent.com/89430088/161632522-db10d3a1-c21e-4213-8a86-b40541c50af2.png">
+4. The client side will be running on http://localhost:3000 and the server in http://localhost:5555  
 
 ## Project Goals
 Create a task managent application.
@@ -59,6 +49,11 @@ Future Implementations might include:
 * Allow users to collaborate on tasks
 * Give the users the ability to add other users
 * Add time's to complete certain tasks
+
+## Stages 
+* Backend
+* Frontend for the frontend framework. 
+* CSS for styling
 
 
 ## First steps
