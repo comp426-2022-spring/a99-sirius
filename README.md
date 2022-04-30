@@ -17,14 +17,17 @@ This github repository contains the code for a simple task management web applic
 2. Access the client directory and install all dependencies
 
      `cd/client`
+     
      `npm install/`
    
-3. Go back to the main riectory and run the following command:
+3. Go back to the main riectory and run the following command to start the server and run the client side concurrently
 
-     `..
-      npm run dev`
+     `..`
      
+      `npm run dev`
      
+4. The client side will be running on http://localhost:3000 and the server in http://locahost:5555     
+
 ## Stages 
 * Backend
 * Frontend for the frontend framework. 
