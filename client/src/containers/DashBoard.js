@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Header from '../components/Header'
 import * as taskActions from '../store/actions/tasks.actions'
 import { changePassword } from '../store/actions/actions'
-import ChangePass from '../components/ChangePass';
+import SetPass from '../components/SetPass';
 import { Container, Grid} from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material'
 import { Box } from '@mui/material'
@@ -40,8 +40,8 @@ const DashBoard = (props) => {
     return(
         <ThemeProvider theme={theme}>
             <Box sx={{ display: 'flex', overflow: 'auto'}}>
-                <Header user={props.user}/>
-                <ChangePass openPasswordDialog={openPasswordDialog} login={props.user.login} setOpenPasswordDialog={setOpenPasswordDialog} props={props}/>
+                <Header user={props.user} props={props}/>
+                <SetPass openPasswordDialog={openPasswordDialog} login={props.user.login} setOpenPasswordDialog={setOpenPasswordDialog} props={props}/>
                 <Box 
                     component="main"
                     sx={{

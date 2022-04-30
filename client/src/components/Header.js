@@ -3,15 +3,10 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Avatar } from "@mui/material";
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import UserDropMenu from "./UserDropMenu";
 
 
 const Header = (props) => {
-
-    const onLogout = async () => {
-        await props.logout()
-    }
 
     return (
         <AppBar position="absolute">
@@ -22,15 +17,7 @@ const Header = (props) => {
                     noWrap>
                     TO-DO APP
                 </Typography>
-                <Avatar sx={{ backgroundColor: deepOrange[500] }} alt={props.user.firstName + props.user.lastName}>
-                    {props.user.firstName[0] + props.user.lastName[0]}
-                </Avatar>
-                <Button
-                    color="inherit"
-                    href="/logout"
-                    onClick={onLogout}
-                >Logout
-                </Button>
+                <UserDropMenu user={props.user} props={props.props}/>
             </Toolbar>
         </AppBar>
     );

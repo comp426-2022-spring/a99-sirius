@@ -22,9 +22,9 @@ const ChangePass = (props) => {
     const[verifiedPassword, setVerifiedPassword] = useState(true)
     const[passwordMatch, setPasswordMatch] = useState(true)
 
-    const togglePasswordDialog = () => {
-        setOpenPasswordDialog(false)
-    }
+    useEffect(() => {
+        setOpenPasswordDialog(openPasswordDialog)
+    },[openPasswordDialog, setOpenPasswordDialog])
 
     const toggleVisibility = () => {
         setPasswordVisibility(!passwordVisibility)
@@ -49,7 +49,7 @@ const ChangePass = (props) => {
         }
         if(validPassword.test(info.password)){
             if(info.password === info.confirmPassword){
-                props.changePassword(info)
+                props.props.changePassword(info)
                 .then(() => {
                     setOpenPasswordDialog(false)
                 })
@@ -64,14 +64,13 @@ const ChangePass = (props) => {
 
     return(
         <Dialog open={openPasswordDialog}>
-            <DialogTitle textAlign="center">Enter New Password</DialogTitle>
+            <DialogTitle textAlign="center">Set Up Account Password</DialogTitle>
             <DialogContent>
                 <Box component="form" onSubmit={handleSubmit}>
                     <Grid container width={350}>
-                        <Grid item xs={9} md={12} width={350} >
+                        <Grid item xs={9} width={350} >
                             <TextField
                                 name="newPassword"
-                                
                                 required
                                 fullWidth
                                 id="newPassword"
@@ -88,7 +87,7 @@ const ChangePass = (props) => {
                                 onChange={e => {setVerifiedPassword(true); setPasswordMatch(true)}}
                             />
                         </Grid>
-                        <Grid item xs={9} md={12} width={350} >
+                        <Grid item xs={9} width={350} >
                             <TextField
                                 name="confirmPassword"
                                 required
@@ -107,7 +106,7 @@ const ChangePass = (props) => {
                                 onChange={e => {setVerifiedPassword(true); setPasswordMatch(true)}}
                             />
                         </Grid>
-                        <Grid item xs={9} md={12} width={350}>
+                        <Grid item xs={9} width={350}>
                             {!verifiedPassword ? <Alert sx={{marginTop: 1}} severity="error">
                             <AlertTitle severity="error">Password Requirements Not Met</AlertTitle>
                                 <ul>Password Must:
@@ -119,21 +118,12 @@ const ChangePass = (props) => {
                             </Alert> 
                             : <></>}
                         </Grid>
-                        <Grid item xs={9} md={12} width={350}>
+                        <Grid item xs={9} width={350}>
                             <Button type="submit"
                                 fullWidth
                                 variant="contained"
                                 sx={{marginTop: 2}}
                                 >Submit
-                            </Button>
-                        </Grid>
-                        <Grid item 
-                              xs={4}
-                              sx={{marginTop: "2px"}}
-                        >
-                            <Button
-                            onClick={togglePasswordDialog}>
-                                Close
                             </Button>
                         </Grid>
                     </Grid>
