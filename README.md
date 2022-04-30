@@ -1,4 +1,4 @@
-# Final Project : To-do Application
+# Final Project : To-DO-APP  Web Application
 
 ## Production Link
 
@@ -13,7 +13,13 @@ The lists below includes instructions and contributors to the project.
 ## Deliverables
 This github repository contains the code for a simple task management web application. The package will take the form of a **node/react package**, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
 
+## Project Documentation
+
+Documentation regarding our project's structure and design can be found [here](./docs/README.md)
+
 ### To run the application locally:
+
+*Note: Before running application locally, make sure you contact the developer team as credentials have to be provided*
 
 1. Open your terminal and run the following command to install [server dependencies](./docs/dependencies/serverDependency.md):
 
@@ -41,14 +47,11 @@ This github repository contains the code for a simple task management web applic
 5. **All dependencies for server and client will be listed inside `/docs/dependencies` directory.**
 
 
+
 ## Databases Schemas and Connection
 Sirius integrated `MongoDB` to manage database connections for the application. `MongoDB` is a NoSQL document database with scalability and flexibility to store data in JSON-like documents.  
   
 More documentation regarding the database can be found [here](./docs/database/Database.md)
-
-## Project Documentation
-
-Documentation regarding our project design and structure can be found [here](./docs/README.md)
 
 ## Project Goals
 Create a task management application.
