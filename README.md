@@ -8,6 +8,8 @@ You can access our project in a production enviroment by clicking <a href="https
 ## Deliverables
 This github repository contains the code for a simple task management web application. The package will take the form of a node/react package, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
 
+### To run the application locaclly:
+
      npm run dev 
 
      
