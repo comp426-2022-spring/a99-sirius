@@ -51,8 +51,11 @@ Future Implementations might include:
 * Add time's to complete certain tasks
 
 ## Stages 
-* Backend
-* Frontend for the frontend framework. 
+* Backend Design
+* Databases Schemas and Connection
+* Backend Implementation
+* Front End Design
+* Backend / Front End Connection
 * CSS for styling
 
 
