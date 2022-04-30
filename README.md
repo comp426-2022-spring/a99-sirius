@@ -46,6 +46,10 @@ Sirius integrated `MongoDB` to manage database connections for the application. 
   
 More documentation regarding the database can be found [here](./docs/database/Database.md)
 
+## Project Documentation
+
+Documentation regarding our project design and structure can be found [here](./docs/README.md)
+
 ## Project Goals
 Create a task management application.
 
