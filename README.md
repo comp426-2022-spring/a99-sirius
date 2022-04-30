@@ -83,3 +83,6 @@ The Sirius Project concluded team members from Team Sirius in COMP 426: Modern W
 Below is the link to the contributors and roles of each individuals for the project.  
    * [Team Information](./docs/teamInfo.md)
 
+## Demo Link
+https://drive.google.com/file/d/1LlZDYE0a_FAp1PohnrgVN1fp4cG3rInP/view?usp=sharing
+
