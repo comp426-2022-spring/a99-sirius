@@ -26,7 +26,7 @@ This github repository contains the code for a simple task management web applic
      
       `npm run dev`
      
-4. The client side will be running on http://localhost:3000 and the server in http://locahost:5555     
+4. The client side will be running on http://localhost:3000 and the server in http://localhost:5555     
 
 ## Stages 
 * Backend
