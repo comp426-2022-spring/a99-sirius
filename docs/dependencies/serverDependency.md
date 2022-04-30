@@ -1,11 +1,11 @@
 # Dependencies for Server Side (Back-End)
 
 ### Dependency Lists
-**Please install all dependencies in the _root directory_ by using:
+**Please install all dependencies in the _root directory_ by using:**
 
-`npm install (dependency name)`
-
-
+`npm install (dependency name)`  
+  
+  
 | Dependencies                |  Version    |
 | ----------------------------|:-----------:|
 | axios                       | 0.26.1      |
