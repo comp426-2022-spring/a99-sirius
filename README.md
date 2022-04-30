@@ -21,7 +21,7 @@ This github repository contains the code for a simple task management web applic
     
 2. Access the client directory and install all dependencies[^1]:
 
-     `cd/client`
+     `cd/client
      
      `npm install --`
    
