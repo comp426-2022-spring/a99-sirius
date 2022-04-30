@@ -14,7 +14,6 @@ const Task = (props) => {
     const[reminder, setReminder] = useState(props.task.reminder)
     const[completed,setCompleted] = useState(props.task.completed)
     const[color, setColor] = useState("")
-    const [value, setValue] = React.useState(null);
 
     function toggleCompleted(){
         setCompleted(!completed)
