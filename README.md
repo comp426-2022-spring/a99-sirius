@@ -1,17 +1,19 @@
-# Final Project - TO-DO-APP
+# Final Project : To-do Application
 
 ## Production Link
 
-You can access our project in a production enviroment by clicking <a href="https://siriustodoapp.herokuapp.com/" target="blank"> here! </a>
+You can access our project in a production environment by clicking <a href="https://siriustodoapp.herokuapp.com/" target="blank"> here! </a>
 
-## Summary 
+# Introduction 
 
-Open source task management web app, and possibily a phone version as well. Users will be able to login in through a username/email and passowrd, or through google authentication. The task managment app will consist of creating tasks, deleting tasks, pinning important tasks, adding other users to a task, allow the user to set up recurring "reminders", add other users as a friend to allow task colloberations. 
+Sirius is an open source task management web application that will also be implemented as a mobile application in the future as well. Users of the application will be able to login and sign-up using a username/email and password, or through different authentications such as Google Authentication and Github Authentication. The purpose of the authenticator was to implement a two-factor authentication that helps verify user identities before granting them access to our website. It provides extra layer of security to only grant authorized users to the website. 
+The responsive task management app consists of creating tasks, deleting tasks, and searching for a specific task that the user wants to find. There are additional features and components when creating a new task in order to aid utilization of the application. The users can add when the task date is due with an integrated calendar, set a priority of the specific task, and set a reminder so they can be aware of when the task will be due.
+The lists below includes instructions and contributors to the project.
 
 ## Deliverables
 This github repository contains the code for a simple task management web application. The package will take the form of a node/react package, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
 
-### To run the application locaclly:
+### To run the application locally:
 
 1. Open your terminal and run the following command to install server dependencies:
 

@@ -14,18 +14,18 @@ const Header = (props) => {
     }
 
     return (
-         <AppBar position="absolute">
+        <AppBar position="absolute">
             <Toolbar>
-                <Typography variant="h6" 
-                    component="h1" 
+                <Typography variant="h6"
+                    component="h1"
                     sx={{ flexGrow: 1 }}
                     noWrap>
-                    TO-DO-APP
+                    TO-DO APP
                 </Typography>
                 <Avatar sx={{ backgroundColor: deepOrange[500] }} alt={props.user.firstName + props.user.lastName}>
                     {props.user.firstName[0] + props.user.lastName[0]}
                 </Avatar>
-                <Button 
+                <Button
                     color="inherit"
                     href="/logout"
                     onClick={onLogout}
