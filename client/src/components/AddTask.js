@@ -9,13 +9,27 @@ import { Typography } from '@mui/material';
 import { FormGroup } from '@mui/material'
 import { FormControlLabel } from '@mui/material'
 import { Switch } from '@mui/material'
-import BasicDateTimePicker from './To-do/DateTimePicker'
 
 const AddTask = (props) => {
 
     const login = props.login
     const {open, openWindow} = props
     const[reminder, setReminder] = useState(false)
+ 
+    const getDate = () => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, "0")
+        var mm = String(today.getMonth() + 1).padStart(2, '0')
+        var yyyy = today.getFullYear()
+        var min = today.getMinutes()
+        var hours = today.getHours()
+        
+        var time = yyyy + '-' + mm + '-' + dd + 'T' + hours + ':' + min
+
+        console.log(time)
+
+        return time
+    }
 
     function handleClose() {
         openWindow(false)
@@ -34,8 +48,10 @@ const AddTask = (props) => {
             name: data.get("taskName"),
             description: data.get("taskDescription"),
             reminder: reminder,
-            completed: false
+            completed: false,
+            
         }
+        console.log(data.get("date"))
         await props.addTask(info)
         handleClose()
     }
@@ -60,20 +76,20 @@ const AddTask = (props) => {
                 </Grid>
                 <Grid item xs={9} md={5}>
                     <Box container display={"flex"} flexDirection="column">
-                        <BasicDateTimePicker />
-                        {/* <TextField
+                        {/* <BasicDateTimePicker /> */}
+                        <TextField
                             id="Date"
                             label="Task Date"
-                            type="date"
+                            type="datetime-local"
                             size="small"
                             required
                             name="date"
-                            defaultValue={}
+                            defaultValue={getDate()}
                             InputLabelProps={{
                                 shrink: true,
                                 max: "2100-01-01"
                             }}
-                        /> */}
+                        />
                         <FormGroup>
                             <FormControlLabel 
                                 size="small" 
