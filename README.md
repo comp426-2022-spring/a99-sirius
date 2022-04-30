@@ -10,17 +10,21 @@ This github repository contains the code for a simple task management web applic
 
 ### To run the application locaclly:
 
-1. Open your terminal and run the following command
+1. Open your terminal and run the following command to install server dependencies:
 
-     npm install
+     `npm install`
     
 2. Access the client directory and install all dependencies
 
-     cd/client 
-     npm install
+     `cd/client 
+     
+     npm install/`
    
-3. 
+3. Go back to the main riectory and run the following command:
 
+     `..
+      npm run dev`
+     
      
 ## Stages 
 * Backend
