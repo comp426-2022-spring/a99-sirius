@@ -17,19 +17,23 @@ This github repository contains the code for a simple task management web applic
 
 1. Open your terminal and run the following command to install [server dependencies](./docs/dependencies/serverDependency.md):
 
-     `npm install --`
+     ````
+     npm install
+     ````
     
 2. Access the client directory and install all [client dependencies](./docs/dependencies/clientDependency.md):
 
-     `cd client
-     
-     `npm install --`
+     ````
+     cd client
+     npm install
+     ````
    
 3. Go back to the main directory and run the following command to start the server and run the client side **concurrently**
 
-     `cd ..`
-     
-      `npm run dev`
+     ````
+     cd ..
+     npm run dev
+     ````
      
 4. The client side will be running on port : http://localhost:3000.  
    The server will be running on port : http://localhost:5555. 
