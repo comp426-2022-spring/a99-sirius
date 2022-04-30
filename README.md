@@ -48,7 +48,7 @@ More documentation regarding the database can be found [here](./docs/database/Da
 
 ## Project Documentation
 
-Documentation regarding our project design and structure can be found [here](./docs/README.md)
+Documentation regarding our project's structure and design can be found [here](./docs/README.md)
 
 ## Project Goals
 Create a task management application.
