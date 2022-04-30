@@ -9,6 +9,7 @@ import { ThemeProvider, createTheme } from '@mui/material'
 import { Box } from '@mui/material'
 import { Toolbar } from '@mui/material'
 import Tasks from '../components/Tasks'
+import Calendar from '../components/Calendar'
 
 const theme = createTheme()
 
@@ -39,7 +40,7 @@ const DashBoard = (props) => {
     return(
         <ThemeProvider theme={theme}>
             <Box sx={{ display: 'flex', overflow: 'auto'}}>
-                <Header/>
+                <Header user={props.user}/>
                 <ChangePass openPasswordDialog={openPasswordDialog} login={props.user.login} setOpenPasswordDialog={setOpenPasswordDialog} props={props}/>
                 <Box 
                     component="main"
@@ -55,6 +56,9 @@ const DashBoard = (props) => {
                             <Grid item xs={12} md={8} lg={9} xl={15}>
                                 <Tasks userTasks={tasks} login={login} update={updateTask} add={addTask} delete={deleteTask} />
                             </Grid>
+                            {/* <Grid item>
+                                <Calendar/>
+                            </Grid> */}
                         </Grid>
                     </Container>
                 </Box>

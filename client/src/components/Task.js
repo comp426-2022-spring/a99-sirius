@@ -8,12 +8,6 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import React, {useEffect, useState} from 'react'
 import { FormControlLabel } from '@mui/material';
 import { Switch } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import TextField from '@mui/material/TextField';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
-
 
 const Task = (props) => {
 
