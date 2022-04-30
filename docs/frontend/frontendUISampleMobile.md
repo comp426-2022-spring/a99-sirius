@@ -6,7 +6,7 @@
 
 #### Login Component
 
-<img width="300px" height="600px" scr='../pictures/LoginComponent.PNG>'/>
+<img width="300px" height="600px" scr='../pictures/LoginComponent.PNG'/>
 
 #### User DropDown Component
 
@@ -18,4 +18,4 @@
 
 #### DashBoard
 
-<img width="300px" height="500px" src='../pictures/DashBoard.PNG>
+<img width="300px" height="500px" src='../pictures/DashBoard.PNG'/>
