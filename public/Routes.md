@@ -15,7 +15,7 @@ Endpoints corresponding to user authentication can be found in `/routes/authRout
 Response
 
 ````
-redirect to '/auth/google-token'
+redirect to /auth/google-token
 ````
 
 Response headers
@@ -35,13 +35,13 @@ Keep-Alive: timeout=5
 ##### Google Authentication Callback #####
 
 ````
-/auth/google-token
+/auth/google-token (GET)
 ````
 
 Response 
 
 ````
-redirect to '/'
+redirect to /
 ````
 
 Response headers
@@ -59,6 +59,56 @@ Keep-Alive: timeout=5
 ````
 
 #### Github Authentication
+
+````
+/auth/github (GET)
+````
+
+Response
+
+````
+redirect to /auth/github-token
+````
+
+Response headers
+
+````
+HTTP/1.1 302 Found
+X-Powered-By: Express
+Vary: Origin
+Access-Control-Allow-Credentials: true
+Location: https://github.com/login/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5555%2Fauth%2Fgithub-token&scope=user%3Aemail&client_id=cdd50257394113fedef2
+Content-Length: 0
+Date: Sat, 30 Apr 2022 05:03:10 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
+
+##### GitHub Auth Callback #####
+
+````
+/auth/github-token (GET)
+````
+
+Response
+
+````
+redirect to /
+````
+
+Response headers
+
+````
+HTTP/1.1 302 Found
+X-Powered-By: Express
+Vary: Origin
+Access-Control-Allow-Credentials: true
+Location: https://github.com/login/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5555%2Fauth%2Fgithub-token&client_id=cdd50257394113fedef2
+Content-Length: 0
+Date: Sat, 30 Apr 2022 05:03:50 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+````
 
 
 #### Local Authentication
