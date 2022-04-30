@@ -25,6 +25,10 @@ Below is a direct link to the Task Routes API Endpoints
   
 * [Task Routes](./endpoints/TaskRoutes.md)
 
+## Front End Routing
+Below is a direct link to the Front End Routes Documentation
+
+* [Front End Routes](./frontend//Routing.md)
 
 # Dependencies
 
