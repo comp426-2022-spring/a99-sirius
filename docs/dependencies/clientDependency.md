@@ -1,13 +1,13 @@
 # Dependencies for Client Side (Front-End)
 
 ### Dependency Lists
-**Please install all dependencies in the _client directory_ by doing the following:
+**Please install all dependencies in the _client directory_ by doing the following:**
 
 `cd client`  
 
 
 `npm install (dependency name)`  
-
+----------------------------------------------------
 
 
 | Dependencies                |  Version      |
