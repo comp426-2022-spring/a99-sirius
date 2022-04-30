@@ -2,7 +2,7 @@
 
 #### Sign Up Component
 
-<img src='../pictures/SignUpComponent.PNG'/>
+<img width="300px" height="600px" src='../pictures/SignUpComponent.PNG'/>
 
 #### Login Component
 
