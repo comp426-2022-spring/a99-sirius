@@ -3,8 +3,10 @@ This folder contains all of the documentations of the project as well as the con
    * Endpoints
    * Dependencies
    * Database
+   * Front End Sample Mobile Device
    * Front End Routing
    * Team Information
+   * Front End Sample Mobile Device
 
 
 # Endpoints
@@ -26,6 +28,11 @@ Below is a direct link to the Database API Endpoints
 Below is a direct link to the Task Routes API Endpoints
   
 * [Task Routes](./endpoints/TaskRoutes.md)
+
+## Front End Sample on Mobile Device
+Below is a direct link to the Front End Sample on Mobile Device
+
+* [Front End Sample Mobile](./frontend/frontendUISampleMobile.md)
 
 ## Front End Routing
 Below is a direct link to the Front End Routes Documentation
