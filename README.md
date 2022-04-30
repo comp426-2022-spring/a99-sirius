@@ -70,5 +70,5 @@ MIT License is a short and simple permissive license with conditions only requir
 ## Sirius DEVELOPMENT TEAM
 The Sirius Project concluded team members from Team Sirius in COMP 426: Modern Web Programming at University of North Carolina at Chapel Hill.  
 Below is the link to the contributors and roles of each individuals for the project.  
-     [Team Information](./docs/teamInfo.md)
+   * [Team Information](./docs/teamInfo.md)
 
