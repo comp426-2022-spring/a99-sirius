@@ -1,12 +1,8 @@
-## API ENDPOINTS
-
-This document provides the documentation of all ENDPOINTS use in the application.
-
-### User Authentication
+## User Authentication Endpoints
 
 Endpoints corresponding to user authentication can be found in `/routes/authRoutes.js`
 
-#### Google Authentication
+### Google Authentication
 
 ````
 /auth/google (GET)
@@ -32,19 +28,19 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ````
 
-##### Google Authentication Callback #####
+#### Google Authentication Callback
 
 ````
 /auth/google-token (GET)
 ````
 
-Response 
+Response:
 
 ````
 redirect to /
 ````
 
-Response headers
+Response headers:
 
 ````
 HTTP/1.1 302 Found
@@ -58,19 +54,19 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ````
 
-#### Github Authentication
+### Github Authentication
 
 ````
 /auth/github (GET)
 ````
 
-Response
+Response:
 
 ````
 redirect to /auth/github-token
 ````
 
-Response headers
+Response headers:
 
 ````
 HTTP/1.1 302 Found
@@ -84,19 +80,19 @@ Connection: keep-alive
 Keep-Alive: timeout=5
 ````
 
-##### GitHub Auth Callback #####
+#### GitHub Auth Callback #####
 
 ````
 /auth/github-token (GET)
 ````
 
-Response
+Response:
 
 ````
 redirect to /
 ````
 
-Response headers
+Response headers:
 
 ````
 HTTP/1.1 302 Found
@@ -111,10 +107,132 @@ Keep-Alive: timeout=5
 ````
 
 
-#### Local Authentication
+### Local Authentication
 
+````
+/login/auth (POST)
+````
 
-#### User SignUp
+Request body:
 
+````
+{
+    username: "username",
+    password: "password"
+}
+````
 
-#### Change Password
+Response
+
+````
+{
+    success: true,
+    user: {
+        _id: '6269dafae76ec54086ea9af5',
+        userId: '76448919792363',
+        email: 'guillesaez22@gmail.com',
+        login: 'guillesaez22',
+        firstName: 'Guillermo',
+        lastName: 'Saez',
+        password: 'sha1$8f6232c0$1$82c6ea25b8135f88c6629fff88155eed1712ba0a',
+        ownPassword: true,
+        __v: 0
+    },
+    message: "authenticate succeeded"
+}
+````
+
+### User SignUp
+
+````
+/singUp/auth
+````
+
+Request body:
+
+````
+{
+    login: "username",
+    password: "password",
+    email: "email@example.com",
+    fistName: "firstName",
+    lastName: "lastName",
+}
+````
+
+Response:
+
+````
+{
+    success: true,
+    user: {
+        _id: '6269dafae76ec54086ea9af5',
+        userId: '76448919792363',
+        email: 'guillesaez22@gmail.com',
+        login: 'guillesaez22',
+        firstName: 'Guillermo',
+        lastName: 'Saez',
+        password: 'sha1$8f6232c0$1$82c6ea545425b8135f88c6629fff88155eed1712ba0a',
+        ownPassword: true,
+        __v: 0
+    },
+}
+````
+
+### Change Password
+
+````
+/changePassword (POST)
+````
+
+Request body:
+
+````
+{
+    login: "username",
+    password: "password"
+}
+````
+
+Response:
+````
+{
+    success: true,
+    user: {
+        _id: '6269dafae76ec54086ea9af5',
+        userId: '76448919792363',
+        email: 'guillesaez22@gmail.com',
+        login: 'guillesaez22',
+        firstName: 'Guillermo',
+        lastName: 'Saez',
+        password: 'sha1$8f6232c0$1$82c6ea5425b8135f88c6629fff88155eed1712ba0a',
+        ownPassword: true,
+        __v: 0
+    },
+}
+````
+
+### Get User
+
+````
+/user
+````
+
+Response:
+
+````
+{
+    user: {
+        _id: '6269dafae76ec54086ea9af5',
+        userId: '76448919792363',
+        email: 'guillesaez22@gmail.com',
+        login: 'guillesaez22',
+        firstName: 'Guillermo',
+        lastName: 'Saez',
+        password: 'sha1$8f6232c0$1$82c6e45a25b8135f88c6629fff88155eed1712ba0a',
+        ownPassword: true,
+        __v: 0
+    }
+}
+    
+````
