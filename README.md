@@ -34,7 +34,7 @@ This github repository contains the code for a simple task management web applic
 4. The client side will be running on port : http://localhost:3000.  
    The server will be running on port : http://localhost:5555. 
 
-5. **All dependencies for server and client will be listed inside `docs` directory.**
+5. **All dependencies for server and client will be listed inside `/docs/dependencies` directory.**
 
 
 ## Databases Schemas and Connection
