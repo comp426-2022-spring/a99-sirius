@@ -11,31 +11,28 @@ The responsive task management app consists of creating tasks, deleting tasks, a
 The lists below includes instructions and contributors to the project.
 
 ## Deliverables
-This github repository contains the code for a simple task management web application. The package will take the form of a node/react package, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
+This github repository contains the code for a simple task management web application. The package will take the form of a **node/react package**, with several dependencies needed to be installed in order to properly run the website. The following script command is needed in order to run the website:
 
 ### To run the application locally:
 
 1. Open your terminal and run the following command to install server dependencies:
 
-     ````
-     npm install
-     ````
+     `npm install --`
     
 2. Access the client directory and install all dependencies
 
-     ````
-     cd/client
-     npm install
-     ````
-   
-3. Go back to the main directory and run the following command to start the server and run the client side concurrently
-
-     ````
-     ..
-     npm run dev
-     ````
+     `cd/client
      
-4. The client side will be running on http://localhost:3000 and the server in http://localhost:5555  
+     `npm install --`
+   
+3. Go back to the main directory and run the following command to start the server and run the client side **concurrently**
+
+     `cd ..`
+     
+      `npm run dev`
+     
+4. The client side will be running on port : http://localhost:3000.  
+   The server will be running on port : http://localhost:5555. 
 
 ## Project Goals
 Create a task management application.
