@@ -4,8 +4,8 @@
   "description": "Task Management Web Application",
   "main": "index.js",
   "engines": {
-    "npm": "^8.1.2",
-    "node": "^16.13.2"
+    "npm": "8.1.2",
+    "node": "16.13.2"
   },
   "scripts": {
     "start": "node index.js",
