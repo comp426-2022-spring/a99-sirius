@@ -38,7 +38,7 @@
     "install": "^0.13.0",
     "mongoose": "^6.2.10",
     "nodemon": "^2.0.15",
-    "npm": "^8.8.0",
+    "npm": "^8.11.0",
     "passport": "^0.5.2",
     "passport-github2": "^0.1.12",
     "passport-google-oauth20": "^2.0.0",
