@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { Alert} from '@mui/material';
 import { AlertTitle } from '@mui/material';
 
@@ -76,7 +77,7 @@ const SignUp = (props) => {
                 <CssBaseline/>
                 <Box
                     sx={{
-                        marginTop: 8,
+                        marginTop: 4,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center'
@@ -148,7 +149,7 @@ const SignUp = (props) => {
                                     autoComplete="new-password"
                                     InputProps={{
                                         endAdornment: <InputAdornment position="end">
-                                            <Button color="primary" disableElevation onClick={toggleVisibility}><Visibility/></Button>
+                                            <Button color="primary" disableElevation onClick={toggleVisibility}>{passwordVisibility ? <VisibilityOffIcon/> : <Visibility/>}</Button>
                                         </InputAdornment>,
                                     }}
                                     error={!verifiedPassword}
@@ -195,7 +196,7 @@ const SignUp = (props) => {
                     </Link>
                     <Link
                         disabled
-                        href="/auth/github"
+                        href=""
                         sx={{
                             marginTop: 2
                         }}

@@ -13,6 +13,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Alert} from '@mui/material';
 import { AlertTitle } from '@mui/material';
 import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 import InputAdornment from '@mui/material/InputAdornment';
 
 
@@ -87,7 +89,7 @@ const Login = (props) => {
                             autoComplete='current-password'
                             InputProps={{
                                 endAdornment: <InputAdornment position="end">
-                                    <Button color="primary" disableElevation onClick={toggleVisibility}><Visibility/></Button>
+                                    <Button color="primary" disableElevation onClick={toggleVisibility}>{passwordVisibility ? <VisibilityOffIcon/> : <Visibility/>}</Button>
                                 </InputAdornment>
                             }}
                             
@@ -99,6 +101,13 @@ const Login = (props) => {
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
                         > Sign In</Button>
+                        <Grid container justifyContent="flex-start">
+                            <Grid item>
+                                <Link href="/forgotpassword" variant="body2">
+                                    Forgot Password?
+                                </Link>
+                            </Grid>
+                        </Grid>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
                                 <Link href="/" variant="body2">
@@ -116,7 +125,7 @@ const Login = (props) => {
                     </Link>
                     <Link
                         disabled
-                        href="/auth/github"
+                        href=""
                         sx={{
                             marginTop: 2
                         }}

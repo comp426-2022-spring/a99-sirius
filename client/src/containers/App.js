@@ -8,7 +8,6 @@ import DashBoard from './DashBoard'
 import SignInContainer from './SignInContainer'
 import SignUpContainer from './SignUpContainer'
 
-
 class App extends Component {
     
     componentDidMount() {
