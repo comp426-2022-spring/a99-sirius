@@ -117,8 +117,7 @@ exports.register = function(req, res) {
         
     })
 }
-
-// CHANGE PASSWORD
+// CHANGE PASSWORDS
 exports.changePassword = async function (req, res) {
     const new_password = passwordHash.generate(req.body.password)
     let doc = await User.findOneAndUpdate({ login : req.body.login}, {password: new_password, ownPassword: true}, {returnOriginal: false})
