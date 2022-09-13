@@ -10,7 +10,6 @@ const cors = require('cors');
 require('./models/User')
 require('./models/Tasks')
 require('./services/passport')
-
 // Connect to Database
 mongoose.connect(keys.mongoURI)
 
