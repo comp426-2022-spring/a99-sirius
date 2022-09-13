@@ -9,7 +9,6 @@ const cors = require('cors');
 // Database Models
 require('./models/User')
 require('./models/Tasks')
-
 require('./services/passport')
 
 // Connect to Database
