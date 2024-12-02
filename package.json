@@ -36,7 +36,7 @@
     "express": "^4.17.3",
     "http-proxy-middleware": "^2.0.4",
     "install": "^0.13.0",
-    "mongoose": "^6.2.10",
+    "mongoose": "^6.4.6",
     "nodemon": "^2.0.15",
     "npm": "^8.8.0",
     "passport": "^0.5.2",
